@@ -122,7 +122,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
     </div>
   </div>
   <div class="nav-links active" data-part="1">
-    <a href="#mindmap1">Bản đồ P1</a>
+    <a href="#mindmap1">Bản đồ: Tổng quan</a>
     <a href="#t1-thuat-ngu">Khái niệm & thuật ngữ</a>
     <a href="#t2-fetch-bacao">Fetch–Execute & ngôn ngữ</a>
     <a href="#t3-7-buoc">7 bước viết chương trình</a>
@@ -134,6 +134,13 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
     <a href="#t9-cong-cu">Công cụ & IDE</a>
     <a href="#t10-tien-xu-ly">Chú thích & tiền xử lý</a>
     <a href="#t11-printf-scanf">printf & scanf</a>
+    <a href="#mindmap-kdl">Bản đồ: Biến & kiểu DL</a>
+    <a href="#kdl-t1-ram-bien">RAM & biến</a>
+    <a href="#kdl-t2-khai-bao">Khai báo & đặt tên</a>
+    <a href="#kdl-t3-kieu-so">Kiểu số</a>
+    <a href="#kdl-t4-bool-enum">bool & enum</a>
+    <a href="#kdl-t5-char">char & ký tự thoát</a>
+    <a href="#kdl-t6-printf">Định dạng printf</a>
   </div>
 </nav>
 
@@ -165,7 +172,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
 
 <!-- ---------- MIND MAP ---------- -->
 <section id="mindmap1" style="padding-top:10px;">
-  <h2 class="sec-title">🗺️ Bản đồ Phần 1</h2>
+  <h2 class="sec-title">🗺️ Bản đồ Phần 1 · Tổng quan lập trình C</h2>
   <div class="mindmap-wrap">
     <div class="mindmap" style="min-height:820px;">
       <svg viewBox="0 0 940 760" preserveAspectRatio="none">
@@ -906,15 +913,447 @@ scanf("%d", &amp;i);                         <span class="c-num">// số nguyên
 </div>
 
 </section>
+
+<!-- ======================= PHẦN 1 (tiếp): BIẾN & KIỂU DỮ LIỆU ======================= -->
+<hr style="border:none;border-top:2px dashed var(--line);margin:44px 0 0;">
+
+<div class="hero" id="kdl-top">
+  <div>
+    <span class="eyebrow">🔤 Phần 1 · Tiếp theo · Tóm tắt & ghi nhớ</span>
+    <h1>Biến và <span class="accent">kiểu dữ liệu</span></h1>
+    <p>Dữ liệu nằm ở đâu trong bộ nhớ, biến là gì, khai báo và đặt tên thế nào, các kiểu dữ liệu cơ bản của C (<code>int</code>, <code>float</code>, <code>double</code>, <code>bool</code>, <code>enum</code>, <code>char</code>) và cách in chúng ra bằng <code>printf</code>.</p>
+    <div class="hero-tags">
+      <span class="tag t1">RAM</span>
+      <span class="tag t2">Biến</span>
+      <span class="tag t3">int · float · double</span>
+      <span class="tag t4">enum · char</span>
+      <span class="tag t5">printf</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">int    x = 21;
+double r = 8.44e11;
+char   c = 'W';
+printf("%d %e %c", x, r, c);</pre>
+  </div>
+</div>
+
+<!-- ---------- MIND MAP BIẾN & KIỂU DỮ LIỆU ---------- -->
+<section id="mindmap-kdl" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 1 · Biến & kiểu dữ liệu</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:760px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="232" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="528" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="470" y2="676" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="528" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="232" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 1<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Biến & kiểu dữ liệu</span></div>
+
+      <a href="#kdl-t1-ram-bien" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">Bộ nhớ RAM & biến</div>
+        <div class="desc">RAM, byte, biến vs hằng</div>
+      </a>
+      <a href="#kdl-t2-khai-bao" class="mm-node" style="left:75.1%;top:26.2%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Khai báo & đặt tên</div>
+        <div class="desc">Cú pháp, khởi tạo, phạm vi</div>
+      </a>
+      <a href="#kdl-t3-kieu-so" class="mm-node" style="left:75.1%;top:65.2%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">Kiểu số</div>
+        <div class="desc">int, float, double, long</div>
+      </a>
+      <a href="#kdl-t4-bool-enum" class="mm-node" style="left:40.5%;top:84.8%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">bool & enum</div>
+        <div class="desc">Logic, kiểu liệt kê</div>
+      </a>
+      <a href="#kdl-t5-char" class="mm-node" style="left:5.9%;top:65.3%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">char & ký tự thoát</div>
+        <div class="desc">Dấu nháy đơn, \n, \t</div>
+      </a>
+      <a href="#kdl-t6-printf" class="mm-node" style="left:5.9%;top:26.2%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">Định dạng printf</div>
+        <div class="desc">%d %f %c %e %g</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-kdl" style="padding-top:6px;">
+
+<!-- ========== KDL TOPIC 1 ========== -->
+<div class="topic k1" id="kdl-t1-ram-bien">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Bộ nhớ RAM & biến</h3><div class="sub">Dữ liệu của chương trình nằm ở đâu, biến khác hằng thế nào</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>💾 RAM và ổ cứng</h4>
+      <ul>
+        <li><b>RAM</b>: bộ nhớ <b>tạm thời</b>. Dữ liệu bị <b>xóa</b> khi tắt máy hoặc thoát chương trình.</li>
+        <li><b>Ổ cứng</b>: lưu dữ liệu <b>cố định</b>, vẫn còn sau khi tắt máy, nhưng truy cập mất nhiều thời gian hơn RAM.</li>
+        <li><b>Mọi biến và dữ liệu</b> của chương trình đều lưu trong RAM.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🧱 RAM là một chuỗi ô nhớ</h4>
+      <ul>
+        <li>RAM gồm rất nhiều <b>byte</b>, mỗi byte chứa <b>8 bit</b>.</li>
+        <li>Mỗi byte có một <b>địa chỉ duy nhất</b>; chương trình truy cập dữ liệu thông qua <b>tên biến</b>.</li>
+        <li>RAM lớn hơn thì chương trình lưu được nhiều dữ liệu hơn và truy cập nhanh hơn.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th></th><th>Biến (variable)</th><th>Hằng số (constant)</th></tr>
+    <tr><td><b>Giá trị</b></td><td><b>Có thể thay đổi</b> trong lúc chạy chương trình</td><td><b>Không thay đổi</b>, giữ nguyên suốt quá trình chạy</td></tr>
+    <tr><td><b>Lưu ở đâu</b></td><td colspan="2">Cả hai đều lưu trong bộ nhớ tại một <b>địa chỉ</b> nhất định</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🏷️ Vì sao phải đặt tên cho biến?</h4>
+      <ul>
+        <li>Rất khó truy cập bộ nhớ trực tiếp vì <b>không thể nhớ hết địa chỉ</b> trong RAM.</li>
+        <li>Giải pháp: tạo biến và <b>đặt tên có nghĩa</b>. Biến đại diện cho một <b>vị trí bộ nhớ</b> (địa chỉ của biến).</li>
+        <li>Nhờ đó truy cập và sửa dữ liệu dễ dàng hơn.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>💡 Ví dụ</h4>
+      <p>Cần lưu hai giá trị 10 và 20 để dùng lại sau: tạo 2 biến có tên theo ý nghĩa của giá trị (ở đây là tuổi).</p>
+<pre class="code" style="margin:6px 0 0;">tuoi_1 = 10;
+tuoi_2 = 20;</pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>RAM = tạm thời</b> (chứa biến của chương trình đang chạy), <b>ổ cứng = cố định</b>. <b>Biến</b> là tên gọi của một vùng nhớ và giá trị có thể đổi; <b>hằng số</b> thì không đổi.</div>
+</div>
+
+<!-- ========== KDL TOPIC 2 ========== -->
+<div class="topic k2" id="kdl-t2-khai-bao">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Khai báo, khởi tạo & đặt tên biến</h3><div class="sub">Cú pháp · quy tắc đặt tên · biến cục bộ và toàn cục</div></div>
+  </div>
+
+<pre class="code">&lt;kiểu_dữ_liệu&gt; &lt;tên_biến&gt;;                        <span class="c-num">// khai báo</span>
+&lt;kiểu_dữ_liệu&gt; &lt;tên_biến&gt; [= giá_trị_khởi_tạo];    <span class="c-num">// khai báo + khởi tạo</span>
+
+int x = 21;   <span class="c-num">// biến x kiểu int, khởi tạo giá trị 21</span></pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📝 Khai báo biến</h4>
+      <ul>
+        <li>Là <b>chỉ định kiểu dữ liệu</b> rồi <b>đặt tên</b> cho biến.</li>
+        <li>Giúp trình biên dịch biết chương trình dùng biến nào, kiểu gì, và cần <b>lưu bao nhiêu dữ liệu</b> trong bộ nhớ.</li>
+        <li>Tên biến là <b>định danh của một vùng nhớ</b>. Kiểu dữ liệu xác định giới hạn giá trị biến lưu được.</li>
+        <li>Câu lệnh phải kết thúc bằng dấu <b>;</b></li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🎬 Khởi tạo biến</h4>
+      <ul>
+        <li>Là gán <b>giá trị ban đầu</b> cho biến.</li>
+        <li><b>Nên khởi tạo ngay khi khai báo.</b> Biến chưa có giá trị có thể gây lỗi trong chương trình.</li>
+        <li>Khi dùng biến trong biểu thức toán học, nên dùng các biến <b>cùng kiểu dữ liệu</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Quy tắc đặt tên</th><th>Ví dụ sai</th><th>Ví dụ đúng</th></tr>
+    <tr><td>Không bắt đầu bằng <b>chữ số</b></td><td><code>1st</code>, <code>3ab</code></td><td><code>first</code>, <code>ab3</code></td></tr>
+    <tr><td>Không có <b>dấu cách</b></td><td><code>he so a</code></td><td><code>he_so_a</code></td></tr>
+    <tr><td>Không chứa <b>phép toán</b></td><td><code>a*b</code>, <code>a+b</code>, <code>a.b</code></td><td><code>tich_ab</code></td></tr>
+    <tr><td>Không chứa <b>ký tự đặc biệt</b></td><td><code>a@</code>, <code>#x</code>, <code>$y</code></td><td><code>a</code>, <code>x</code>, <code>y</code></td></tr>
+    <tr><td>Không trùng <b>từ khóa</b> của C</td><td><code>for</code>, <code>if</code>, <code>while</code></td><td><code>so_lan</code></td></tr>
+    <tr><td><b>Phân biệt chữ hoa / thường</b></td><td colspan="2"><code>var1</code> và <code>Var1</code> là <b>hai biến khác nhau</b></td></tr>
+    <tr><td>Được dùng <b>gạch dưới</b></td><td colspan="2"><code>current_score</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🚫 Không được trùng tên</h4>
+      <ul>
+        <li>Trong cùng một khối lệnh <code>{ }</code> không có hai biến cùng tên.</li>
+        <li>Hai biến nằm ngoài các hàm không được cùng tên.</li>
+        <li>Tên biến không được trùng tên hằng.</li>
+        <li>Đặt tên trùng tên hàm chứa nó thì được, nhưng <b>không nên</b>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>✨ Đặt tên có ý nghĩa</h4>
+      <p>Tên phải thể hiện được ý nghĩa của biến:</p>
+<pre class="code" style="margin:6px 0 0;">int myAge;
+bool isRunning = true;
+int current_score;</pre>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Phạm vi</th><th>Khai báo ở đâu</th><th>Truy cập được ở đâu</th><th>Bị hủy khi nào</th></tr>
+    <tr><td><b>Biến cục bộ</b></td><td><b>Bên trong</b> khối lệnh</td><td>Chỉ trong khối lệnh đó</td><td>Khi <b>kết thúc khối lệnh</b></td></tr>
+    <tr><td><b>Biến toàn cục</b></td><td><b>Bên ngoài</b> các khối lệnh</td><td>Mọi khối lệnh nằm bên dưới nó</td><td>Khi <b>chương trình kết thúc</b></td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Cú pháp <code>&lt;kiểu&gt; &lt;tên&gt; [= giá_trị];</code>. Tên biến <b>không bắt đầu bằng số</b>, không có dấu cách, không trùng từ khóa, và <b>phân biệt hoa / thường</b>. Biến <b>cục bộ</b> sống trong khối lệnh, biến <b>toàn cục</b> sống đến hết chương trình.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Biến chưa khởi tạo chứa <b>giá trị rác</b> (giá trị bất kỳ còn sót trong bộ nhớ), đó là lý do nên khởi tạo ngay khi khai báo.</div>
+</div>
+
+<!-- ========== KDL TOPIC 3 ========== -->
+<div class="topic k3" id="kdl-t3-kieu-so">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>Kiểu số: int, float, double và short / long / unsigned</h3><div class="sub">Số nguyên · số thực · kích thước và phạm vi giá trị</div></div>
+  </div>
+
+  <p class="sub" style="margin:0 0 10px;">Các kiểu dữ liệu khác nhau ở <b>dung lượng bộ nhớ</b> chiếm giữ và <b>phạm vi giá trị</b> có thể gán.</p>
+
+  <table class="spec">
+    <tr><th>Kiểu</th><th>Dùng để lưu</th><th>Điểm cần nhớ</th></tr>
+    <tr><td><b>int</b></td><td>Số nguyên (không có phần thập phân). Thông dụng nhất</td><td>Hợp lệ: <code>158</code>, <code>-10</code>, <code>0</code>. Dấu <code>-</code> đứng trước làm giá trị thành âm. <b>Không</b> có dấu cách giữa các chữ số, <b>không</b> dùng dấu phẩy: <code>12,000</code> sai, <code>12000</code> đúng. Hệ 16 viết với <code>0x</code>: <code>0xFFEF0D</code></td></tr>
+    <tr><td><b>float</b></td><td>Số thực (có phần thập phân)</td><td>Hợp lệ: <code>3.</code>, <code>25.8</code>, <code>-0.0001</code>. Cho phép ký hiệu khoa học: <code>1.7e4</code> = 1.7 × 10<sup>4</sup> = 17000. Thêm <b>f</b> hoặc <b>F</b> cuối số để rõ là float: <code>12.5f</code></td></tr>
+    <tr><td><b>double</b></td><td>Số thực, <b>lớn hơn</b> float</td><td>Chỉ khác float ở chỗ lưu được số lớn hơn nên cần nhiều bộ nhớ hơn (thường <b>8 byte</b>, float 4 byte). Dùng double khi dữ liệu vượt phạm vi float</td></tr>
+    <tr><td><b>short</b></td><td>Số nguyên nhỏ</td><td>Tiết kiệm bộ nhớ hơn int (<code>short int</code> hoặc <code>short</code>)</td></tr>
+    <tr><td><b>long</b>, <b>long long</b></td><td>Số nguyên lớn hơn int; <code>long long</code> lớn hơn cả <code>long</code></td><td>Hằng kiểu long kết thúc bằng <b>L</b>: <code>13107100L</code>. Có cả <code>long double</code></td></tr>
+    <tr><td><b>unsigned</b></td><td>Số <b>không âm</b></td><td>Đặt trước <code>char</code>, <code>short</code>, <code>int</code>, <code>long</code>. Đảm bảo mọi giá trị gán đều dương</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📏 Kiểu số nguyên (theo bảng của slide)</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Kiểu</th><th>Byte</th><th>Phạm vi</th></tr>
+        <tr><td>char / signed char</td><td>1</td><td>-128 đến 127</td></tr>
+        <tr><td>unsigned char</td><td>1</td><td>0 đến 255</td></tr>
+        <tr><td>short</td><td>2</td><td>-32,768 đến 32,767</td></tr>
+        <tr><td>unsigned short</td><td>2</td><td>0 đến 65,535</td></tr>
+        <tr><td>int</td><td>4</td><td>-2,147,483,648 đến 2,147,483,647</td></tr>
+        <tr><td>unsigned int</td><td>4</td><td>0 đến 4,294,967,295</td></tr>
+        <tr><td>long</td><td>4</td><td>-2,147,483,648 đến 2,147,483,647</td></tr>
+        <tr><td>unsigned long</td><td>4</td><td>0 đến 4,294,967,295</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>📏 Kiểu số thực</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Kiểu</th><th>Byte</th><th>Phạm vi</th><th>Độ chính xác</th></tr>
+        <tr><td>float</td><td>4</td><td>1.18E-38 đến 3.40E+38</td><td>6 chữ số thập phân</td></tr>
+        <tr><td>double</td><td>8</td><td>2.23E-308 đến 1.80E+308</td><td>15 chữ số thập phân</td></tr>
+      </table>
+    </div>
+  </div>
+
+<pre class="code">int rgbColor = 0xFFEF0D;               <span class="c-num">// hệ 16, bắt đầu bằng 0x</span>
+float f = 12.5f;                       <span class="c-num">// hậu tố f</span>
+double d = 1.7e4;                      <span class="c-num">// ký hiệu khoa học = 17000</span>
+long int numberOfPoints = 13107100L;   <span class="c-num">// hậu tố L</span>
+unsigned int u = 100;                  <span class="c-num">// chỉ lưu giá trị không âm</span></pre>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>int</b> = số nguyên, <b>float / double</b> = số thực (double lớn hơn, 8 byte). <b>short &lt; int &lt; long &lt; long long</b> về phạm vi. <b>unsigned</b> chỉ lưu số không âm. Hằng float có <b>f</b>, hằng long có <b>L</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Kích thước phụ thuộc hệ điều hành và trình biên dịch. Bảng của slide ứng với kiểu <b>int = 4 byte</b> (đúng với hầu hết hệ thống hiện nay; slide nói "4 hoặc 8 byte" thì 8 rất hiếm với int). Riêng <b>long</b>: 4 byte trên Windows nhưng thường <b>8 byte</b> trên Linux 64 bit. Muốn biết chính xác trên máy mình thì dùng <code>sizeof(long)</code>.</div>
+</div>
+
+<!-- ========== KDL TOPIC 4 ========== -->
+<div class="topic k4" id="kdl-t4-bool-enum">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Kiểu logic (bool) và kiểu liệt kê (enum)</h3><div class="sub">Đúng / sai · tự tạo kiểu dữ liệu với các giá trị cho trước</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>✅ Kiểu logic (bool)</h4>
+      <ul>
+        <li>Chỉ lưu giá trị <b>0 hoặc 1</b>: biểu diễn lựa chọn nhị phân, trả lời câu hỏi <b>True / False</b>.</li>
+        <li><b>0 = False</b>, <b>1 = True</b>. Trong bộ nhớ chỉ là 0 hoặc 1 nên khi in ra bạn thấy <code>0</code> hoặc <code>1</code>.</li>
+        <li>Ví dụ: biến bool cho biết đã đọc hết dữ liệu của file chưa (1 = rồi, 0 = chưa).</li>
+        <li>C gốc không có kiểu bool, dùng số nguyên (<b>0 là false, khác 0 là true</b>). <b>Từ C99</b> mới hỗ trợ bool: thêm <code>#include &lt;stdbool.h&gt;</code>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🎨 Kiểu liệt kê (enum)</h4>
+      <ul>
+        <li>Cho phép <b>tự tạo một kiểu dữ liệu</b> và liệt kê các giá trị hợp lệ biến được nhận.</li>
+        <li>Ví dụ biến <code>myColor</code> kiểu liệt kê màu chỉ nhận <code>red</code>, <code>yellow</code>, <code>blue</code>. Gán giá trị khác thì trình biên dịch báo lỗi.</li>
+        <li>Định nghĩa bằng từ khóa <b>enum</b> + tên + danh sách giá trị trong cặp <code>{ }</code>.</li>
+        <li>Dùng để định nghĩa các thứ trong tuần, các tháng trong năm...</li>
+      </ul>
+    </div>
+  </div>
+
+<pre class="code">#include &lt;stdbool.h&gt;            <span class="c-num">// C99: dùng bool, true, false</span>
+bool isRunning = true;           <span class="c-num">// in ra là 1</span>
+
+enum primaryColor {red, yellow, blue};   <span class="c-num">// định nghĩa kiểu liệt kê</span>
+enum primaryColor myColor;               <span class="c-num">// khai báo biến thuộc kiểu đó</span>
+myColor = red;                           <span class="c-num">// chỉ nhận red, yellow, blue</span>
+
+enum week {Mon, Tue, Wed, Thu, Fri, Sat, Sun};</pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔢 Giá trị số nguyên của enum</h4>
+      <ul>
+        <li>Trình biên dịch coi mỗi giá trị là một <b>hằng số nguyên</b>: giá trị đầu = <b>0</b>, thứ hai = <b>1</b>, cứ thế tăng dần.</li>
+        <li>Ví dụ <code>enum month {Jan, Feb, ...}</code>: <code>thisMonth = Feb;</code> thì <code>thisMonth</code> mang giá trị <b>1</b> (không phải chữ Feb), vì Feb đứng thứ 2.</li>
+        <li>Muốn tự đặt số: gán ngay khi định nghĩa enum.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🧭 Ví dụ <code>enum direction {up, down, left = 10, right}</code></h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Giá trị</th><th>Số</th><th>Vì sao</th></tr>
+        <tr><td>up</td><td>0</td><td>đứng đầu danh sách</td></tr>
+        <tr><td>down</td><td>1</td><td>đứng thứ 2</td></tr>
+        <tr><td>left</td><td>10</td><td>được gán trực tiếp</td></tr>
+        <tr><td>right</td><td>11</td><td>đứng sau left (10 + 1)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>bool</b> chỉ có 0 / 1, cần <code>&lt;stdbool.h&gt;</code> từ C99. <b>enum</b> là kiểu do mình tự tạo, giá trị bắt đầu từ <b>0</b> và tăng dần, trừ khi mình gán số cụ thể (các giá trị sau sẽ tiếp tục từ số đó).</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Lệnh định nghĩa enum trong C phải kết thúc bằng dấu <code>;</code> sau dấu <code>}</code> (slide viết thiếu). (2) Kiểu bool gốc của C99 là <code>_Bool</code>; <code>&lt;stdbool.h&gt;</code> định nghĩa sẵn <code>bool</code>, <code>true</code>, <code>false</code> để viết cho gọn.</div>
+</div>
+
+<!-- ========== KDL TOPIC 5 ========== -->
+<div class="topic k5" id="kdl-t5-char">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Kiểu ký tự (char) và ký tự thoát</h3><div class="sub">Một ký tự riêng lẻ · dấu nháy đơn · escape characters</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔤 Kiểu char</h4>
+      <ul>
+        <li>Biểu diễn <b>một ký tự riêng lẻ</b>: chữ <code>'a'</code>, chữ số <code>'8'</code>, dấu chấm phẩy <code>';'</code>.</li>
+        <li>Viết trong <b>hai dấu nháy đơn</b>: <code>'A'</code>, <code>'Z'</code>.</li>
+        <li>Có thể khai báo là <b>unsigned</b>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>⚠️ Gán giá trị cho biến char</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Câu lệnh</th><th>Kết quả</th></tr>
+        <tr><td><code>broiled = 'T';</code></td><td>Đúng</td></tr>
+        <tr><td><code>broiled = T;</code></td><td>Sai: trình biên dịch tưởng <code>T</code> là một <b>biến</b></td></tr>
+        <tr><td><code>broiled = "T";</code></td><td>Sai: <code>"T"</code> là một <b>chuỗi</b> (string)</td></tr>
+        <tr><td><code>char grade = 65;</code></td><td>Được chấp nhận, nhưng không phải cách viết chuẩn mực</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h4 style="margin:18px 0 8px;">↩️ Ký tự thoát (escape characters)</h4>
+  <p class="sub" style="margin:0 0 8px;">Là các dãy ký tự đặc biệt để thực hiện một thao tác như xuống dòng, lùi một ký tự, kêu bíp. Gán cho biến char thì đặt trong <b>dấu nháy đơn</b>: <code>char x = '\n';</code> (in x ra sẽ chuyển sang dòng mới).</p>
+  <table class="spec">
+    <tr><th>Ký tự</th><th>Ý nghĩa</th><th>Ký tự</th><th>Ý nghĩa</th></tr>
+    <tr><td><code>\n</code></td><td><b>Xuống dòng</b> (newline)</td><td><code>\\</code></td><td>Dấu gạch chéo ngược <code>\</code></td></tr>
+    <tr><td><code>\t</code></td><td>Tab ngang</td><td><code>\'</code></td><td>Dấu nháy đơn <code>'</code></td></tr>
+    <tr><td><code>\b</code></td><td>Lùi một ký tự (backspace)</td><td><code>\"</code></td><td>Dấu nháy kép <code>"</code></td></tr>
+    <tr><td><code>\a</code></td><td>Tiếng chuông / bíp (alert)</td><td><code>\?</code></td><td>Dấu hỏi <code>?</code></td></tr>
+    <tr><td><code>\r</code></td><td>Về đầu dòng (carriage return)</td><td><code>\ooo</code></td><td>Giá trị <b>bát phân</b> (o là chữ số bát phân)</td></tr>
+    <tr><td><code>\f</code></td><td>Sang trang (form feed)</td><td><code>\xhh</code></td><td>Giá trị <b>thập lục phân</b> (h là chữ số hex)</td></tr>
+    <tr><td><code>\v</code></td><td>Tab dọc</td><td></td><td></td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>char = một ký tự, nháy đơn</b> (<code>'A'</code>); chuỗi thì nháy kép (<code>"A"</code>). Hai ký tự thoát dùng nhiều nhất là <code>\n</code> (xuống dòng) và <code>\t</code> (tab).</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Ví dụ trong slide có lỗi gõ <code>roiled = 'T'</code>, đúng phải là tên biến đã khai báo (<code>broiled</code>). (2) <code>char grade = 65;</code> chạy được vì ký tự lưu bằng một <b>số</b> (mã ASCII): 65 là mã của <code>'A'</code>, nên cách rõ ràng hơn là <code>char grade = 'A';</code>.</div>
+</div>
+
+<!-- ========== KDL TOPIC 6 ========== -->
+<div class="topic k1" id="kdl-t6-printf">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Định dạng khi in với printf (format specifiers)</h3><div class="sub">Mỗi kiểu dữ liệu có một mã định dạng riêng: %d, %f, %c, %e, %g...</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🖨️ Cách hoạt động</h4>
+      <ul>
+        <li>Muốn hiển thị biến ra đầu ra (màn hình, máy in...) thì phải <b>chỉ định kiểu định dạng</b> tùy theo kiểu dữ liệu của biến.</li>
+        <li><code>printf</code> có <b>2 đối số tách bằng dấu phẩy</b>: đối số đầu là <b>chuỗi</b> sẽ hiển thị, đối số sau là giá trị biến.</li>
+        <li>Ký tự <b>%</b> trong chuỗi là ký tự đặc biệt; <b>ký tự ngay sau %</b> cho biết loại giá trị sẽ hiển thị.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">int sum = 89;
+printf("The sum is %d\n", sum);</pre>
+    </div>
+    <div class="info-card">
+      <h4>📋 Các mã định dạng thường dùng</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Mã</th><th>Hiển thị</th></tr>
+        <tr><td><code>%c</code></td><td>Ký tự</td></tr>
+        <tr><td><code>%d</code> hoặc <code>%i</code></td><td>Số nguyên hệ thập phân có dấu</td></tr>
+        <tr><td><code>%f</code></td><td>Số thực hệ thập phân</td></tr>
+        <tr><td><code>%e</code> / <code>%E</code></td><td>Số thập phân dạng khoa học (8.44e+11 / 8.44E+11)</td></tr>
+        <tr><td><code>%g</code> / <code>%G</code></td><td>Dạng rút gọn của %e (hoặc %f)</td></tr>
+        <tr><td><code>%s</code></td><td>Chuỗi ký tự</td></tr>
+        <tr><td><code>%u</code></td><td>Số nguyên thập phân <b>không dấu</b></td></tr>
+        <tr><td><code>%o</code></td><td>Số bát phân</td></tr>
+        <tr><td><code>%x</code> / <code>%X</code></td><td>Số thập lục phân (chữ thường / chữ hoa)</td></tr>
+      </table>
+    </div>
+  </div>
+
+<pre class="code">int     integerVar  = 100;
+float   floatingVar = 331.79;
+double  doubleVar   = 8.44e+11;
+char    charVar     = 'W';
+_Bool   boolVar     = 0;
+
+printf("integerVar = %i\n",  integerVar);    <span class="c-num">// integerVar = 100</span>
+printf("floatingVar = %f\n", floatingVar);   <span class="c-num">// floatingVar = 331.790009</span>
+printf("doubleVar = %e\n",   doubleVar);     <span class="c-num">// doubleVar = 8.440000e+11</span>
+printf("doubleVar = %g\n",   doubleVar);     <span class="c-num">// doubleVar = 8.44e+11</span>
+printf("charVar = %c\n",     charVar);       <span class="c-num">// charVar = W</span>
+printf("boolVar = %i\n",     boolVar);       <span class="c-num">// boolVar = 0</span></pre>
+
+  <h4 style="margin:18px 0 8px;">🔗 Kiểu dữ liệu ↔ mã printf</h4>
+  <table class="spec">
+    <tr><th>Kiểu</th><th>Hằng ví dụ</th><th>Mã printf</th></tr>
+    <tr><td>char</td><td><code>'a'</code>, <code>'\n'</code></td><td><code>%c</code></td></tr>
+    <tr><td>_Bool</td><td><code>0</code>, <code>1</code></td><td><code>%i</code>, <code>%u</code></td></tr>
+    <tr><td>short int / unsigned short</td><td>—</td><td><code>%hi</code> / <code>%hu</code> (và <code>%hx</code>, <code>%ho</code>)</td></tr>
+    <tr><td>int</td><td><code>12</code>, <code>-97</code>, <code>0xFFE0</code>, <code>0177</code></td><td><code>%i</code>, <code>%x</code>, <code>%o</code></td></tr>
+    <tr><td>unsigned int</td><td><code>12u</code>, <code>100U</code>, <code>0XFFu</code></td><td><code>%u</code>, <code>%x</code>, <code>%o</code></td></tr>
+    <tr><td>long int / unsigned long</td><td><code>12L</code> / <code>12UL</code></td><td><code>%li</code> / <code>%lu</code> (và <code>%lx</code>, <code>%lo</code>)</td></tr>
+    <tr><td>long long / unsigned long long</td><td><code>500ll</code> / <code>12ull</code></td><td><code>%lli</code> / <code>%llu</code> (và <code>%llx</code>, <code>%llo</code>)</td></tr>
+    <tr><td>float</td><td><code>12.34f</code>, <code>3.1e-5f</code></td><td><code>%f</code>, <code>%e</code>, <code>%g</code>, <code>%a</code></td></tr>
+    <tr><td>double</td><td><code>12.34</code>, <code>3.1e-5</code></td><td><code>%f</code>, <code>%e</code>, <code>%g</code>, <code>%a</code></td></tr>
+    <tr><td>long double</td><td><code>3.1e-5l</code></td><td><code>%Lf</code>, <code>%Le</code>, <code>%Lg</code></td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Chọn mã theo kiểu: <b>%d / %i</b> số nguyên, <b>%f</b> số thực, <b>%c</b> ký tự, <b>%s</b> chuỗi, <b>%e</b> dạng khoa học, <b>%g</b> rút gọn, <b>%u</b> không dấu, <b>%x</b> hex. Kiểu càng "dài" thì thêm chữ: <b>h</b> (short), <b>l</b> (long), <b>ll</b> (long long), <b>L</b> (long double).</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) Bảng slide ghi nhầm hai chỗ: <code>&amp;llo</code> phải là <code>%llo</code>, và <code>$Le</code> phải là <code>%Le</code>. (2) Slide ghi <code>%o</code> là "bát phân có dấu", thực ra <code>%o</code>, <code>%u</code>, <code>%x</code> đều đọc số <b>không dấu</b>. (3) <code>331.79</code> kiểu float in ra <code>331.790009</code> vì float chỉ chính xác khoảng 6 chữ số, không phải lỗi chương trình. (4) Với <code>printf</code>, <code>float</code> và <code>double</code> đều in bằng <code>%f</code>; còn <b>đọc</b> số double bằng <code>scanf</code> thì phải dùng <code>%lf</code>.</div>
+</div>
+
+</section>
 </div><!-- /part-page 1 -->
 
-<!-- Phần 2 sẽ được thêm ở đây (xem hướng dẫn cuối <script>) -->
+
+
 
 <footer>
   <div class="foot-grid">
     <div onclick="setPart('1')">
       <h4>👉 Phần 1 · Tổng quan lập trình C</h4>
-      <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf</p>
+      <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf → Bộ nhớ RAM & biến → Khai báo & đặt tên → Kiểu số → bool & enum → char & ký tự thoát → Định dạng printf</p>
     </div>
     <div class="soon">
       <h4>⏳ Các Phần tiếp theo</h4>
