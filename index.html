@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lập trình C cơ bản · Tóm tắt & ôn thi (Phần 1)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--c1:#f6c445;--c2:#e45f2b;--c3:#a0e548;--c4:#72fa93;--c5:#9ac1f0;
+--ink:#22241d;--ink-soft:#5c5c53;--paper:#fbf9f4;--card:#fff;--line:#e9e6d9;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:130px}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px}
+h1,h2,h3,h4{font-family:'Baloo 2','Inter',sans-serif;line-height:1.2;margin:0}
+a{color:inherit}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 20px}
+.nav-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.15rem}
+.brand span{color:var(--c2)}
+#partSwitch{display:flex;gap:6px;flex-wrap:wrap}
+#partSwitch button{font:600 .85rem 'Inter',sans-serif;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:6px 14px;border-radius:999px;cursor:pointer}
+#partSwitch button.active{background:var(--ink);color:#fff}
+.nav-links{display:none;gap:4px 16px;flex-wrap:wrap;margin-top:8px;font-size:.82rem}
+.nav-links.active{display:flex}
+.nav-links a{text-decoration:none;color:var(--ink-soft);font-weight:500}
+.nav-links a:hover{color:var(--c2)}
+
+.part-page{display:none;max-width:1040px;margin:0 auto;padding:0 20px 40px}
+.part-page.active{display:block}
+
+/* ---------- HERO ---------- */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:42px 0 26px}
+.eyebrow{display:inline-block;font-weight:700;font-size:.8rem;padding:5px 12px;border-radius:999px;background:#e8f7c8;color:#3c6b0e;margin-bottom:12px}
+.hero h1{font-size:2.5rem;font-weight:800}
+.hero h1 .accent{color:var(--c2)}
+.hero p{color:var(--ink-soft);margin:12px 0}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:.78rem;font-weight:600;padding:4px 11px;border-radius:999px}
+.t1{background:var(--c1)}.t2{background:var(--c2);color:#fff}.t3{background:var(--c3)}.t4{background:var(--c4)}.t5{background:var(--c5)}
+.hero-code{background:#1f2118;color:#f5f3e8;border-radius:16px;padding:14px 18px 18px;font:.82rem/1.65 'JetBrains Mono',Consolas,monospace;overflow-x:auto}
+.dots{display:flex;gap:6px;margin-bottom:10px}
+.dots span{width:11px;height:11px;border-radius:50%;background:#e45f2b}
+.dots span:nth-child(2){background:#f6c445}.dots span:nth-child(3){background:#72fa93}
+
+/* ---------- MIND MAP ---------- */
+section h2.sec-title{font-size:1.6rem;margin:6px 0 14px}
+.mindmap-wrap{max-width:940px;margin:0 auto}
+.mindmap{position:relative;width:100%;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.mindmap svg{position:absolute;inset:0;width:100%;height:100%}
+.mm-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font:800 1.1rem 'Baloo 2',sans-serif;padding:14px;z-index:2}
+.mm-node{position:absolute;width:19%;background:#fff;border:2px solid var(--line);border-radius:14px;padding:10px 10px 8px;text-align:center;text-decoration:none;z-index:2;transition:.15s;box-shadow:0 2px 0 var(--line)}
+.mm-node:hover{border-color:var(--ink);transform:translateY(-2px)}
+.mm-node .num{position:absolute;top:-11px;left:-9px;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.82rem}
+.mm-node .title{font-weight:700;font-size:.82rem;line-height:1.25}
+.mm-node .desc{font-size:.7rem;color:var(--ink-soft);margin-top:2px}
+
+/* ---------- TOPIC ---------- */
+.topic{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c1);border-radius:20px;padding:24px 26px;margin:24px 0}
+.topic.k2{border-top-color:var(--c2)}.topic.k3{border-top-color:var(--c3)}.topic.k4{border-top-color:var(--c4)}.topic.k5{border-top-color:var(--c5)}
+.topic-head{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.topic-num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--c1);display:grid;place-items:center;font:800 1.3rem 'Baloo 2',sans-serif}
+.k2 .topic-num{background:var(--c2);color:#fff}.k3 .topic-num{background:var(--c3)}.k4 .topic-num{background:var(--c4)}.k5 .topic-num{background:var(--c5)}
+.topic-head h3{font-size:1.4rem}
+.sub{color:var(--ink-soft);font-size:.9rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin:12px 0}
+.info-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.info-card h4{font-size:1.02rem;margin-bottom:6px}
+.info-card ul{margin:0;padding-left:20px}
+.info-card li{margin:3px 0;font-size:.93rem}
+.info-card p{margin:4px 0;font-size:.93rem}
+table.spec{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+table.spec th{background:#f4efd9;text-align:left;padding:9px 12px;border:1px solid var(--line)}
+table.spec td{padding:9px 12px;border:1px solid var(--line);vertical-align:top}
+table.spec tr:nth-child(even) td{background:#fdfcf8}
+pre.code{background:#1f2118;color:#f5f3e8;padding:14px 16px;border-radius:12px;font:.84rem/1.6 'JetBrains Mono',Consolas,monospace;overflow-x:auto;margin:12px 0}
+.c-num{color:#a0e548}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.pill{background:#fff5d2;border:1px solid #f0dc8d;border-radius:999px;padding:4px 12px;font-size:.84rem}
+.example-box{background:#fff1e8;border-left:5px solid var(--c2);border-radius:10px;padding:12px 16px;margin:14px 0 4px;font-size:.93rem}
+.example-box.blue{background:#eaf3fd;border-left-color:#5b94d6}
+code{font-family:'JetBrains Mono',Consolas,monospace;background:#f1eedf;padding:1px 6px;border-radius:5px;font-size:.86em}
+.fc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:12px 0}
+.fc-box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.fc-box h4{font-size:1rem;margin-bottom:6px}
+.fc-box svg{max-width:100%;height:auto}
+.fc-shape{stroke:#22241d;stroke-width:1.6;fill:#fff}
+.fc-t{fill:var(--c3)}.fc-io{fill:var(--c5)}.fc-d{fill:var(--c1)}
+.fc-text{font:600 12px 'Inter',sans-serif;text-anchor:middle;fill:#22241d}
+.fc-lbl{font:700 11px 'Inter',sans-serif;fill:#e45f2b}
+.fc-line{stroke:#22241d;stroke-width:1.6;fill:none}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
+.foot-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.foot-grid>div{background:rgba(255,255,255,.06);border-radius:14px;padding:14px 16px;cursor:pointer}
+.foot-grid>div.soon{cursor:default;opacity:.6}
+.foot-grid h4{color:var(--c1);font-size:1rem;margin-bottom:4px}
+.foot-grid p{margin:0;font-size:.82rem}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}.hero h1{font-size:1.9rem}
+  .mindmap{min-height:0!important;display:flex;flex-direction:column;gap:14px;padding:18px 14px}
+  .mindmap svg{display:none}
+  .mm-center{position:static;transform:none;width:auto;height:auto;border-radius:14px;padding:10px}
+  .mm-node{position:static;width:auto}
+  .topic{padding:18px 16px}
+  table.spec{display:block;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top">
+    <div class="brand">Lập trình <span>C</span> cơ bản</div>
+    <div id="partSwitch">
+      <button type="button" data-part="1" class="active">Phần 1 · Tổng quan lập trình C</button>
+    </div>
+  </div>
+  <div class="nav-links active" data-part="1">
+    <a href="#mindmap1">Bản đồ P1</a>
+    <a href="#t1-thuat-ngu">Khái niệm & thuật ngữ</a>
+    <a href="#t2-fetch-bacao">Fetch–Execute & ngôn ngữ</a>
+    <a href="#t3-7-buoc">7 bước viết chương trình</a>
+    <a href="#t4-tong-quan-c">Tổng quan ngôn ngữ C</a>
+    <a href="#t5-lich-su">Lịch sử & tiêu chuẩn</a>
+    <a href="#t6-uu-nhuoc">Ưu & nhược điểm</a>
+    <a href="#t7-4-buoc">4 bước tạo chương trình</a>
+    <a href="#t8-luu-do">Lưu đồ thuật toán</a>
+    <a href="#t9-cong-cu">Công cụ & IDE</a>
+    <a href="#t10-tien-xu-ly">Chú thích & tiền xử lý</a>
+    <a href="#t11-printf-scanf">printf & scanf</a>
+  </div>
+</nav>
+
+<!-- ======================= PHẦN 1 ======================= -->
+<div class="part-page active" data-part="1">
+
+<div class="hero" id="phan1-top">
+  <div>
+    <span class="eyebrow">🔤 Phần 1 · Tóm tắt & ghi nhớ</span>
+    <h1>Tổng quan về <span class="accent">lập trình C</span></h1>
+    <p>Máy tính chạy chương trình thế nào, C là ngôn ngữ gì, ra đời ra sao, mạnh/yếu ở đâu, một chương trình C đi từ file <code>.c</code> đến file chạy được qua mấy bước, cách vẽ lưu đồ thuật toán, công cụ lập trình (GCC, IDE), chú thích, tiền xử lý và nhập/xuất dữ liệu với <code>printf</code>, <code>scanf</code>.</p>
+    <div class="hero-tags">
+      <span class="tag t1">CPU · RAM</span>
+      <span class="tag t2">Fetch–Execute</span>
+      <span class="tag t3">Dennis Ritchie</span>
+      <span class="tag t4">Compile · Link</span>
+      <span class="tag t5">Lưu đồ</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">hello.c ─Compile─▶ hello.o
+ (nguồn)            (object code)
+              ─Link─▶ hello.exe | a.out
+                       (thực thi)
+                  ─Run─▶ console ✅</pre>
+  </div>
+</div>
+
+<!-- ---------- MIND MAP ---------- -->
+<section id="mindmap1" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 1</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:820px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="673" y2="131" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="812" y2="257" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="842" y2="422" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="754" y2="574" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="576" y2="664" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="364" y2="664" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="186" y2="574" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="98" y2="422" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="128" y2="257" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="267" y2="131" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 1<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Tổng quan lập trình C</span></div>
+
+      <a href="#t1-thuat-ngu" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">Khái niệm & thuật ngữ</div>
+        <div class="desc">CPU, RAM, ổ cứng, HĐH</div>
+      </a>
+      <a href="#t2-fetch-bacao" class="mm-node" style="left:62.1%;top:12.9%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Fetch–Execute & ngôn ngữ</div>
+        <div class="desc">Chu kỳ lệnh, bậc cao vs hợp ngữ</div>
+      </a>
+      <a href="#t3-7-buoc" class="mm-node" style="left:76.9%;top:29.5%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">7 bước viết chương trình</div>
+        <div class="desc">Mục tiêu → bảo trì</div>
+      </a>
+      <a href="#t4-tong-quan-c" class="mm-node" style="left:80.1%;top:51.3%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">Tổng quan ngôn ngữ C</div>
+        <div class="desc">Đa năng, hiện đại, cấp thấp</div>
+      </a>
+      <a href="#t5-lich-su" class="mm-node" style="left:70.7%;top:71.3%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">Lịch sử & tiêu chuẩn</div>
+        <div class="desc">B → C, C89 đến C23</div>
+      </a>
+      <a href="#t6-uu-nhuoc" class="mm-node" style="left:51.8%;top:83.2%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">Ưu & nhược điểm</div>
+        <div class="desc">Nhanh, linh hoạt, dễ lỗi</div>
+      </a>
+      <a href="#t7-4-buoc" class="mm-node" style="left:29.2%;top:83.2%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">7</span>
+        <div class="title">4 bước tạo chương trình</div>
+        <div class="desc">Edit, Compile, Link, Execute</div>
+      </a>
+      <a href="#t8-luu-do" class="mm-node" style="left:10.3%;top:71.3%;">
+        <span class="num" style="background:#a0e548;">8</span>
+        <div class="title">Lưu đồ thuật toán</div>
+        <div class="desc">Ký hiệu, công cụ, ví dụ</div>
+      </a>
+      <a href="#t9-cong-cu" class="mm-node" style="left:0.9%;top:51.3%;">
+        <span class="num" style="background:#72fa93;">9</span>
+        <div class="title">Công cụ: GCC, gdb & IDE</div>
+        <div class="desc">Cài đặt, Path, Build / Run</div>
+      </a>
+      <a href="#t10-tien-xu-ly" class="mm-node" style="left:4.1%;top:29.5%;">
+        <span class="num" style="background:#9ac1f0;">10</span>
+        <div class="title">Chú thích & tiền xử lý</div>
+        <div class="desc">Comment, #include, #define</div>
+      </a>
+      <a href="#t11-printf-scanf" class="mm-node" style="left:18.9%;top:12.9%;">
+        <span class="num" style="background:#f6c445;">11</span>
+        <div class="title">printf & scanf</div>
+        <div class="desc">Xuất, nhập, dấu & và %d</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-1" style="padding-top:6px;">
+
+<!-- ========== TOPIC 1 ========== -->
+<div class="topic k1" id="t1-thuat-ngu">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Khái niệm & thuật ngữ cơ bản</h3><div class="sub">Tập lệnh, thuật toán, CPU, RAM, ổ cứng, hệ điều hành</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧠 Tập lệnh & chương trình</h4>
+      <ul>
+        <li><b>Tập lệnh (instruction set)</b>: những quy tắc hoạt động cơ bản của máy tính, tức là những việc máy tính có thể thực hiện. Mỗi CPU có một tập lệnh.</li>
+        <li><b>Viết chương trình</b> = gửi các khối lệnh cụ thể để ra lệnh cho CPU giải quyết một vấn đề.</li>
+        <li><b>Thuật toán</b> = cách bạn giải quyết một vấn đề.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>💡 Ví dụ thuật toán</h4>
+      <p>Chương trình kiểm tra người dùng nhập <b>số chẵn hay lẻ</b>: thuật toán chính là <i>cách</i> kiểm tra số đó chẵn hay lẻ (VD: chia cho 2 rồi xét số dư), không phải đoạn code cụ thể.</p>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Thuật ngữ</th><th>Là gì</th><th>Ghi nhớ</th></tr>
+    <tr><td><b>CPU</b> (Central Processing Unit)</td><td>Bộ xử lý trung tâm, "bộ não" điều khiển mọi hoạt động của máy tính</td><td>Các khối lệnh được <b>thực thi</b> ở đây</td></tr>
+    <tr><td><b>RAM</b> (Random Access Memory)</td><td>Bộ nhớ truy cập ngẫu nhiên, còn gọi là <b>bộ nhớ trong</b></td><td>Lưu dữ liệu của chương trình <b>đang chạy</b>; truy cập nhanh; <b>mất khi tắt máy</b></td></tr>
+    <tr><td><b>Ổ cứng</b> (Hard drive)</td><td><b>Bộ nhớ ngoài</b>, dung lượng rất lớn (hàng TB)</td><td>Lưu mã nguồn, file HĐH, tài nguyên; <b>còn nguyên khi tắt máy</b></td></tr>
+    <tr><td><b>Hệ điều hành</b></td><td>Phần mềm giúp dùng máy dễ hơn: kiểm soát hoạt động, xử lý vào/ra (bàn phím, chuột, màn hình), quản lý tài nguyên, chạy ứng dụng</td><td>VD: Windows, Android, iOS (thêm: Linux, macOS)</td></tr>
+  </table>
+
+  <pre class="code">Ổ cứng (ngoài) ──nạp chương trình──▶ RAM (trong) ◀──lệnh/dữ liệu──▶ CPU
+vĩnh viễn, rất lớn                   tạm thời, nhanh               bộ não</pre>
+
+  <div class="pill-row">
+    <span class="pill">💡 Chạy trên RAM vì truy cập nhanh hơn ổ cứng rất nhiều</span>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> RAM = <b>tạm thời</b> (chương trình đang chạy), ổ cứng = <b>vĩnh viễn</b>. Hình dung RAM như <i>mặt bàn làm việc</i> (nhỏ, lấy đồ nhanh, dọn đi khi hết giờ), ổ cứng như <i>tủ hồ sơ</i> (lớn, cất lâu dài).</div>
+</div>
+
+<!-- ========== TOPIC 2 ========== -->
+<div class="topic k2" id="t2-fetch-bacao">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Chu kỳ Fetch–Execute & ngôn ngữ bậc cao / hợp ngữ</h3><div class="sub">Máy tính gửi lệnh cho CPU thế nào, và vì sao cần ngôn ngữ bậc cao</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔁 Chu kỳ nạp – thi hành lệnh</h4>
+      <ul>
+        <li>Là cách máy tính gửi các khối lệnh đến CPU.</li>
+        <li><b>Tìm nạp (fetch)</b> khối lệnh từ bộ nhớ của chương trình.</li>
+        <li><b>Giải mã</b> dữ liệu lưu trong thanh ghi và RAM.</li>
+        <li><b>Thực thi</b> trên CPU, ở <b>bộ điều khiển</b> hoặc <b>ALU</b> (bộ số học và logic).</li>
+        <li>=> Chu kỳ này <b>lặp đi lặp lại</b> liên tục.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔄 Hình dung nhanh</h4>
+<pre class="code" style="margin:6px 0 0;">FETCH ──▶ DECODE ──▶ EXECUTE
+  ▲                     │
+  └─────── lặp lại ◀────┘</pre>
+      <p style="margin-top:8px;">Giáo trình gọi gộp là "nạp – thi hành"; nhiều tài liệu tách rõ 3 pha <b>Fetch – Decode – Execute</b>.</p>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th></th><th>Hợp ngữ (Assembly)</th><th>Ngôn ngữ bậc cao</th></tr>
+    <tr><td><b>Mức</b></td><td>Bậc thấp</td><td>Trừu tượng hơn nhiều</td></tr>
+    <tr><td><b>Yêu cầu</b></td><td>Phải hiểu <b>toàn bộ tập lệnh</b> của máy tính</td><td>Không cần nhớ hết khối lệnh trên CPU, chỉ cần hiểu ngôn ngữ và giải quyết vấn đề bằng <b>thuật toán</b></td></tr>
+    <tr><td><b>Đánh giá</b></td><td>Khó khăn, thiếu hiệu quả</td><td>Hiệu quả và dễ dàng hơn</td></tr>
+    <tr><td><b>VD</b></td><td>Assembly</td><td><b>C</b> (theo giáo trình)</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Ngôn ngữ bậc cao mô tả <i>hành động chương trình sẽ làm</i> theo cách trừu tượng; trình biên dịch lo việc dịch xuống lệnh máy. Theo giáo trình, <b>C là ngôn ngữ bậc cao</b>.</div>
+  <div class="example-box blue"><b>🔎 Mở rộng:</b> Nhiều tài liệu xếp C ở mức "bậc trung": vừa có cú pháp bậc cao, vừa truy cập được bộ nhớ và phần cứng như ngôn ngữ bậc thấp (xem chủ đề 4 và 6). Khi thi, cứ theo đáp án của giáo trình.</div>
+</div>
+
+<!-- ========== TOPIC 3 ========== -->
+<div class="topic k3" id="t3-7-buoc">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>7 bước khi viết một chương trình C</h3><div class="sub">Từ xác định mục tiêu đến bảo trì, và là một vòng lặp</div></div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Bước</th><th>Tên</th><th>Nội dung chính</th></tr>
+    <tr><td>B1</td><td><b>Xác định mục tiêu</b></td><td>Hiểu yêu cầu đề ra, có ý tưởng rõ ràng về mục tiêu của chương trình</td></tr>
+    <tr><td>B2</td><td><b>Bắt đầu viết mã lệnh</b></td><td>Nghĩ xem chương trình đáp ứng yêu cầu thế nào: giao diện cho người dùng ra sao, tổ chức chương trình, tạo các <b>hàm (function)</b> và thuật toán nào</td></tr>
+    <tr><td>B3</td><td><b>Soạn mã lệnh</b> (slide gọi là "chạy các mã lệnh", là lúc thực sự lập trình)</td><td>Đưa chương trình vào <b>editor</b> hoặc <b>IDE</b>, viết đúng <b>cú pháp</b> ngôn ngữ C. Dùng editor nào cũng được (ví dụ <b>Code::Blocks</b>, <b>CodeLite</b>, <b>Dev-C++</b>)</td></tr>
+    <tr><td>B4</td><td><b>Biên dịch</b></td><td>Chuyển mã nguồn thành ngôn ngữ bậc thấp hơn (máy hiểu được)</td></tr>
+    <tr><td>B5</td><td><b>Chạy chương trình</b></td><td>Thực thi mã lệnh</td></tr>
+    <tr><td>B6</td><td><b>Kiểm tra & sửa lỗi</b> (debug)</td><td>Liên tục <b>kiểm thử (testing)</b> và lặp lại từ B1 → B6</td></tr>
+    <tr><td>B7</td><td><b>Bảo trì</b></td><td>Sau khi phát hành, nhiều người dùng, vẫn xảy ra lỗi thì phải sửa và cập nhật</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🐞 Gỡ lỗi (debug)</h4>
+      <p>Là bước tìm và sửa lỗi cho chương trình bằng một số kỹ thuật hoặc công cụ (tools) nhất định.</p>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Mẹo kiểm thử</h4>
+      <p>Thường kiểm theo <b>từng đoạn nhỏ</b>: viết 2 dòng → kiểm thử → viết tiếp 2 dòng → kiểm thử. Lỗi lộ ra sớm, dễ biết sai ở đâu.</p>
+    </div>
+  </div>
+
+  <div class="pill-row">
+    <span class="pill">🔧 Bảo trì VD: Windows 10 đã phát hành vẫn lỗi, vẫn liên tục có bản update</span>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> 7 bước <b>không đi một chiều</b>: có lỗi ở B6 là quay lại sửa rồi chạy lại. <b>Bảo trì</b> xảy ra <i>sau khi đã phát hành</i>; <b>debug</b> xảy ra trong lúc phát triển.</div>
+</div>
+
+<!-- ========== TOPIC 4 ========== -->
+<div class="topic k4" id="t4-tong-quan-c">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Tổng quan về ngôn ngữ lập trình C</h3><div class="sub">Đa năng, hiện đại, phổ biến, làm việc được ở cấp thấp</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🌐 C là ngôn ngữ đa năng</h4>
+      <ul>
+        <li>Là ngôn ngữ lập trình <b>mệnh lệnh</b> (imperative), hỗ trợ lập trình <b>có cấu trúc</b>.</li>
+        <li>Viết được mọi thể loại ứng dụng, kể cả hệ điều hành.</li>
+        <li>So sánh: <b>COBOL</b> chỉ hợp nghiệp vụ tài chính; <b>MATLAB</b> chỉ hợp một số loại ứng dụng toán học.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🆕 C là ngôn ngữ hiện đại</h4>
+      <ul>
+        <li>Có đủ cấu trúc điều khiển cơ bản (câu lệnh điều kiện...), có <b>hàm</b>, có <b>biến</b>.</li>
+        <li>Thiết kế để viết theo kiểu <b>top-down</b>: từ giao diện người dùng đi dần xuống các chức năng bên dưới.</li>
+        <li>Là ngôn ngữ bậc cao, dễ sửa đổi, dễ thích nghi với mô hình hoặc ngôn ngữ mới.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📈 C rất phổ biến</h4>
+      <ul>
+        <li>Một trong những ngôn ngữ dùng rộng rãi nhất mọi thời đại, trên mọi loại máy (từ máy tính lớn, nhiều hệ điều hành khác nhau).</li>
+        <li>Thông dụng để tạo phần mềm xử lý văn bản, bảng tính, trình biên dịch.</li>
+        <li>Nằm trong top 10 kỹ năng cần thiết của một lập trình viên.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔩 C làm việc được ở cấp thấp</h4>
+      <ul>
+        <li>Truy cập <b>bộ nhớ</b> ở cấp thấp, tương tác với nhiều <b>driver</b> (chương trình để tương tác với phần cứng).</li>
+        <li>Dễ "map" sang hợp ngữ.</li>
+        <li>Rất phổ biến trong <b>hệ thống nhúng</b> (embedded): bộ xử lý trong camera xe ô tô, đầu đĩa DVD; môi trường bộ nhớ hạn chế, lập trình thời gian thực.</li>
+        <li>Đóng vai trò thiết yếu trong sự phát triển của <b>Linux</b> và là nền tảng hệ điều hành máy Mac.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>So sánh</th><th>C</th><th>C++</th></tr>
+    <tr><td><b>Cách tổ chức</b></td><td>Theo <b>hàm</b>, thiết kế <b>module</b></td><td>Dựa trên <b>hướng đối tượng</b></td></tr>
+    <tr><td><b>Quan hệ</b></td><td colspan="2">Theo giáo trình: "C là tập con của C++"</td></tr>
+  </table>
+
+  <div class="pill-row">
+    <span class="pill">📅 Phát minh 1972 bởi Dennis Ritchie (Bell Labs)</span>
+    <span class="pill">🐧 Ông làm việc trên Unix, tiền thân của Linux</span>
+    <span class="pill">✍️ Dễ đọc, dễ viết: công cụ tốt cho lập trình viên</span>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> C = <b>đa năng</b> (không bị giới hạn lĩnh vực như COBOL, MATLAB) + <b>hiện đại</b> (hàm, biến, top-down) + <b>cấp thấp</b> (bộ nhớ, driver, nhúng). C theo <b>hàm/module</b>, C++ theo <b>hướng đối tượng</b>.</div>
+  <div class="example-box blue"><b>🔎 Chính xác hơn:</b> C++ phát triển dựa trên C và phần lớn tương thích, nhưng không phải mọi chương trình C hợp lệ đều biên dịch được bằng C++. Câu "C là tập con của C++" chỉ là cách nói gần đúng của giáo trình.</div>
+</div>
+
+<!-- ========== TOPIC 5 ========== -->
+<div class="topic k5" id="t5-lich-su">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Lịch sử hình thành & tiêu chuẩn</h3><div class="sub">Từ ngôn ngữ B đến các chuẩn C89, C99, C11...</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧬 Xuất thân</h4>
+      <ul>
+        <li>C kế thừa và phát triển từ <b>ngôn ngữ B</b> (nên mới đặt tên là C); giữ các khái niệm quan trọng của B, bổ sung <b>kiểu dữ liệu</b> và tính năng mới.</li>
+        <li>Phát triển tại <b>Bell Labs</b> (AT&T, Mỹ) bởi <b>Dennis Ritchie</b>, khoảng <b>1972</b>.</li>
+        <li>Gắn liền với hệ điều hành <b>Unix</b>: ban đầu nổi tiếng vì dùng để phát triển Unix. Cuối thập niên 1970, C "truyền thống" đã hoàn thiện.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🌍 Đa nền tảng & chuẩn hóa</h4>
+      <ul>
+        <li>Chương trình C viết và chạy được trên hầu hết hệ điều hành (Windows, macOS, Linux).</li>
+        <li>Thách thức: phát triển bùng nổ trên nhiều nền tảng sinh ra nhiều <b>biến thể</b> C.</li>
+        <li>Giải pháp: <b>chuẩn hóa từ 1989</b>. Chương trình C chuẩn chạy đúng trên mọi hệ thống có trình biên dịch chuẩn, không phụ thuộc phiên bản độc quyền của công ty nào.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Mốc</th><th>Phiên bản / sự kiện</th><th>Ghi chú</th></tr>
+    <tr><td>~1972</td><td>C ra đời (Dennis Ritchie, Bell Labs)</td><td>Kế thừa từ B</td></tr>
+    <tr><td>1989</td><td><b>C89</b> (ANSI C)</td><td>Chuẩn đầu tiên, phổ biến nhất thời đó, hầu hết trình biên dịch hỗ trợ</td></tr>
+    <tr><td>1990</td><td><b>C90</b> (ISO)</td><td>ISO chấp nhận lại chuẩn C89, chỉ khác định dạng văn bản</td></tr>
+    <tr><td>1999</td><td><b>C99</b></td><td>Bổ sung nhiều tính năng và hàm mới. <b>Khóa học tập trung vào C99</b></td></tr>
+    <tr><td>2011</td><td><b>C11</b></td><td>Bản cập nhật; tài liệu khóa gọi là "hiện hành" (đã cũ)</td></tr>
+    <tr><td>2018</td><td><b>C17</b></td><td>Chủ yếu sửa lỗi của C11, không thêm tính năng ngôn ngữ mới</td></tr>
+    <tr><td>2024</td><td><b>C23</b> (ISO/IEC 9899:2024)</td><td>Chuẩn <b>hiện hành thực tế</b>, công bố 31/10/2024</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Tên "C" vì kế thừa từ <b>B</b>. Nơi phát triển: <b>Bell Labs</b>. Tác giả: <b>Dennis Ritchie</b>. Chuẩn hóa từ <b>1989</b>. Khóa học dùng <b>C99</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý khi thi:</b> Slide ghi "tiêu chuẩn hiện hành là C11", đó là thông tin cũ của tài liệu. Hiện nay chuẩn mới nhất là C23. Nếu đề trắc nghiệm hỏi theo giáo trình thì chọn theo giáo trình (C11), còn kiến thức thực tế là C23.</div>
+</div>
+
+<!-- ========== TOPIC 6 ========== -->
+<div class="topic k1" id="t6-uu-nhuoc">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Ưu điểm & nhược điểm của C</h3><div class="sub">Hiệu năng cao, khả chuyển, linh hoạt, nhưng dễ lỗi</div></div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Nhóm ưu điểm</th><th>Nội dung</th></tr>
+    <tr><td><b>Hiệu năng vượt trội</b></td><td>Ánh xạ từ câu lệnh C sang tập lệnh máy rất hiệu quả nên chạy cực nhanh. Lập trình viên <b>tự quản lý bộ nhớ</b>; Java thì có cơ chế dọn rác tự động (Garbage Collector) nên không can thiệp trực tiếp được.</td></tr>
+    <tr><td><b>Khả chuyển (portable)</b></td><td>Cùng mã nguồn C có thể biên dịch và chạy trên hệ điều hành hoặc kiến trúc phần cứng khác nhau mà không cần sửa mã (khác với ứng dụng Android, iOS bị gắn với nền tảng).</td></tr>
+    <tr><td><b>Sẵn có</b></td><td>Hệ điều hành họ Unix (Linux, macOS) tích hợp sẵn trình biên dịch C, viết và chạy ngay không cần cài thêm.</td></tr>
+    <tr><td><b>Lõi hệ điều hành</b></td><td><b>Kernel</b> của Unix và Linux viết bằng C. Kernel là "bộ não" nối phần mềm ứng dụng với phần cứng.</td></tr>
+    <tr><td><b>Nền móng cho ngôn ngữ khác</b></td><td>Trình biên dịch/thông dịch của nhiều ngôn ngữ (VD Python, Perl) xây bằng C; C là gốc của <b>C++</b>, <b>Objective-C</b> (ứng dụng Apple).</td></tr>
+    <tr><td><b>Ứng dụng đa dạng</b></td><td>Mô phỏng vật lý, kỹ thuật, xử lý hiệu ứng hình ảnh đặc biệt (VFX) trong điện ảnh.</td></tr>
+    <tr><td><b>Linh hoạt tối đa</b></td><td>Can thiệp trực tiếp bộ nhớ và phần cứng; xử lý đến mức <b>byte và bit</b> (có toán tử bit); <b>con trỏ</b> đóng vai trò quan trọng; nhiều loại toán tử (toán học, gán...) giúp mã cô đọng; thư viện hàm phong phú để gọi lại, không viết từ đầu.</td></tr>
+    <tr><td><b>Ngôn ngữ lý tưởng để bắt đầu</b></td><td>Cấu trúc nhỏ gọn, dễ tiếp thu, xây tư duy nền tảng về cách máy tính hoạt động.</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>⚠️ Nhược điểm</h4>
+      <ul>
+        <li><b>Đánh đổi của sự tự do</b>: ít giới hạn nên nhiều người viết ra chương trình C tồi; dễ lỗi, đặc biệt với <b>con trỏ (pointer)</b>.</li>
+        <li><b>Quá cô đọng</b>: nhiều toán tử và cú pháp gọn nên đôi khi khó đọc, khó gỡ lỗi.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>⚖️ Linh hoạt ⇄ nghiêm ngặt</h4>
+      <ul>
+        <li><b>C</b>: ít khắt khe, tự do giải bài toán nhiều cách, nhưng dễ lỗi.</li>
+        <li><b>Java</b>: hạn chế quản lý bộ nhớ để giảm rủi ro lỗi, nhưng mất sự linh hoạt đó.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Cùng một đặc điểm là con dao hai lưỡi: <b>tự do quản lý bộ nhớ và con trỏ</b> vừa là sức mạnh (nhanh, can thiệp phần cứng) vừa là nguồn lỗi. Java đổi sự linh hoạt lấy an toàn.</div>
+</div>
+
+<!-- ========== TOPIC 7 ========== -->
+<div class="topic k2" id="t7-4-buoc">
+  <div class="topic-head">
+    <div class="topic-num">7</div>
+    <div><h3>4 bước để tạo một chương trình C</h3><div class="sub">Editing → Compiling → Linking → Executing</div></div>
+  </div>
+
+  <pre class="code">hello.c ──(2) Compile──▶ hello.o / hello.obj ──(3) Link──▶ hello.exe / a.out ──(4) Execute──▶ console
+  ▲ (1) Edit                (object code)    + thư viện       (file thực thi)
+  └────────────── có lỗi: quay lại sửa mã nguồn (debug) ─────────────────────────────────────┘</pre>
+
+  <table class="spec">
+    <tr><th>Bước</th><th>Làm gì</th><th>Đầu vào → Đầu ra</th><th>Lỗi bắt được</th></tr>
+    <tr>
+      <td><b>1. Editing</b><br>(tạo & chỉnh sửa)</td>
+      <td>Tạo/sửa <b>mã nguồn</b> trong file đuôi <code>.c</code>. Phần trước đuôi là <b>base name</b>, nên đặt tên có ý nghĩa. Nên dùng <b>IDE</b> (không dùng trình soạn thảo đơn giản như Wordpad). Có thể dùng Code::Blocks, CodeLite hoặc Dev-C++.</td>
+      <td>Ý tưởng → file <code>.c</code></td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><b>2. Compiling</b><br>(biên dịch)</td>
+      <td>Chạy <b>compiler</b> để dịch mã nguồn ra ngôn ngữ máy hiểu được. Gồm <b>2 giai đoạn</b>: (1) <b>tiền xử lý</b>, có thể sửa đổi/thêm mã lệnh; (2) <b>biên dịch</b> tạo <b>object code</b>.</td>
+      <td>Các file <code>.c</code> → file <code>.obj</code> (Windows) hoặc <code>.o</code> (Linux/macOS)</td>
+      <td><b>Lỗi cú pháp</b> (syntax). Không tìm lỗi logic.</td>
+    </tr>
+    <tr>
+      <td><b>3. Linking</b><br>(liên kết)</td>
+      <td>Kết hợp các file object code với <b>thư viện ngoài</b> (vào/ra, toán học, xử lý chuỗi) thành <b>một file thực thi duy nhất</b>. Cần có đủ mọi file object của chương trình.</td>
+      <td>Object code + thư viện → <code>.exe</code> (Windows) hoặc <code>a.out</code> (Linux/Unix)</td>
+      <td><b>Lỗi liên kết</b>: thiếu hoặc tham chiếu đến thư viện/hàm không tồn tại.</td>
+    </tr>
+    <tr>
+      <td><b>4. Executing</b><br>(thực thi)</td>
+      <td>Chạy chương trình: nhấn đúp file thực thi, hoặc chạy bằng lệnh/menu. Các câu lệnh chạy <b>tuần tự</b>; cần nhập liệu thì tạm dừng chờ <b>input</b>. Kết quả hiện qua cửa sổ <b>console</b>.</td>
+      <td>File thực thi → kết quả</td>
+      <td><b>Lỗi logic</b>: ra sai output, không làm gì, hoặc tệ nhất là sập máy.</td>
+    </tr>
+  </table>
+
+  <pre class="code"><span class="c-num">// ví dụ minh họa với trình biên dịch gcc (trên Linux/macOS)</span>
+gcc -c hello.c          <span class="c-num"># chỉ BIÊN DỊCH → hello.o (không liên kết)</span>
+gcc hello.o -o hello    <span class="c-num"># LIÊN KẾT → file thực thi tên "hello"</span>
+./hello                 <span class="c-num"># THỰC THI (Windows: hello.exe)</span>
+
+gcc hello.c             <span class="c-num"># làm gộp cả biên dịch + liên kết → a.out</span></pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🆚 Ba loại lỗi (hay hỏi)</h4>
+      <ul>
+        <li><b>Cú pháp</b>: compiler báo, lúc biên dịch.</li>
+        <li><b>Liên kết</b>: linker báo, lúc liên kết (VD <i>undefined reference</i>).</li>
+        <li><b>Logic</b>: không ai báo; chương trình vẫn chạy nhưng không theo ý bạn.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🛠️ IDE giúp gì?</h4>
+      <p>IDE cho phép biên dịch và liên kết chỉ với vài thao tác (click menu) là ra file thực thi. Liên kết thường tự động chạy sau khi biên dịch xong.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Thứ tự <b>E → C → L → E</b>. Đuôi file: <code>.c</code> → <code>.o/.obj</code> → <code>.exe</code> hoặc <code>a.out</code>. Compiler bắt lỗi <b>cú pháp</b>, linker bắt lỗi <b>thiếu thư viện/hàm</b>, lỗi <b>logic</b> chỉ lộ ra khi chạy.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) Object code thực chất là <b>mã máy</b> (nhị phân) chưa liên kết nên chưa chạy được; slide nói "hợp ngữ chạy được" là chưa chính xác. (2) Tùy chọn <code>-c</code> của gcc nghĩa là <b>chỉ biên dịch, không liên kết</b>; muốn liên kết riêng thì dùng lệnh <code>gcc file.o -o tên</code>.</div>
+</div>
+
+<!-- ========== TOPIC 8 ========== -->
+<div class="topic k3" id="t8-luu-do">
+  <div class="topic-head">
+    <div class="topic-num">8</div>
+    <div><h3>Lưu đồ thuật toán (Flow chart)</h3><div class="sub">Biểu diễn thuật toán bằng ký hiệu hình học</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📊 Lưu đồ là gì?</h4>
+      <p>Công cụ biểu diễn thuật toán: mô tả <b>nhập (input)</b>, <b>xuất (output)</b> và <b>luồng xử lý</b> thông qua các ký hiệu hình học.</p>
+    </div>
+    <div class="info-card">
+      <h4>🎯 Vì sao cần vẽ?</h4>
+      <ul>
+        <li>Thông tin trình bày dạng khối chức năng, ngắn gọn và hiệu quả, giúp truyền đạt thông tin rất tốt.</li>
+        <li>Dễ đánh giá, phân tích và chọn phương pháp giải tối ưu.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🧰 Công cụ vẽ</h4>
+      <ul>
+        <li><b>Draw.io</b>: online, không cần cài, giao diện đơn giản, miễn phí.</li>
+        <li><b>Lucidchart</b>: website vẽ lưu đồ, nhiều kiểu phong phú, tự gợi ý kiểu phù hợp.</li>
+        <li><b>Microsoft Visio</b>: trực quan hóa luồng quy trình, tích hợp Microsoft 365.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🪜 4 bước vẽ</h4>
+      <ul>
+        <li>B1: Xác định <b>đầu vào, đầu ra</b> của bài toán</li>
+        <li>B2: Xác định <b>biến</b> truyền vào và ra</li>
+        <li>B3: Xác định các lệnh <b>rẽ nhánh, lặp, điều kiện</b></li>
+        <li>B4: Vẽ <b>luồng (mũi tên)</b> cho các khối chức năng</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Ký hiệu</th><th>Hình</th><th>Ý nghĩa</th></tr>
+    <tr><td>Bắt đầu / Kết thúc</td><td>Hình ô-van</td><td>Điểm đầu và điểm cuối của thuật toán</td></tr>
+    <tr><td>Nhập / Xuất</td><td>Hình bình hành</td><td>Nhập dữ liệu (input) hoặc hiển thị kết quả (output)</td></tr>
+    <tr><td>Xử lý / Tính toán</td><td>Hình chữ nhật</td><td>Thực hiện phép tính, gán giá trị</td></tr>
+    <tr><td>Điều kiện / Rẽ nhánh</td><td>Hình thoi</td><td>Kiểm tra điều kiện, có 2 hướng ra: Có / Không</td></tr>
+    <tr><td>Luồng</td><td>Mũi tên</td><td>Chiều đi của thuật toán</td></tr>
+    <tr><td>Điểm nối</td><td>Hình tròn nhỏ</td><td>Nối các phần lưu đồ khi bị ngắt (ví dụ sang trang khác)</td></tr>
+  </table>
+  <div class="pill-row"><span class="pill">📝 Bảng ký hiệu do mình bổ sung theo chuẩn thông dụng, vì slide gốc là hình ảnh</span></div>
+
+  <div class="fc-grid">
+    <div class="fc-box">
+      <h4>Ví dụ 1: chu vi & diện tích hình tròn</h4>
+      <svg viewBox="0 0 260 390" role="img" aria-label="Lưu đồ tính chu vi, diện tích hình tròn">
+        <defs><marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22241d"/></marker></defs>
+        <ellipse class="fc-shape fc-t" cx="130" cy="30" rx="60" ry="18"/><text class="fc-text" x="130" y="34">Bắt đầu</text>
+        <line class="fc-line" x1="130" y1="48" x2="130" y2="77" marker-end="url(#ar1)"/>
+        <polygon class="fc-shape fc-io" points="82,77 202,77 178,113 58,113"/><text class="fc-text" x="130" y="99">Nhập bán kính r</text>
+        <line class="fc-line" x1="130" y1="113" x2="130" y2="142" marker-end="url(#ar1)"/>
+        <rect class="fc-shape" x="70" y="142" width="120" height="36"/><text class="fc-text" x="130" y="164">C = 2 × π × r</text>
+        <line class="fc-line" x1="130" y1="178" x2="130" y2="207" marker-end="url(#ar1)"/>
+        <rect class="fc-shape" x="70" y="207" width="120" height="36"/><text class="fc-text" x="130" y="229">S = π × r²</text>
+        <line class="fc-line" x1="130" y1="243" x2="130" y2="272" marker-end="url(#ar1)"/>
+        <polygon class="fc-shape fc-io" points="82,272 202,272 178,308 58,308"/><text class="fc-text" x="130" y="294">Xuất C, S</text>
+        <line class="fc-line" x1="130" y1="308" x2="130" y2="337" marker-end="url(#ar1)"/>
+        <ellipse class="fc-shape fc-t" cx="130" cy="355" rx="60" ry="18"/><text class="fc-text" x="130" y="359">Kết thúc</text>
+      </svg>
+      <p class="sub" style="margin:6px 0 0;">Phân tích: B1 nhập r → B2 tính chu vi, diện tích → B3 hiển thị.</p>
+    </div>
+
+    <div class="fc-box">
+      <h4>Ví dụ 2: số lớn nhất trong a, b, c</h4>
+      <svg viewBox="0 0 320 500" role="img" aria-label="Lưu đồ tìm số lớn nhất trong ba số">
+        <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22241d"/></marker></defs>
+        <ellipse class="fc-shape fc-t" cx="130" cy="28" rx="60" ry="18"/><text class="fc-text" x="130" y="32">Bắt đầu</text>
+        <line class="fc-line" x1="130" y1="46" x2="130" y2="72" marker-end="url(#ar2)"/>
+        <polygon class="fc-shape fc-io" points="82,72 202,72 178,108 58,108"/><text class="fc-text" x="130" y="94">Nhập a, b, c</text>
+        <line class="fc-line" x1="130" y1="108" x2="130" y2="134" marker-end="url(#ar2)"/>
+        <rect class="fc-shape" x="70" y="134" width="120" height="36"/><text class="fc-text" x="130" y="156">max = a</text>
+        <line class="fc-line" x1="130" y1="170" x2="130" y2="197" marker-end="url(#ar2)"/>
+        <polygon class="fc-shape fc-d" points="130,197 200,225 130,253 60,225"/><text class="fc-text" x="130" y="229">b &gt; max ?</text>
+        <line class="fc-line" x1="200" y1="225" x2="235" y2="225" marker-end="url(#ar2)"/><text class="fc-lbl" x="208" y="218">Có</text>
+        <rect class="fc-shape" x="235" y="209" width="80" height="32"/><text class="fc-text" x="275" y="229">max = b</text>
+        <path class="fc-line" d="M275 241 V272 H130" marker-end="url(#ar2)"/>
+        <line class="fc-line" x1="130" y1="253" x2="130" y2="292" marker-end="url(#ar2)"/><text class="fc-lbl" x="122" y="268" style="text-anchor:end">Không</text>
+        <polygon class="fc-shape fc-d" points="130,292 200,320 130,348 60,320"/><text class="fc-text" x="130" y="324">c &gt; max ?</text>
+        <line class="fc-line" x1="200" y1="320" x2="235" y2="320" marker-end="url(#ar2)"/><text class="fc-lbl" x="208" y="313">Có</text>
+        <rect class="fc-shape" x="235" y="304" width="80" height="32"/><text class="fc-text" x="275" y="324">max = c</text>
+        <path class="fc-line" d="M275 336 V367 H130" marker-end="url(#ar2)"/>
+        <line class="fc-line" x1="130" y1="348" x2="130" y2="392" marker-end="url(#ar2)"/><text class="fc-lbl" x="122" y="364" style="text-anchor:end">Không</text>
+        <polygon class="fc-shape fc-io" points="82,392 202,392 178,428 58,428"/><text class="fc-text" x="130" y="414">Xuất max</text>
+        <line class="fc-line" x1="130" y1="428" x2="130" y2="450" marker-end="url(#ar2)"/>
+        <ellipse class="fc-shape fc-t" cx="130" cy="468" rx="60" ry="18"/><text class="fc-text" x="130" y="472">Kết thúc</text>
+      </svg>
+      <p class="sub" style="margin:6px 0 0;">Ý tưởng: giả sử a lớn nhất, lần lượt so với b rồi c, lớn hơn thì cập nhật.</p>
+    </div>
+  </div>
+
+  <div class="pill-row">
+    <span class="pill">🔗 UML / sequence diagram: mô tả luồng tương tác giữa các phần tử và hệ thống</span>
+    <span class="pill">🧱 Block diagram: mô tả chi tiết phần cứng hoặc cấu tạo sản phẩm</span>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Ô-van = bắt đầu/kết thúc, <b>bình hành = nhập/xuất</b>, chữ nhật = xử lý, <b>thoi = điều kiện</b>. Vẽ lưu đồ <b>trước khi code</b> giúp chọn được cách giải tối ưu; Draw.io là công cụ <b>miễn phí, online</b>.</div>
+</div>
+
+
+<!-- ========== TOPIC 9 ========== -->
+<div class="topic k4" id="t9-cong-cu">
+  <div class="topic-head">
+    <div class="topic-num">9</div>
+    <div><h3>Công cụ lập trình: trình biên dịch, gỡ lỗi & IDE</h3><div class="sub">GCC · gdb · biến môi trường Path · IDE và các nút Build / Run</div></div>
+  </div>
+
+  <pre class="code">Cài GCC (+ gdb) ─▶ thêm thư mục bin vào Path ─▶ kiểm tra: gcc --version
+        ─▶ dùng một IDE để viết code ─▶ Build ─▶ Run</pre>
+
+  <table class="spec">
+    <tr><th>Thành phần</th><th>Là gì</th><th>Ghi chú</th></tr>
+    <tr><td><b>GNU GCC</b> (gcc)</td><td>Trình biên dịch C</td><td>Có tính <b>khả chuyển</b> (portable) cao, cho phép viết mã theo chuẩn <b>C89</b> và dùng được cả các tính năng nâng cao hơn</td></tr>
+    <tr><td><b>gdb</b></td><td>Tiện ích tạo và <b>gỡ lỗi</b></td><td>Tải từ <b>cygwin.com</b>. Cygwin mô phỏng môi trường <b>UNIX</b> nên hữu ích để tìm và sửa lỗi</td></tr>
+    <tr><td><b>Cygwin</b></td><td>Môi trường giả lập UNIX trên Windows, cung cấp GCC và gdb</td><td>Cài thêm các <b>package</b> cần thiết (bên dưới)</td></tr>
+    <tr><td><b>IDE</b></td><td>Môi trường tích hợp để <b>viết</b> chương trình (soạn code, biên dịch, chạy, gỡ lỗi)</td><td>Ví dụ: CodeLite, Dev C++, Code::Blocks, Visual Studio Code</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📦 Package cần cài trong Cygwin</h4>
+      <ul>
+        <li><code>gcc-core</code>: là <b>trình biên dịch</b>.</li>
+        <li><code>gdb</code>: là <b>trình gỡ lỗi</b>.</li>
+        <li><code>make</code>: công cụ build tự động.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🛣️ Thiết lập biến môi trường Path</h4>
+      <ul>
+        <li>Đường dẫn mặc định: <code>C:\cygwin64\bin</code> (bản 64 bit) hoặc <code>C:\cygwin32\bin</code> (bản 32 bit).</li>
+        <li>Control Panel → System and Security → Advanced system settings → tab <b>Advanced</b> → <b>Environment Variables...</b></li>
+        <li>Ở mục <b>System variables</b>, thêm đường dẫn trên vào biến <b>Path</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>✅ Kiểm tra cài đặt thành công</h4>
+<pre class="code" style="margin:6px 0;">cygcheck -c cygwin
+gcc --version</pre>
+      <p>Chạy trên command line. Lệnh <code>gcc --version</code> in ra số phiên bản thì trình biên dịch C đã cài đúng.</p>
+    </div>
+    <div class="info-card">
+      <h4>🔘 Các nút chức năng thường có trong IDE</h4>
+      <ul>
+        <li><b>Build</b>: tạo file thực thi từ mã nguồn (biên dịch cả project hoặc từng file).</li>
+        <li><b>Clean</b>: xóa các file thực thi do Build tạo ra.</li>
+        <li><b>Run</b>: chạy chương trình đã biên dịch. <b>Stop</b>: dừng việc đang chạy.</li>
+        <li><b>Debugger</b>: bắt đầu hoặc tiếp tục chế độ gỡ lỗi.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Việc biên dịch do <b>GCC</b> làm, gỡ lỗi do <b>gdb</b>; <b>IDE</b> chỉ là nơi viết code và bấm Build / Run. Thêm thư mục <code>bin</code> của GCC vào <b>Path</b> rồi kiểm tra bằng <code>gcc --version</code>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Giáo trình dùng CodeLite với Cygwin, nhưng tài liệu cũng nhắc Code::Blocks và Dev C++. Chọn IDE nào cũng được vì đều dùng GCC; Dev-C++ và bản Code::Blocks có chữ "mingw" cài sẵn GCC đi kèm nên không cần cài Cygwin.</div>
+</div>
+
+<!-- ========== TOPIC 10 ========== -->
+<div class="topic k5" id="t10-tien-xu-ly">
+  <div class="topic-head">
+    <div class="topic-num">10</div>
+    <div><h3>Chú thích, tiền xử lý & #include</h3><div class="sub">Comment · preprocessor · header file · #define · typedef</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>💬 Chú thích (comment)</h4>
+      <ul>
+        <li>Dùng để <b>giải thích</b> các xử lý trong chương trình, giúp chương trình dễ đọc, dễ bảo trì.</li>
+        <li><b>Trình biên dịch bỏ qua</b> phần chú thích, nên sai cú pháp trong chú thích cũng không gây lỗi.</li>
+        <li><b>2 cách viết:</b> nhiều dòng <code>/* ... */</code> và một dòng <code>// ...</code></li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📝 Cách dùng chú thích tốt</h4>
+      <ul>
+        <li>Chú thích ở <b>đầu file</b>: tác giả, mục đích, mô tả, ngày tạo file.</li>
+        <li>Chú thích xen kẽ ở những dòng lệnh <b>phức tạp về logic</b>.</li>
+        <li><b>Không</b> chú thích dòng khai báo biến (hiển nhiên). Không dùng chú thích để mô tả hàm quá phức tạp vì có thể không đủ thông tin.</li>
+        <li>Cách tốt hơn: <b>đặt tên biến, tên hàm có ý nghĩa</b> để nhìn là hiểu, khỏi cần chú thích (tự ghi chú).</li>
+      </ul>
+    </div>
+  </div>
+
+<pre class="code"><span class="c-num">/* Tác giả: ...    Mục đích: in lời chào
+   Ngày tạo: ...   (chú thích nhiều dòng) */</span>
+printf("Hi");   <span class="c-num">// chú thích một dòng</span></pre>
+
+  <h4 style="margin:18px 0 8px;">🔧 Tiền xử lý (preprocessor)</h4>
+  <div class="grid2">
+    <div class="info-card">
+      <ul>
+        <li>Là tính năng đặc trưng của C: phân tích một số câu lệnh nhất định <b>trước khi</b> phân tích toàn bộ chương trình, nên xảy ra <b>trước cả biên dịch</b>.</li>
+        <li><b>Nhận biết chỉ thị tiền xử lý:</b> có dấu <code>#</code> phía trước và <code>#</code> là ký tự <b>không phải dấu cách đầu tiên</b> trên dòng.</li>
+        <li>Thường đặt ở <b>đầu file</b> nhưng có thể ở bất kỳ vị trí nào.</li>
+        <li>Các chỉ thị thường gặp: <code>#include</code>, <code>#define</code>, <code>#if</code>, <code>#else</code>, <code>#ifdef</code>, <code>#ifndef</code>, <code>#endif</code>. <b>Phổ biến nhất là #include.</b></li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>⚙️ Quy trình GCC biên dịch ra file chạy</h4>
+<pre class="code" style="margin:6px 0 0;font-size:.74rem;">main.c ─▶ Preprocessor (cpp) ─▶ main.i
+main.i ─▶ Compiler (cc1)     ─▶ main.s
+main.s ─▶ Assembler (as)     ─▶ main.o
+main.o + thư viện ─▶ Linker (ld) ─▶ chương trình</pre>
+      <p style="margin-top:6px;">Tiền xử lý là bước <b>đầu tiên</b>, trước biên dịch. Nhiều file <code>.c</code> (như <code>main.c</code>, <code>aux.c</code>) đều đi qua các bước này rồi được linker ghép lại.</p>
+    </div>
+  </div>
+
+  <h4 style="margin:18px 0 8px;">📥 Câu lệnh #include và file tiêu đề (header file)</h4>
+  <table class="spec">
+    <tr><th></th><th><code>#include &lt;Jason.h&gt;</code></th><th><code>#include "Jason.h"</code></th></tr>
+    <tr><td><b>Ký hiệu</b></td><td>Dấu ngoặc nhọn</td><td>Dấu ngoặc kép</td></tr>
+    <tr><td><b>Ý nghĩa</b></td><td>Ra lệnh cho bộ tiền xử lý tìm file trong <b>thư mục hệ thống</b> (thường là thư viện chuẩn đi kèm ngôn ngữ C)</td><td>File tiêu đề do <b>người dùng tự tạo</b>, không đi kèm ngôn ngữ C</td></tr>
+    <tr><td><b>Ví dụ</b></td><td><code>#include &lt;stdio.h&gt;</code></td><td><code>#include "Jason.h"</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📚 Header file (đuôi .h)</h4>
+      <ul>
+        <li>Chứa <b>khai báo</b> thông tin về các hàm do file đó cung cấp, thường đặt ở đầu file nguồn (<code>.c</code>).</li>
+        <li>Có thể gồm: chỉ thị (directive), hằng (constant), khai báo cấu trúc (structure).</li>
+        <li>Mã thực thi thường nằm ở file <code>.c</code>, <b>không</b> nằm trong header (đây là thông lệ, vẫn có ngoại lệ).</li>
+        <li><code>stdio.h</code> = <b>st</b>andar<b>d</b> <b>i</b>nput <b>o</b>utput: chứa hàm <code>printf</code> và nhiều hàm vào/ra khác.</li>
+        <li>Thiếu <code>#include</code> cần thiết thì chương trình báo lỗi, không chạy được.</li>
+        <li>Tương tự lệnh <b>import</b> trong Java.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🛡️ Tránh khai báo trùng</h4>
+      <ul>
+        <li>Dùng <code>#ifndef</code> và <code>#define</code> (kết thúc bằng <code>#endif</code>) để <b>không khai báo một thư viện quá 1 lần</b>, tránh bộ tiền xử lý làm thao tác thừa.</li>
+        <li><b>Thư viện (library)</b> là tập mã lệnh có sẵn, thêm vào chương trình mà không cần viết lại (ví dụ: ghi/đọc console hay file).</li>
+        <li>Tự tạo header riêng để <b>tái sử dụng</b> chức năng của chương trình.</li>
+        <li>Tên file khi <code>#include</code> phải gõ đúng chữ hoa / chữ thường.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 style="margin:18px 0 8px;">➕ Bổ trợ: #define và typedef</h4>
+  <table class="spec">
+    <tr><th></th><th><code>#define</code></th><th><code>typedef</code></th></tr>
+    <tr><td><b>Tác dụng</b></td><td>Định nghĩa <b>macro</b> / hằng số (số, chuỗi, biểu thức), không phải biến và không thay đổi được trong chương trình</td><td>Thêm <b>tên mới</b> cho một kiểu dữ liệu có sẵn</td></tr>
+    <tr><td><b>Ai xử lý</b></td><td><b>Bộ tiền xử lý</b> (preprocessor)</td><td><b>Trình biên dịch</b> (compiler)</td></tr>
+    <tr><td><b>Cú pháp</b></td><td><code>#define TEN_HANG gia_tri</code> hoặc <code>#define TEN_HANG (bieu_thuc)</code></td><td><code>typedef kieu_du_lieu ten_moi</code></td></tr>
+    <tr><td><b>Lưu ý</b></td><td>Tên hằng nên <b>viết hoa</b>; đặt ở đầu chương trình hoặc header; <b>không có dấu ;</b> ở cuối; biểu thức có toán tử phải đặt trong ngoặc</td><td>Có <code>;</code> ở cuối như câu lệnh bình thường</td></tr>
+  </table>
+
+<pre class="code">#define NAME "funix.edu.vn"
+#define MAX(a, b)  ((a) &gt; (b) ? (a) : (b))
+#define FOR(i,a,b) for (int i = a; i &lt; b; i++)   <span class="c-num">// macro: trình biên dịch thay FOR(...) bằng câu lệnh for trước khi biên dịch</span>
+
+typedef int myint;      <span class="c-num">// myint là tên mới của int</span>
+myint i = 0;
+
+typedef int * iptr;     <span class="c-num">// iptr là kiểu con trỏ tới int</span>
+iptr p;                 <span class="c-num">// giống: int *p;</span></pre>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Chỉ thị tiền xử lý có <b>#</b> ở đầu và chạy <b>trước biên dịch</b>. <code>&lt;...&gt;</code> = thư viện hệ thống, <code>"..."</code> = header do mình tạo. Header chứa <b>khai báo</b>, file <code>.c</code> chứa <b>mã thực thi</b>. <code>#define</code> do <b>preprocessor</b> xử lý, <code>typedef</code> do <b>compiler</b> xử lý.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Chú thích <code>//</code> chính thức có từ chuẩn <b>C99</b>, còn <code>/* */</code> dùng được ở mọi chuẩn; khóa học dùng C99 nên cả hai đều dùng được. (2) Macro chỉ <b>thay thế văn bản</b> nên cần bọc tham số trong ngoặc như <code>MAX(a, b)</code> ở trên. (3) Trong ví dụ typedef của slide, <code>printf("%u\n", p)</code> in địa chỉ con trỏ bằng <code>%u</code>; cách chuẩn để in con trỏ là <code>%p</code>.</div>
+</div>
+
+<!-- ========== TOPIC 11 ========== -->
+<div class="topic k1" id="t11-printf-scanf">
+  <div class="topic-head">
+    <div class="topic-num">11</div>
+    <div><h3>Xuất và nhập dữ liệu: printf & scanf</h3><div class="sub">Hiển thị ra màn hình · đọc từ bàn phím · dấu & · chuỗi định dạng</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🖨️ Hàm printf()</h4>
+      <ul>
+        <li>Hàm dùng để <b>hiển thị thông tin ra màn hình</b> (command line, còn gọi là console hoặc terminal).</li>
+        <li>Là hàm của thư viện chuẩn <code>stdio.h</code>, nên chỉ cần <code>#include &lt;stdio.h&gt;</code> là dùng được.</li>
+        <li>Mọi thông tin trong <b>hai dấu ngoặc kép</b> sẽ được hiển thị.</li>
+        <li>Khi chạy, một <b>hộp đen</b> (DOS command prompt / command line) hiện ra để hiển thị.</li>
+        <li>Đối số của <code>printf</code> là <b>tên biến, hằng số, biểu thức</b>. Nó chuyển số nguyên, số thực, ký tự, chuỗi thành <b>văn bản</b> để hiển thị.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>⌨️ Hàm scanf()</h4>
+      <ul>
+        <li>Thư viện C có nhiều hàm đọc dữ liệu nhập vào, <b>scanf() dùng phổ biến nhất</b>.</li>
+        <li>Đọc dữ liệu từ <b>đầu vào tiêu chuẩn</b> (stdin, mặc định là bàn phím) và xem xét (scan) theo <b>định dạng</b> cung cấp.</li>
+        <li>Là <b>nghịch đảo của printf</b>. Đối số của <code>scanf</code> là <b>con trỏ tới biến</b> (nên cần dấu <code>&amp;</code>).</li>
+        <li>Khi chạy, chương trình <b>đợi bạn nhập</b> văn bản; bấm <b>Enter</b> thì chương trình mới đọc dữ liệu vào bộ nhớ để xử lý.</li>
+        <li>Dữ liệu gõ vào thực chất là các <b>ký tự</b> (nhập 2014 là 4 ký tự '2','0','1','4'); <code>scanf</code> chuyển chuỗi ký tự thành số.</li>
+      </ul>
+    </div>
+  </div>
+
+<pre class="code">scanf("format string", argument_list);   <span class="c-num">// cú pháp</span>
+
+char strName[20];
+printf("Nhap ten: ");
+scanf("%s", strName);                    <span class="c-num">// chuỗi: KHÔNG có &amp;</span>
+
+int i;
+scanf("%d", &amp;i);                         <span class="c-num">// số nguyên: CÓ &amp;</span></pre>
+
+  <table class="spec">
+    <tr><th>Chuỗi điều khiển</th><th>Đọc / in kiểu dữ liệu</th><th>Ví dụ</th></tr>
+    <tr><td><code>%d</code></td><td>Số nguyên</td><td><code>scanf("%d", &amp;i);</code></td></tr>
+    <tr><td><code>%c</code></td><td>Một ký tự</td><td><code>scanf("%c", &amp;c);</code></td></tr>
+    <tr><td><code>%f</code></td><td>Số thực (float)</td><td><code>scanf("%f", &amp;x);</code></td></tr>
+    <tr><td><code>%s</code></td><td>Chuỗi ký tự</td><td><code>scanf("%s", str);</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📜 3 quy tắc của scanf (theo slide)</h4>
+      <ul>
+        <li><b>1.</b> Thành công thì có giá trị trả về, thất bại thì trả về số âm.</li>
+        <li><b>2.</b> Đọc giá trị cho các kiểu biến cơ bản (<code>int</code>, <code>char</code>, <code>float</code>...) thì <b>đặt &amp; trước tên biến</b>.</li>
+        <li><b>3.</b> Đọc <b>chuỗi vào mảng ký tự</b> thì <b>không dùng &amp;</b>.</li>
+        <li>Khoảng trắng (dòng mới, tab, dấu cách) dùng để <b>tách các trường</b> nhập vào.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🆚 printf và scanf</h4>
+      <ul>
+        <li><code>printf</code>: biến → văn bản <b>hiển thị</b>; đối số là tên biến, hằng, biểu thức (<b>không</b> có &amp;).</li>
+        <li><code>scanf</code>: văn bản <b>nhập</b> → biến; đối số là <b>con trỏ</b> tới biến (có &amp; với kiểu cơ bản).</li>
+        <li>Cả hai đều dùng <b>chuỗi điều khiển</b> (<code>%d</code>, <code>%s</code>, <code>%c</code>, <code>%f</code>...).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>printf</code> = <b>ra</b> màn hình, <code>scanf</code> = <b>vào</b> từ bàn phím, cả hai thuộc <code>stdio.h</code>. Với <code>scanf</code>: <b>số thì có &amp;, chuỗi thì không &amp;</b>. Chương trình dùng <code>scanf</code> sẽ <b>đứng chờ</b> cho tới khi bạn nhập và bấm Enter.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) <b>Giá trị trả về của scanf</b> thực ra là <b>số mục đã đọc và gán thành công</b> (ví dụ <code>scanf("%d%d", &amp;a, &amp;b)</code> đọc đủ 2 số thì trả về 2), và trả về <code>EOF</code> (một số âm) khi lỗi nhập; slide nói "tổng số ký tự đã đọc" là chưa chính xác. (2) Ví dụ trong slide viết <code>scanf("%s", &amp; strName)</code> có <code>&amp;</code> trước mảng, trái với quy tắc 3; cách viết đúng là <code>scanf("%s", strName)</code>. (3) Kiểu <code>double</code> thì <code>scanf</code> dùng <code>%lf</code> (còn <code>printf</code> dùng <code>%f</code> hay <code>%lf</code> đều in được). (4) <code>%s</code> chỉ đọc đến <b>dấu cách đầu tiên</b>, nên nhập "Nguyen Van A" chỉ nhận được "Nguyen".</div>
+</div>
+
+</section>
+</div><!-- /part-page 1 -->
+
+<!-- Phần 2 sẽ được thêm ở đây (xem hướng dẫn cuối <script>) -->
+
+<footer>
+  <div class="foot-grid">
+    <div onclick="setPart('1')">
+      <h4>👉 Phần 1 · Tổng quan lập trình C</h4>
+      <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf</p>
+    </div>
+    <div class="soon">
+      <h4>⏳ Các Phần tiếp theo</h4>
+      <p>Sẽ bổ sung dần cho đến hết môn học.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setPart(n){
+  n = String(n);
+  document.querySelectorAll('[data-part]').forEach(function(el){
+    el.classList.toggle('active', el.getAttribute('data-part') === n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  try{ history.replaceState(null,'','#phan'+n); }catch(e){}
+}
+document.getElementById('partSwitch').addEventListener('click', function(e){
+  var b = e.target.closest('button[data-part]');
+  if(b) setPart(b.getAttribute('data-part'));
+});
+(function(){
+  var m = location.hash.match(/^#phan(\d+)/);
+  var startPart = m && document.querySelector('.part-page[data-part="'+m[1]+'"]') ? m[1] : '1';
+  document.querySelectorAll('[data-part]').forEach(function(el){
+    el.classList.toggle('active', el.getAttribute('data-part') === startPart);
+  });
+})();
+/* Thêm Phần 2: (1) nút <button data-part="2"> trong #partSwitch,
+   (2) <div class="nav-links" data-part="2"> trong <nav>,
+   (3) <div class="part-page" data-part="2"> ngay trước <footer>, (4) thêm 1 cột vào .foot-grid,
+   (5) cập nhật <title>. Hàm setPart tự quét mọi phần tử có data-part. */
+</script>
+</body>
+</html>
