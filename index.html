@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lập trình C cơ bản · Tóm tắt & ôn thi (Phần 1)</title>
+<title>Lập trình C cơ bản · Tóm tắt & ôn thi (Phần 1–2)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -65,6 +65,8 @@ section h2.sec-title{font-size:1.6rem;margin:6px 0 14px}
 .topic-num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--c1);display:grid;place-items:center;font:800 1.3rem 'Baloo 2',sans-serif}
 .k2 .topic-num{background:var(--c2);color:#fff}.k3 .topic-num{background:var(--c3)}.k4 .topic-num{background:var(--c4)}.k5 .topic-num{background:var(--c5)}
 .topic-head h3{font-size:1.4rem}
+.back-map{margin-left:auto;align-self:flex-start;font-size:.76rem;font-weight:600;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;white-space:nowrap;background:#fff}
+.back-map:hover{color:var(--c2);border-color:var(--c2)}
 .sub{color:var(--ink-soft);font-size:.9rem}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin:12px 0}
 .info-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
@@ -118,29 +120,16 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
   <div class="nav-top">
     <div class="brand">Lập trình <span>C</span> cơ bản</div>
     <div id="partSwitch">
-      <button type="button" data-part="1" class="active">Phần 1 · Tổng quan lập trình C</button>
+      <button type="button" data-part="1" class="active">Phần 1</button>
+      <button type="button" data-part="2">Phần 2</button>
     </div>
   </div>
   <div class="nav-links active" data-part="1">
-    <a href="#mindmap1">Bản đồ: Tổng quan</a>
-    <a href="#t1-thuat-ngu">Khái niệm & thuật ngữ</a>
-    <a href="#t2-fetch-bacao">Fetch–Execute & ngôn ngữ</a>
-    <a href="#t3-7-buoc">7 bước viết chương trình</a>
-    <a href="#t4-tong-quan-c">Tổng quan ngôn ngữ C</a>
-    <a href="#t5-lich-su">Lịch sử & tiêu chuẩn</a>
-    <a href="#t6-uu-nhuoc">Ưu & nhược điểm</a>
-    <a href="#t7-4-buoc">4 bước tạo chương trình</a>
-    <a href="#t8-luu-do">Lưu đồ thuật toán</a>
-    <a href="#t9-cong-cu">Công cụ & IDE</a>
-    <a href="#t10-tien-xu-ly">Chú thích & tiền xử lý</a>
-    <a href="#t11-printf-scanf">printf & scanf</a>
-    <a href="#mindmap-kdl">Bản đồ: Biến & kiểu DL</a>
-    <a href="#kdl-t1-ram-bien">RAM & biến</a>
-    <a href="#kdl-t2-khai-bao">Khai báo & đặt tên</a>
-    <a href="#kdl-t3-kieu-so">Kiểu số</a>
-    <a href="#kdl-t4-bool-enum">bool & enum</a>
-    <a href="#kdl-t5-char">char & ký tự thoát</a>
-    <a href="#kdl-t6-printf">Định dạng printf</a>
+    <a href="#mindmap1">🗺️ Tổng quan lập trình C</a>
+    <a href="#mindmap-kdl">🗺️ Biến & kiểu dữ liệu</a>
+  </div>
+  <div class="nav-links" data-part="2">
+    <a href="#mindmap2">🗺️ Bài 5 · Toán tử</a>
   </div>
 </nav>
 
@@ -250,7 +239,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
   </div>
 </section>
 
-<section id="chi-tiet-1" style="padding-top:6px;">
+<section id="chi-tiet-1" data-map="mindmap1" style="padding-top:6px;">
 
 <!-- ========== TOPIC 1 ========== -->
 <div class="topic k1" id="t1-thuat-ngu">
@@ -829,7 +818,8 @@ main.o + thư viện ─▶ Linker (ld) ─▶ chương trình</pre>
 
 <pre class="code">#define NAME "funix.edu.vn"
 #define MAX(a, b)  ((a) &gt; (b) ? (a) : (b))
-#define FOR(i,a,b) for (int i = a; i &lt; b; i++)   <span class="c-num">// macro: trình biên dịch thay FOR(...) bằng câu lệnh for trước khi biên dịch</span>
+#define FOR(i,a,b) for (int i = a; i &lt; b; i++)
+<span class="c-num">// macro FOR(...) được thay bằng câu lệnh for trước khi biên dịch</span>
 
 typedef int myint;      <span class="c-num">// myint là tên mới của int</span>
 myint i = 0;
@@ -989,7 +979,7 @@ printf("%d %e %c", x, r, c);</pre>
   </div>
 </section>
 
-<section id="chi-tiet-kdl" style="padding-top:6px;">
+<section id="chi-tiet-kdl" data-map="mindmap-kdl" style="padding-top:6px;">
 
 <!-- ========== KDL TOPIC 1 ========== -->
 <div class="topic k1" id="kdl-t1-ram-bien">
@@ -1349,11 +1339,419 @@ printf("boolVar = %i\n",     boolVar);       <span class="c-num">// boolVar = 0<
 
 
 
+<!-- ======================= PHẦN 2 ======================= -->
+<div class="part-page" data-part="2">
+
+<div class="hero" id="phan2-top">
+  <div>
+    <span class="eyebrow">🧮 Phần 2 · Bài 5 · Tóm tắt & ghi nhớ</span>
+    <h1>Toán tử, biểu thức & <span class="accent">gỡ lỗi</span></h1>
+    <p>Các nhóm toán tử trong C (số học, so sánh, logic, gán, bitwise), biểu thức và câu lệnh, ép kiểu, <code>sizeof</code>, toán tử điều kiện <code>? :</code>, bảng thứ tự ưu tiên và khái niệm gỡ lỗi (debug).</p>
+    <div class="hero-tags">
+      <span class="tag t1">+ − × ÷ %</span>
+      <span class="tag t2">== != &lt; &gt;</span>
+      <span class="tag t3">&amp;&amp; || !</span>
+      <span class="tag t4">&amp; | ^ ~</span>
+      <span class="tag t5">Ưu tiên</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">int x = 7 + 3 * 2;      // 13
+int y = (int) 3.9;      // 3
+int m = (x &gt; y) ? x : y; // 13</pre>
+  </div>
+</div>
+
+<!-- ---------- MIND MAP PHẦN 2 ---------- -->
+<section id="mindmap2" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 2 · Bài 5: Toán tử</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:760px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="232" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="528" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="470" y2="676" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="528" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="232" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 2<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Bài 5 · Toán tử</span></div>
+
+      <a href="#p2-t1-toan-tu" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">Toán tử & câu lệnh</div>
+        <div class="desc">Biểu thức, câu lệnh, khối lệnh</div>
+      </a>
+      <a href="#p2-t2-co-ban" class="mm-node" style="left:75.1%;top:26.2%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Toán tử cơ bản</div>
+        <div class="desc">Số học, so sánh, logic, gán</div>
+      </a>
+      <a href="#p2-t3-bitwise" class="mm-node" style="left:75.1%;top:65.2%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">Nhị phân & bitwise</div>
+        <div class="desc">&amp; | ^ ~ &lt;&lt; &gt;&gt;</div>
+      </a>
+      <a href="#p2-t4-ep-kieu" class="mm-node" style="left:40.5%;top:84.8%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">Ép kiểu, sizeof, ? :</div>
+        <div class="desc">(int), sizeof, điều kiện</div>
+      </a>
+      <a href="#p2-t5-uu-tien" class="mm-node" style="left:5.9%;top:65.3%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">Độ ưu tiên</div>
+        <div class="desc">Bảng ưu tiên, kết hợp</div>
+      </a>
+      <a href="#p2-t6-debug" class="mm-node" style="left:5.9%;top:26.2%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">Gỡ lỗi (Debug)</div>
+        <div class="desc">Bug, debug, mục đích</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-2" data-map="mindmap2" style="padding-top:6px;">
+
+<!-- ========== P2 TOPIC 1 ========== -->
+<div class="topic k1" id="p2-t1-toan-tu">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Toán tử, biểu thức & câu lệnh</h3><div class="sub">Toán tử là gì · biểu thức khác câu lệnh · khối lệnh</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>➕ Toán tử (operator)</h4>
+      <ul>
+        <li>Là <b>hàm định sẵn</b> trong C, dùng <b>ký hiệu toán học</b> để thực hiện chức năng toán học hoặc logic. Ví dụ so sánh bằng <code>&lt;</code>, cộng bằng <code>+</code>.</li>
+        <li>Hầu hết là kiểu <b>trung tố (infix)</b>: toán tử nằm <b>giữa</b> các toán hạng, ví dụ <code>3 + 8</code>. Khác với <b>tiền tố (prefix)</b> <code>+ 3 8</code> và <b>hậu tố (postfix)</b> <code>3 8 +</code>.</li>
+        <li>Toán tử <b>một ngôi</b> chỉ có một đối số: <code>-6</code> là âm 6, dấu <code>-</code> là toán tử đơn.</li>
+        <li><b>Toán tử số học</b> nhận 2 toán hạng và tính toán. <b>Toán tử logic</b> (Boolean) trả về <b>True / False</b>.</li>
+        <li>Nhóm khác: gán, so sánh (<code>&lt; &gt; !=</code>), bitwise (<code>&lt;&lt; &gt;&gt; ~</code>).</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📝 Biểu thức và câu lệnh</h4>
+<table class="spec" style="margin:6px 0;">
+        <tr><th></th><th>Biểu thức</th><th>Câu lệnh</th></tr>
+        <tr><td><b>Kết thúc bằng</b></td><td>Thường <b>không</b> có <code>;</code></td><td><b>Dấu chấm phẩy <code>;</code></b></td></tr>
+        <tr><td><b>Kết quả</b></td><td><b>Trả về</b> giá trị</td><td><b>Không</b> trả về giá trị</td></tr>
+        <tr><td><b>Ví dụ</b></td><td><code>4 + 21</code>, <code>a*(b+c/d)/20</code></td><td><code>q = 5*2;</code> (biểu thức <code>5*2</code> + biến <code>q</code> tạo thành câu lệnh gán)</td></tr>
+      </table>
+      <p>Có thể là biểu thức gán <code>x = ++q % 3</code> hoặc biểu thức so sánh <code>q &gt; 3</code>.</p>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Loại câu lệnh</th><th>Ví dụ</th></tr>
+    <tr><td><b>Khai báo biến</b></td><td><code>int Jason;</code></td></tr>
+    <tr><td><b>Gán giá trị</b></td><td><code>Jason = 5;</code></td></tr>
+    <tr><td><b>Gọi hàm</b></td><td><code>printf("Jason");</code></td></tr>
+    <tr><td><b>Cấu trúc</b> (vòng lặp...)</td><td><code>while (Jason &lt; 20) Jason = Jason + 1;</code></td></tr>
+    <tr><td><b>Trả về giá trị từ hàm</b></td><td><code>return 0;</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧱 Khối lệnh (block)</h4>
+      <ul>
+        <li>Hai hay nhiều câu lệnh đặt trong cặp <b>dấu ngoặc nhọn <code>{ }</code></b> thì gọi là một <b>khối lệnh</b>.</li>
+        <li>Chương trình là <b>chuỗi các câu lệnh</b> có cú pháp đúng, mỗi câu lệnh kết thúc bằng <code>;</code></li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">int index = 0;       <span class="c-num">// câu lệnh đơn</span>
+while (index &lt; 10)   <span class="c-num">// vòng lặp</span>
+{                    <span class="c-num">// bắt đầu khối lệnh</span>
+    printf("%d\n", index);
+    index = index + 1;
+}                    <span class="c-num">// kết thúc khối lệnh</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Biểu thức trả về giá trị, câu lệnh thì không và kết thúc bằng <code>;</code></b>. Nhiều câu lệnh đặt trong <code>{ }</code> tạo thành một <b>khối lệnh</b>. Hầu hết toán tử C là <b>trung tố</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Trong C gõ <code>8;</code> hay <code>3 - 4;</code> vẫn <b>hợp lệ</b> (chỉ là một biểu thức kết thúc bằng <code>;</code>) nhưng chẳng làm gì cả.</div>
+</div>
+
+<!-- ========== P2 TOPIC 2 ========== -->
+<div class="topic k2" id="p2-t2-co-ban">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Các toán tử cơ bản</h3><div class="sub">Số học · quan hệ (so sánh) · logic · gán</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔢 Toán tử số học (A = 10, B = 20)</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Toán tử</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+        <tr><td><code>+</code></td><td>Cộng</td><td>A + B = 30</td></tr>
+        <tr><td><code>-</code></td><td>Trừ</td><td>A - B = -10</td></tr>
+        <tr><td><code>*</code></td><td>Nhân</td><td>A * B = 200</td></tr>
+        <tr><td><code>/</code></td><td>Chia</td><td>B / A = 2</td></tr>
+        <tr><td><code>%</code></td><td>Lấy số dư</td><td>B % A = 0</td></tr>
+        <tr><td><code>++</code></td><td>Tăng thêm 1</td><td>A++ làm A thành 11</td></tr>
+        <tr><td><code>--</code></td><td>Giảm đi 1</td><td>A-- làm A thành 9</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>⚖️ Toán tử quan hệ (A = 10, B = 20)</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Toán tử</th><th>Kiểm tra</th><th>Ví dụ</th></tr>
+        <tr><td><code>==</code></td><td>Bằng nhau</td><td>A == B sai</td></tr>
+        <tr><td><code>!=</code></td><td>Khác nhau</td><td>A != B đúng</td></tr>
+        <tr><td><code>&gt;</code></td><td>Trái lớn hơn phải</td><td>A &gt; B sai</td></tr>
+        <tr><td><code>&lt;</code></td><td>Trái nhỏ hơn phải</td><td>A &lt; B đúng</td></tr>
+        <tr><td><code>&gt;=</code></td><td>Trái lớn hơn hoặc bằng</td><td>A &gt;= B sai</td></tr>
+        <tr><td><code>&lt;=</code></td><td>Trái nhỏ hơn hoặc bằng</td><td>A &lt;= B đúng</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧠 Toán tử logic (A = 1 là true, B = 0 là false)</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Toán tử</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
+        <tr><td><code>&amp;&amp;</code></td><td><b>AND</b>: true khi cả hai toán hạng khác 0</td><td>(A &amp;&amp; B) là false</td></tr>
+        <tr><td><code>||</code></td><td><b>OR</b>: true khi một trong hai khác 0</td><td>(A || B) là true</td></tr>
+        <tr><td><code>!</code></td><td><b>NOT</b>: đảo trạng thái logic</td><td>!(A &amp;&amp; B) là true</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>📥 Toán tử gán</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Toán tử</th><th>Ý nghĩa (C là biến, A là giá trị)</th></tr>
+        <tr><td><code>=</code></td><td>Gán vế phải cho vế trái: <code>C = A + B</code></td></tr>
+        <tr><td><code>+= -= *= /= %=</code></td><td>Tính rồi gán lại: <code>C += A</code> tương đương <code>C = C + A</code></td></tr>
+        <tr><td><code>&lt;&lt;= &gt;&gt;=</code></td><td>Dịch bit rồi gán: <code>C &lt;&lt;= 2</code> là <code>C = C &lt;&lt; 2</code></td></tr>
+        <tr><td><code>&amp;= ^= |=</code></td><td>AND / XOR / OR bit rồi gán: <code>C &amp;= 2</code> là <code>C = C &amp; 2</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Số học</b> tính toán, <b>quan hệ</b> so sánh (trả đúng / sai), <b>logic</b> kết hợp các điều kiện (<code>&amp;&amp;</code>, <code>||</code>, <code>!</code>), <b>gán</b> đưa giá trị vào biến. <code>=</code> là <b>gán</b>, <code>==</code> mới là <b>so sánh bằng</b>.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) Ví dụ <code>A++</code> kết quả 11 chỉ nói về giá trị của A sau đó: <code>A++</code> (hậu tố) cho giá trị biểu thức là <b>10 rồi mới tăng</b>, còn <code>++A</code> (tiền tố) tăng trước và cho giá trị 11. (2) Bảng logic của slide dùng A = 1, B = 0 (khác bảng số học là A = 10, B = 20); nếu A = 10, B = 20 thì cả hai khác 0 nên <code>A &amp;&amp; B</code> là <b>true</b>. (3) <code>^=</code> là XOR bit (slide gọi là "OR loại trừ bit"). (4) Phép chia <code>/</code> hai số nguyên bỏ phần thập phân, và kết quả vượt giới hạn kiểu <code>int</code> sẽ bị <b>tràn</b> (sai).</div>
+</div>
+
+<!-- ========== P2 TOPIC 3 ========== -->
+<div class="topic k3" id="p2-t3-bitwise">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>Số nhị phân & toán tử bitwise</h3><div class="sub">Thao tác trực tiếp trên từng bit của số nguyên</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>0️⃣1️⃣ Số nhị phân</h4>
+      <ul>
+        <li>Chỉ gồm các chữ số <b>0 và 1</b>, độ dài bất kỳ.</li>
+        <li>Mỗi vị trí có một <b>giá trị vị trí</b> là lũy thừa của 2 (từ phải sang: 2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>...). Nhân mỗi bit với giá trị vị trí rồi <b>cộng lại</b>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">01101001 = 2^6 + 2^5 + 2^3 + 2^0
+         = 64 + 32 + 8 + 1 = <b>105</b>
+10011100 = 128 + 16 + 8 + 4 = <b>156</b></pre>
+    </div>
+    <div class="info-card">
+      <h4>🧩 Toán tử bitwise</h4>
+      <ul>
+        <li>C có sẵn các toán tử <b>thao tác trên bit</b> mà nhiều ngôn ngữ khác không có.</li>
+        <li>Giống toán tử logic nhưng tác động lên <b>từng bit</b> của số nguyên.</li>
+        <li><b>Không thường dùng</b> trong chương trình bình thường. Công dụng chính của <code>&amp;</code> và <code>|</code>: <b>kiểm tra và thiết lập từng bit riêng lẻ</b> trong một biến số nguyên.</li>
+        <li>Ví dụ: một biến số nguyên lưu nhiều tính chất của một người: 1 bit nam / nữ, 3 bit biết tiếng Pháp / Đức / Ý, 1 bit lương từ 50.000$ trở lên. <b>Chỉ 5 bit</b> đã ghi được khá nhiều dữ liệu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Toán tử</th><th>Tên</th><th>Quy tắc</th><th>Ví dụ với A = 60 (0011 1100), B = 13 (0000 1101)</th></tr>
+    <tr><td><code>&amp;</code></td><td>AND</td><td>Bit kết quả = 1 chỉ khi <b>cả hai</b> bit đều 1</td><td>A &amp; B = <b>12</b> (0000 1100)</td></tr>
+    <tr><td><code>|</code></td><td>OR</td><td>Bit kết quả = 1 khi <b>một trong hai</b> bit là 1</td><td>A | B = <b>61</b> (0011 1101)</td></tr>
+    <tr><td><code>^</code></td><td>XOR</td><td>Bit kết quả = 1 khi hai bit <b>khác nhau</b></td><td>A ^ B = <b>49</b> (0011 0001)</td></tr>
+    <tr><td><code>~</code></td><td>NOT</td><td><b>Đảo từng bit</b>: 0 thành 1, 1 thành 0</td><td>~A = <b>-61</b> (1100 0011)</td></tr>
+    <tr><td><code>&lt;&lt;</code></td><td>Dịch trái</td><td>Dịch bit sang trái, thêm 0 ở bên phải</td><td>A &lt;&lt; 2 = <b>240</b> (1111 0000)</td></tr>
+    <tr><td><code>&gt;&gt;</code></td><td>Dịch phải</td><td>Dịch bit sang phải</td><td>A &gt;&gt; 2 = <b>15</b> (0000 1111)</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>&amp;</b> = cả hai đều 1, <b>|</b> = có ít nhất một bit 1, <b>^</b> = hai bit khác nhau, <b>~</b> = đảo bit, <b>&lt;&lt;</b> / <b>&gt;&gt;</b> = dịch bit. Dịch trái 2 bit tương đương nhân 4 (60 × 4 = 240); dịch phải 2 bit là chia 4 lấy phần nguyên (60 / 4 = 15).</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) <code>&amp;</code>, <code>|</code> (bitwise, tác động lên <b>từng bit</b>) khác <code>&amp;&amp;</code>, <code>||</code> (logic, tác động lên <b>giá trị đúng / sai</b>). (2) <code>~A = -61</code> vì kiểu <code>int</code> có nhiều bit hơn 8: slide chỉ hiện 8 bit cuối <code>1100 0011</code>.</div>
+</div>
+
+<!-- ========== P2 TOPIC 4 ========== -->
+<div class="topic k4" id="p2-t4-ep-kieu">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Ép kiểu, sizeof và toán tử điều kiện</h3><div class="sub">Chuyển đổi kiểu dữ liệu · kích thước kiểu · lựa chọn bằng ? :</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔄 Chuyển đổi kiểu ngầm định</h4>
+      <ul>
+        <li>Có thể xảy ra <b>tự động</b> (ngầm định) hoặc do chương trình yêu cầu <b>rõ ràng</b>.</li>
+        <li>Gán số <b>thực cho biến nguyên</b>: <b>phần thập phân bị cắt</b> (không làm tròn).</li>
+        <li>Gán số <b>nguyên cho biến thực</b>: giá trị không đổi.</li>
+        <li>Phép toán <b>hai số nguyên</b>: phần thập phân của phép chia bị bỏ, <b>kể cả khi gán cho biến thực</b>.</li>
+        <li>Phép toán giữa <b>int và float</b>: kết quả là <b>float</b>.</li>
+        <li>Nên <b>tránh</b> chuyển đổi tự động, nhất là từ kiểu "cao" xuống "thấp" (float xuống int).</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">int x = 0;
+float f = 12.125;
+x = f;             <span class="c-num">// x = 12</span>
+
+int a = 10, b = 3;
+float z = a / b;   <span class="c-num">// z = 3.0</span>
+
+float y = 3.0;
+float z2 = a / y;  <span class="c-num">// z2 = 3.3333</span></pre>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🎯 Toán tử ép kiểu (cast)</h4>
+      <ul>
+        <li>Chuyển kiểu <b>tường minh</b> (explicit) để chỉ rõ kiểu mong muốn.</li>
+        <li><b>Cú pháp:</b> <code>&lt;biến&gt; = (&lt;kiểu dữ liệu&gt;) &lt;biểu thức&gt;;</code></li>
+        <li>Biểu thức có thể là hằng số, biến hoặc biểu thức chứa dữ liệu cần ép kiểu.</li>
+        <li>Cast có độ ưu tiên <b>cao hơn</b> các toán tử số học (trừ <code>++</code> và <code>--</code>).</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">double a = 15.65653;
+float  b = 9.02;
+int c;
+c = (int) a;       <span class="c-num">// c = 15</span>
+c = (int) a + b;   <span class="c-num">// c = 24</span></pre>
+      <p style="margin-top:6px;">Dòng cuối: <code>(int) a</code> = 15, cộng <code>b</code> được 24.02, gán cho <code>int c</code> thì còn <b>24</b>.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📏 Toán tử sizeof</h4>
+      <ul>
+        <li>Cho biết một kiểu dữ liệu chiếm <b>bao nhiêu byte</b> trong bộ nhớ. <code>sizeof</code> là từ khóa đặc biệt của C.</li>
+        <li><b>Cú pháp:</b> <code>sizeof(&lt;kiểu dữ liệu&gt;)</code></li>
+        <li>Tham số có thể là: biến, mảng, kiểu cơ bản, kiểu tự định nghĩa, hoặc biểu thức.</li>
+        <li>Là <b>toán tử, không phải hàm</b>. Được tính lúc <b>biên dịch</b> (trừ mảng có độ dài thay đổi thì tính lúc chạy).</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">printf("%zu", sizeof(int));   <span class="c-num">// 4 (thường gặp)</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>❓ Toán tử điều kiện ? :</h4>
+      <ul>
+        <li><b>Cú pháp:</b> <code>&lt;biến&gt; = &lt;biểu thức 1&gt; ? &lt;biểu thức 2&gt; : &lt;biểu thức 3&gt;;</code></li>
+        <li>Tính biểu thức 1 trước. <b>True</b> thì tính biểu thức 2 và gán cho biến; <b>False</b> thì tính biểu thức 3 và gán.</li>
+        <li>Chú ý vị trí của dấu <b>hai chấm</b>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">int m = (a &gt; b) ? a : b;   <span class="c-num">// m là số lớn hơn</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Tránh chuyển kiểu tự động, hãy dùng <b>cast</b> <code>(kiểu) biểu_thức</code>. <b>Chia hai số nguyên</b> ra số nguyên: muốn ra số thực thì ép một toán hạng sang số thực. <code>sizeof</code> cho biết số byte, <code>? :</code> là "if / else" gọn trong một biểu thức.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Slide nói "<code>*a</code> sẽ trỏ tới một biến a" về toán tử con trỏ <code>*</code>: chính xác hơn, nếu <code>p</code> là con trỏ thì <code>*p</code> là <b>giá trị mà p đang trỏ tới</b>, còn <code>&amp;a</code> là <b>địa chỉ</b> của a (sẽ học ở phần con trỏ). (2) Để ra số thực khi chia hai số nguyên, viết <code>(float) a / b</code>.</div>
+</div>
+
+<!-- ========== P2 TOPIC 5 ========== -->
+<div class="topic k5" id="p2-t5-uu-tien">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Mức độ ưu tiên của các toán tử</h3><div class="sub">Thứ tự tính toán · tính kết hợp · bảng ưu tiên</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📌 Độ ưu tiên (precedence)</h4>
+      <ul>
+        <li>Xác định <b>nhóm các số hạng</b> trong biểu thức và <b>thứ tự tính</b> khi hai toán tử dùng chung một toán hạng.</li>
+        <li>Toán tử ưu tiên <b>cao hơn</b> thì được tính trước. Ví dụ <code>*</code> ưu tiên hơn <code>+</code>.</li>
+        <li>Thứ tự tính khác nhau cho kết quả khác nhau, nên C cần quy tắc rõ ràng.</li>
+        <li>Bất cứ thứ gì trong <b>dấu ngoặc đơn <code>( )</code></b> được tính <b>đầu tiên</b>, vì vậy nên luôn dùng <code>()</code> để nhóm các toán hạng.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">int x = 7 + 3 * 2;   <span class="c-num">// x = 13, không phải 20</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>↔️ Tính kết hợp (associativity)</h4>
+      <ul>
+        <li>Khi hai toán tử có <b>cùng mức ưu tiên</b>, quy tắc kết hợp được áp dụng: tính theo <b>thứ tự xuất hiện</b> trong câu lệnh.</li>
+        <li>Hầu hết là <b>từ trái sang phải</b>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">1 == 2 != 3    <span class="c-num">// cùng mức: trái → phải</span>
+(1 == 2) != 3  <span class="c-num">// = 0 != 3 → kết quả 1 (true)</span></pre>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Mức (cao → thấp)</th><th>Loại</th><th>Toán tử</th><th>Kết hợp</th></tr>
+    <tr><td>1</td><td>Hậu tố (postfix)</td><td><code>( ) [ ] -&gt; . ++ --</code></td><td>Trái → phải</td></tr>
+    <tr><td>2</td><td>Một ngôi (unary)</td><td><code>+ - ! ~ ++ -- (type) * &amp; sizeof</code></td><td>Phải → trái</td></tr>
+    <tr><td>3</td><td>Nhân, chia</td><td><code>* / %</code></td><td>Trái → phải</td></tr>
+    <tr><td>4</td><td>Cộng, trừ</td><td><code>+ -</code></td><td>Trái → phải</td></tr>
+    <tr><td>5</td><td>Dịch bit</td><td><code>&lt;&lt; &gt;&gt;</code></td><td>Trái → phải</td></tr>
+    <tr><td>6</td><td>Quan hệ</td><td><code>&lt; &lt;= &gt; &gt;=</code></td><td>Trái → phải</td></tr>
+    <tr><td>7</td><td>Cân bằng</td><td><code>== !=</code></td><td>Trái → phải</td></tr>
+    <tr><td>8</td><td>AND bit</td><td><code>&amp;</code></td><td>Trái → phải</td></tr>
+    <tr><td>9</td><td>XOR bit</td><td><code>^</code></td><td>Trái → phải</td></tr>
+    <tr><td>10</td><td>OR bit</td><td><code>|</code></td><td>Trái → phải</td></tr>
+    <tr><td>11</td><td>AND logic</td><td><code>&amp;&amp;</code></td><td>Trái → phải</td></tr>
+    <tr><td>12</td><td>OR logic</td><td><code>||</code></td><td>Trái → phải</td></tr>
+    <tr><td>13</td><td>Điều kiện</td><td><code>? :</code></td><td>Phải → trái</td></tr>
+    <tr><td>14</td><td>Gán</td><td><code>= += -= *= /= %= &gt;&gt;= &lt;&lt;= &amp;= ^= |=</code></td><td>Phải → trái</td></tr>
+    <tr><td>15</td><td>Dấu phẩy</td><td><code>,</code></td><td>Trái → phải</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Nhân chia trước, cộng trừ sau</b>; so sánh trước AND / OR logic; <b>gán gần như cuối cùng</b>. Hai toán tử cùng mức thì tính <b>trái sang phải</b> (trừ một ngôi, điều kiện, gán). Chưa chắc thì <b>dùng dấu ngoặc ( )</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Slide ghi các toán tử gán thành "<code>%=&gt;&gt;=</code>" (dính liền), đúng là hai toán tử <code>%=</code> và <code>&gt;&gt;=</code>. Đánh số mức 1 đến 15 là do mình thêm cho dễ nhìn, slide chỉ liệt kê từ trên xuống dưới.</div>
+</div>
+
+<!-- ========== P2 TOPIC 6 ========== -->
+<div class="topic k1" id="p2-t6-debug">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Gỡ lỗi (Debug)</h3><div class="sub">Bug là gì · debug để làm gì · vì sao quan trọng</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🐞 Bug và Debug</h4>
+      <ul>
+        <li><b>Bug</b> là các <b>lỗi logic</b> xảy ra trong chương trình, hoặc bất kỳ vấn đề nào làm chương trình <b>không chạy được</b> hay <b>chạy sai</b>.</li>
+        <li><b>Gỡ lỗi (debug)</b> là quá trình <b>tìm ra lỗi</b> và nguyên nhân gây lỗi (bug ở đâu) để có hướng sửa (<b>fix bug</b>).</li>
+        <li>Khi lỗi xảy ra, lập trình viên phải debug thì chương trình mới chạy tốt.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🎯 Mục đích của debug</h4>
+      <ul>
+        <li>Không chỉ <b>loại bỏ lỗi</b> khỏi chương trình.</li>
+        <li>Quan trọng hơn là giúp lập trình viên <b>hiểu rõ hơn sự thực thi</b> của chương trình (chạy từng bước, giá trị biến thay đổi thế nào).</li>
+        <li>Lập trình viên không biết gỡ lỗi hiệu quả thì giống như <b>bị mù</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Bug</b> = lỗi làm chương trình chạy sai hoặc không chạy; <b>debug</b> = tìm nguyên nhân để <b>sửa</b>. Debug giúp bạn vừa sửa lỗi vừa <b>hiểu chương trình chạy ra sao</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Các IDE như Code::Blocks có sẵn <b>debugger</b> (dùng trình gỡ lỗi <b>gdb</b> đã nhắc ở Phần 1) cho phép dừng chương trình tại một dòng và xem giá trị biến. Nội dung slide chỉ nêu khái niệm, chưa có các bước thao tác chi tiết.</div>
+</div>
+
+</section>
+</div><!-- /part-page 2 -->
+
 <footer>
   <div class="foot-grid">
     <div onclick="setPart('1')">
-      <h4>👉 Phần 1 · Tổng quan lập trình C</h4>
+      <h4>👉 Phần 1 · Tổng quan & biến, kiểu dữ liệu</h4>
       <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf → Bộ nhớ RAM & biến → Khai báo & đặt tên → Kiểu số → bool & enum → char & ký tự thoát → Định dạng printf</p>
+    </div>
+    <div onclick="setPart('2')">
+      <h4>👉 Phần 2 · Bài 5: Toán tử</h4>
+      <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof, ? : → Độ ưu tiên → Gỡ lỗi</p>
     </div>
     <div class="soon">
       <h4>⏳ Các Phần tiếp theo</h4>
@@ -1363,6 +1761,15 @@ printf("boolVar = %i\n",     boolVar);       <span class="c-num">// boolVar = 0<
 </footer>
 
 <script>
+/* Nút "↑ Bản đồ" ở đầu mỗi chủ đề, dẫn về mind map của nhóm chủ đề đó */
+document.querySelectorAll('section[data-map]').forEach(function(sec){
+  var map = sec.getAttribute('data-map');
+  sec.querySelectorAll('.topic-head').forEach(function(h){
+    var a = document.createElement('a');
+    a.className = 'back-map'; a.href = '#' + map; a.textContent = '↑ Bản đồ';
+    h.appendChild(a);
+  });
+});
 function setPart(n){
   n = String(n);
   document.querySelectorAll('[data-part]').forEach(function(el){
