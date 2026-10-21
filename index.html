@@ -130,6 +130,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
   </div>
   <div class="nav-links" data-part="2">
     <a href="#mindmap2">🗺️ Bài 5 · Toán tử</a>
+    <a href="#mindmap2b">🗺️ Điều kiện & vòng lặp</a>
   </div>
 </nav>
 
@@ -1370,11 +1371,12 @@ int m = (x &gt; y) ? x : y; // 13</pre>
     <div class="mindmap" style="min-height:760px;">
       <svg viewBox="0 0 940 760" preserveAspectRatio="none">
         <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
-        <line x1="470" y1="380" x2="796" y2="232" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
-        <line x1="470" y1="380" x2="796" y2="528" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
-        <line x1="470" y1="380" x2="470" y2="676" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
-        <line x1="470" y1="380" x2="144" y2="528" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
-        <line x1="470" y1="380" x2="144" y2="232" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="764" y2="195" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="837" y2="446" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="633" y2="647" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="307" y2="647" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="103" y2="446" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="176" y2="195" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
       </svg>
 
       <div class="mm-center">PHẦN 2<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Bài 5 · Toán tử</span></div>
@@ -1384,30 +1386,35 @@ int m = (x &gt; y) ? x : y; // 13</pre>
         <div class="title">Toán tử & câu lệnh</div>
         <div class="desc">Biểu thức, câu lệnh, khối lệnh</div>
       </a>
-      <a href="#p2-t2-co-ban" class="mm-node" style="left:75.1%;top:26.2%;">
+      <a href="#p2-t2-co-ban" class="mm-node" style="left:71.8%;top:21.4%;">
         <span class="num" style="background:#e45f2b;color:#fff;">2</span>
         <div class="title">Toán tử cơ bản</div>
         <div class="desc">Số học, so sánh, logic, gán</div>
       </a>
-      <a href="#p2-t3-bitwise" class="mm-node" style="left:75.1%;top:65.2%;">
+      <a href="#p2-t3-bitwise" class="mm-node" style="left:79.5%;top:54.4%;">
         <span class="num" style="background:#a0e548;">3</span>
         <div class="title">Nhị phân & bitwise</div>
         <div class="desc">&amp; | ^ ~ &lt;&lt; &gt;&gt;</div>
       </a>
-      <a href="#p2-t4-ep-kieu" class="mm-node" style="left:40.5%;top:84.8%;">
+      <a href="#p2-t4-ep-kieu" class="mm-node" style="left:57.9%;top:80.9%;">
         <span class="num" style="background:#72fa93;">4</span>
         <div class="title">Ép kiểu, sizeof, ? :</div>
         <div class="desc">(int), sizeof, điều kiện</div>
       </a>
-      <a href="#p2-t5-uu-tien" class="mm-node" style="left:5.9%;top:65.3%;">
+      <a href="#p2-t5-uu-tien" class="mm-node" style="left:23.1%;top:80.9%;">
         <span class="num" style="background:#9ac1f0;">5</span>
         <div class="title">Độ ưu tiên</div>
         <div class="desc">Bảng ưu tiên, kết hợp</div>
       </a>
-      <a href="#p2-t6-debug" class="mm-node" style="left:5.9%;top:26.2%;">
+      <a href="#p2-t6-debug" class="mm-node" style="left:1.5%;top:54.4%;">
         <span class="num" style="background:#f6c445;">6</span>
         <div class="title">Gỡ lỗi (Debug)</div>
         <div class="desc">Bug, debug, mục đích</div>
+      </a>
+      <a href="#p2-t7-tinh-nhanh" class="mm-node" style="left:9.2%;top:21.4%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">7</span>
+        <div class="title">Cách tính nhanh</div>
+        <div class="desc">Đổi nhị phân, dịch bit, %</div>
       </a>
     </div>
   </div>
@@ -1740,7 +1747,721 @@ c = (int) a + b;   <span class="c-num">// c = 24</span></pre>
   <div class="example-box blue"><b>🔎 Lưu ý:</b> Các IDE như Code::Blocks có sẵn <b>debugger</b> (dùng trình gỡ lỗi <b>gdb</b> đã nhắc ở Phần 1) cho phép dừng chương trình tại một dòng và xem giá trị biến. Nội dung slide chỉ nêu khái niệm, chưa có các bước thao tác chi tiết.</div>
 </div>
 
+<!-- ========== P2 TOPIC 7 ========== -->
+<div class="topic k2" id="p2-t7-tinh-nhanh">
+  <div class="topic-head">
+    <div class="topic-num">7</div>
+    <div><h3>Cách tính nhanh với nhị phân và bitwise</h3><div class="sub">Đổi hệ số · dịch bit · NOT · chia lấy dư · tăng giảm trước / sau</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔢 Đổi số nguyên sang nhị phân</h4>
+      <p><b>Chia liên tiếp cho 2</b>, ghi phần dư, rồi <b>đọc các phần dư từ dưới lên</b>.</p>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Phép chia</th><th>Thương</th><th>Dư</th></tr>
+        <tr><td>8 / 2</td><td>4</td><td>0</td></tr>
+        <tr><td>4 / 2</td><td>2</td><td>0</td></tr>
+        <tr><td>2 / 2</td><td>1</td><td>0</td></tr>
+        <tr><td>1 / 2</td><td>0</td><td>1</td></tr>
+      </table>
+      <p>Đọc dư từ dưới lên: <b>1000</b>, vậy 8 là <code>1000</code> trong hệ nhị phân.</p>
+    </div>
+    <div class="info-card">
+      <h4>🔁 Đổi nhị phân sang số nguyên</h4>
+      <p>Đọc vị trí <b>từ phải sang trái</b> (2<sup>0</sup>, 2<sup>1</sup>, 2<sup>2</sup>...), bit nào là <b>0 thì bỏ</b> (cho kết quả 0), bit là 1 thì cộng lũy thừa 2 của vị trí đó.</p>
+<pre class="code" style="margin:6px 0 0;">101100  (vị trí 5 4 3 2 1 0)
+= 2^5 + 2^3 + 2^2
+= 32 + 8 + 4 = <b>44</b></pre>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Phép</th><th>Công thức tính nhanh</th><th>Ví dụ</th></tr>
+    <tr><td><b>Dịch trái</b> <code>a &lt;&lt; n</code></td><td><b>a × 2<sup>n</sup></b> (với số nguyên không âm và không bị tràn)</td><td><code>5 &lt;&lt; 1</code> = 5 × 2<sup>1</sup> = <b>10</b></td></tr>
+    <tr><td><b>Dịch phải</b> <code>a &gt;&gt; n</code></td><td><b>a / 2<sup>n</sup></b> (lấy phần nguyên)</td><td><code>8 &gt;&gt; 1</code> = 8 / 2<sup>1</sup> = <b>4</b></td></tr>
+    <tr><td><b>AND</b> <code>&amp;</code></td><td>Hai bit cùng bằng 1 thì kết quả bằng 1</td><td><code>12 &amp; 10</code> = 1100 &amp; 1010 = 1000 = <b>8</b></td></tr>
+    <tr><td><b>OR</b> <code>|</code></td><td>Chỉ cần một bit bằng 1 thì kết quả bằng 1</td><td><code>12 | 10</code> = 1110 = <b>14</b></td></tr>
+    <tr><td><b>XOR</b> <code>^</code></td><td>Hai bit khác nhau thì kết quả bằng 1</td><td><code>12 ^ 10</code> = 0110 = <b>6</b></td></tr>
+    <tr><td><b>NOT</b> <code>~</code></td><td><b>~a = -a - 1</b></td><td><code>~60</code> = -60 - 1 = <b>-61</b></td></tr>
+    <tr><td><b>Chia lấy dư</b> <code>a % b</code></td><td>Phần dư của phép chia a cho b</td><td><code>26 % 3</code>: 26 / 3 = 8, 3 × 8 = 24, 26 - 24 = <b>2</b></td></tr>
+    <tr><td><b>Dịch rồi gán</b></td><td><code>a &lt;&lt;= n</code>: dịch trái rồi gán lại cho a. <code>a &gt;&gt;= n</code>: dịch phải rồi gán lại cho a</td><td><code>a = 5; a &lt;&lt;= 1;</code> thì a = 10</td></tr>
+    <tr><td><b>Tăng 1</b></td><td><code>a++</code>: tăng a lên 1 nhưng <b>giá trị biểu thức là giá trị trước khi tăng</b>. <code>++a</code>: tăng a lên 1 và giá trị biểu thức là <b>sau khi tăng</b></td><td><code>a = 5; r = a++;</code> thì r = 5, a = 6. <code>r = ++a;</code> thì r = 6, a = 6</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Dịch trái n bit = nhân 2<sup>n</sup></b>, <b>dịch phải n bit = chia 2<sup>n</sup></b>. <b>~a = -a - 1</b>. <b>a++</b> dùng giá trị <b>cũ</b> rồi mới tăng, <b>++a</b> tăng <b>rồi</b> mới dùng giá trị.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) Bảng đổi 8 sang nhị phân trong slide ở dòng cuối ghi thương là 2, phải là <b>0</b> (1 / 2 = 0 dư 1). (2) Ví dụ đổi <code>101100</code> sang số nguyên trong slide viết biểu thức <code>2^0 + 2^1 + 2^3 + 2^4 + 2^5 + 2^6</code> không khớp với số này. Cách làm đúng cho ra <b>44</b> như bảng trên (các bit 1 ở vị trí 2, 3, 5). (3) Công thức dịch bit chỉ đúng khi <b>không bị tràn</b> giới hạn của kiểu dữ liệu.</div>
+</div>
+
 </section>
+
+<!-- ======================= PHẦN 2 (tiếp): ĐIỀU KIỆN & VÒNG LẶP ======================= -->
+<hr style="border:none;border-top:2px dashed var(--line);margin:44px 0 0;">
+
+<div class="hero" id="dk-top">
+  <div>
+    <span class="eyebrow">🔀 Phần 2 · Tiếp theo · Tóm tắt & ghi nhớ</span>
+    <h1>Cấu trúc <span class="accent">điều kiện & vòng lặp</span></h1>
+    <p>Cách chương trình chọn nhánh để chạy và lặp lại một đoạn lệnh: <code>if</code>, <code>else</code>, <code>else if</code>, toán tử <code>? :</code>, <code>switch</code>, <code>goto</code>, các vòng lặp <code>for</code>, <code>while</code>, <code>do while</code>, vòng lặp lồng nhau, <code>break</code> và <code>continue</code>.</p>
+    <div class="hero-tags">
+      <span class="tag t1">if · else</span>
+      <span class="tag t2">? :</span>
+      <span class="tag t3">switch</span>
+      <span class="tag t4">goto</span>
+      <span class="tag t5">for</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">if (diem &gt;= 50) printf("Dat");
+else printf("Truot");
+for (int i = 1; i &lt;= 5; i++)
+    printf("%d ", i);</pre>
+  </div>
+</div>
+
+<section id="mindmap2b" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 2 · Điều kiện & vòng lặp</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:760px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="764" y2="195" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="837" y2="446" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="633" y2="647" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="307" y2="647" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="103" y2="446" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="176" y2="195" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 2<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Điều kiện & vòng lặp</span></div>
+
+      <a href="#p2b-t1-if" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">if / else / else if</div>
+        <div class="desc">Điều kiện, lồng nhau</div>
+      </a>
+      <a href="#p2b-t2-ba-ngoi" class="mm-node" style="left:71.8%;top:21.4%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Toán tử ? :</div>
+        <div class="desc">Điều kiện 3 ngôi</div>
+      </a>
+      <a href="#p2b-t3-switch" class="mm-node" style="left:79.5%;top:54.4%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">switch</div>
+        <div class="desc">case, break, default</div>
+      </a>
+      <a href="#p2b-t4-goto" class="mm-node" style="left:57.9%;top:80.9%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">goto</div>
+        <div class="desc">Nhảy tới label</div>
+      </a>
+      <a href="#p2b-t5-for" class="mm-node" style="left:23.1%;top:80.9%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">Vòng lặp for</div>
+        <div class="desc">3 biểu thức điều khiển</div>
+      </a>
+      <a href="#p2b-t6-while" class="mm-node" style="left:1.5%;top:54.4%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">while & do-while</div>
+        <div class="desc">Kiểm tra trước / sau</div>
+      </a>
+      <a href="#p2b-t7-lap-long" class="mm-node" style="left:9.2%;top:21.4%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">7</span>
+        <div class="title">Lồng, break, continue</div>
+        <div class="desc">Điều khiển vòng lặp</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-2b" data-map="mindmap2b" style="padding-top:6px;">
+
+<!-- ========== P2B TOPIC 1 ========== -->
+<div class="topic k1" id="p2b-t1-if">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Câu lệnh if, if else, else if và if lồng nhau</h3><div class="sub">Chọn nhánh chạy dựa trên điều kiện đúng hoặc sai</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>1️⃣ Câu lệnh if</h4>
+      <ul>
+        <li>Kiểm tra một biểu thức có <b>thỏa điều kiện</b> hay không. Thỏa thì <b>thực thi</b> các câu lệnh trong khối <code>if</code>, không thỏa thì <b>bỏ qua</b>.</li>
+        <li>Điều kiện là biểu thức có giá trị <b>true</b> (khác 0) hoặc <b>false</b> (bằng 0).</li>
+        <li>Muốn thực hiện một <b>nhóm câu lệnh</b> thì phải đặt trong cặp <code>{ }</code>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">if (biểu_thức)
+    câu_lệnh;
+
+if (biểu_thức) {
+    câu_lệnh_1;
+    câu_lệnh_2;
+}</pre>
+      <p style="margin-top:6px;">Ví dụ lời nói: "Nếu trời không mưa, thì tôi sẽ đi bơi" viết thành <code>if (trời không mưa) đi bơi;</code></p>
+    </div>
+    <div class="info-card">
+      <h4>2️⃣ Câu lệnh if else</h4>
+      <ul>
+        <li>Thêm nhánh <b>else</b> để xử lý khi điều kiện <b>sai</b>. Chương trình chọn <b>một trong hai</b> nhánh, rồi chạy tiếp lệnh phía sau.</li>
+        <li>Ví dụ lời nói: nếu cơn mưa hôm nay tệ hơn hôm qua thì lấy ô, ngược lại thì lấy áo khoác. Sau đó đi làm.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">if (biểu_thức)
+    câu_lệnh_1;
+else
+    câu_lệnh_2;</pre>
+    </div>
+  </div>
+
+  <div class="fc-grid">
+    <div class="fc-box">
+      <h4>Lưu đồ của if else</h4>
+      <svg viewBox="0 0 360 310" role="img" aria-label="Lưu đồ cấu trúc if else">
+        <defs><marker id="arIf" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22241d"/></marker></defs>
+        <line class="fc-line" x1="180" y1="6" x2="180" y2="34" marker-end="url(#arIf)"/>
+        <polygon class="fc-shape fc-d" points="180,36 262,76 180,116 98,76"/>
+        <text class="fc-text" x="180" y="73">Biểu thức</text><text class="fc-text" x="180" y="88">điều kiện</text>
+        <path class="fc-line" d="M98 76 H52 V152" marker-end="url(#arIf)"/><text class="fc-lbl" x="74" y="68" style="text-anchor:middle">Sai</text>
+        <path class="fc-line" d="M262 76 H308 V152" marker-end="url(#arIf)"/><text class="fc-lbl" x="286" y="68" style="text-anchor:middle">Đúng</text>
+        <rect class="fc-shape" x="8" y="154" width="88" height="36"/><text class="fc-text" x="52" y="177">Khối lệnh 2</text>
+        <rect class="fc-shape" x="264" y="154" width="88" height="36"/><text class="fc-text" x="308" y="177">Khối lệnh 1</text>
+        <path class="fc-line" d="M52 190 V226 H180"/>
+        <path class="fc-line" d="M308 190 V226 H180"/>
+        <line class="fc-line" x1="180" y1="226" x2="180" y2="250" marker-end="url(#arIf)"/>
+        <rect class="fc-shape fc-t" x="120" y="252" width="120" height="36" rx="8"/><text class="fc-text" x="180" y="275">Lệnh kế tiếp</text>
+      </svg>
+    </div>
+    <div class="info-card">
+      <h4>3️⃣ Câu lệnh else if</h4>
+      <ul>
+        <li>Xử lý quyết định phức tạp hơn bằng cách <b>thêm một if vào mệnh đề else</b>. Mở rộng logic từ <b>2 giá trị thành 3 giá trị</b> (hoặc nhiều hơn).</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">if (biểu_thức_1)
+    câu_lệnh_1;
+else if (biểu_thức_2)
+    câu_lệnh_2;
+else
+    câu_lệnh_3;</pre>
+      <h4 style="margin-top:12px;">4️⃣ if lồng nhau</h4>
+      <ul>
+        <li>Dùng một <code>if</code> hoặc <code>else if</code> <b>bên trong</b> một hoặc nhiều <code>if</code> / <code>else if</code> khác.</li>
+        <li>Nên dùng các cặp <code>{ }</code> để tránh nhầm lẫn về logic.</li>
+      </ul>
+    </div>
+  </div>
+
+<pre class="code">if (biểu_thức_boolean_1) {
+    <span class="c-num">/* thực thi khi biểu thức 1 là true */</span>
+    if (biểu_thức_boolean_2) {
+        <span class="c-num">/* thực thi khi cả hai biểu thức đều true */</span>
+    }
+}</pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Ví dụ else if: xếp loại điểm</h4>
+<pre class="code" style="margin:6px 0 0;">if (diem &gt;= 90) {
+    printf("Xuat sac\n");
+} else if (diem &gt;= 80) {
+    printf("Gioi\n");
+} else if (diem &gt;= 50) {
+    printf("Dat\n");
+} else {
+    printf("Khong dat\n");
+}</pre>
+    </div>
+    <div class="info-card">
+      <h4>Kết quả theo điểm nhập</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>diem</th><th>In ra</th></tr>
+        <tr><td>95, 90</td><td>Xuat sac</td></tr>
+        <tr><td>85</td><td>Gioi</td></tr>
+        <tr><td>50</td><td>Dat</td></tr>
+        <tr><td>49</td><td>Khong dat</td></tr>
+      </table>
+      <p>Các điều kiện kiểm tra <b>từ trên xuống</b>, gặp điều kiện đúng đầu tiên thì làm nhánh đó rồi bỏ qua các nhánh còn lại.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>if</b> = đúng thì làm; <b>if else</b> = chọn 1 trong 2; <b>else if</b> = chọn 1 trong nhiều. <b>Khối lệnh <code>{ }</code> không có dấu <code>;</code> sau dấu <code>}</code></b>. Khối chỉ có một câu lệnh thì có thể bỏ cặp <code>{ }</code>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Viết <code>if (x = 0)</code> là phép <b>gán</b>, không phải so sánh; so sánh bằng phải dùng <code>==</code>. (2) Viết <code>if (x &gt; 5);</code> (thêm <code>;</code>) làm nhánh đúng trở thành câu lệnh rỗng. (3) Với chuỗi <code>else if</code>, đặt điều kiện <b>hẹp trước, rộng sau</b> (ví dụ <code>&gt;= 90</code> đứng trước <code>&gt;= 50</code>).</div>
+</div>
+
+<!-- ========== P2B TOPIC 2 ========== -->
+<div class="topic k2" id="p2b-t2-ba-ngoi">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Toán tử điều kiện ? : (toán tử 3 ngôi)</h3><div class="sub">Viết gọn một if else đơn giản trong một biểu thức</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>3️⃣ Toán tử 3 ngôi</h4>
+      <ul>
+        <li>Hầu hết toán tử trong C là <b>1 ngôi</b> hoặc <b>2 ngôi</b>. Toán tử điều kiện là toán tử <b>3 ngôi</b> (xử lý 3 toán hạng).</li>
+        <li>Dùng hai ký hiệu <b>?</b> và <b>:</b>
+          <ul>
+            <li>Toán hạng đầu nằm <b>trước ?</b> (điều kiện).</li>
+            <li>Toán hạng thứ 2 nằm <b>giữa ? và :</b></li>
+            <li>Toán hạng thứ 3 nằm <b>sau :</b></li>
+          </ul>
+        </li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">condition ? expression1 : expression2</pre>
+    </div>
+    <div class="info-card">
+      <h4>⚙️ Cách hoạt động</h4>
+      <ul>
+        <li>Ký tự <b>?</b> kiểm tra một biểu thức logic (điều kiện).</li>
+        <li>Bên phải <b>?</b> là hai toán hạng đại diện cho hai lựa chọn.</li>
+        <li><b>Điều kiện true</b> thì giá trị là <b>biểu thức 1</b>; <b>false</b> thì giá trị là <b>biểu thức 2</b>.</li>
+        <li>Chú ý thứ tự thực hiện các toán tử liên quan đến các toán hạng.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+<pre class="code" style="margin:0;">x = y &gt; 7 ? 25 : 50;</pre>
+      <p style="margin-top:6px;">x là <b>25</b> nếu <code>y &gt; 7</code>, ngược lại x là <b>50</b>. (Mình thử với y = 9 ra 25, y = 3 ra 50.)</p>
+    </div>
+    <div class="info-card">
+      <p>Câu lệnh trên tương đương với:</p>
+<pre class="code" style="margin:6px 0 0;">if (y &gt; 7)
+    x = 25;
+else
+    x = 50;</pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>điều_kiện ? giá_trị_nếu_đúng : giá_trị_nếu_sai</code>. Một <b>if else đơn giản</b> có thể viết gọn bằng toán tử này, và kết quả của nó là một <b>giá trị</b> có thể gán cho biến.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Toán tử <code>? :</code> có độ ưu tiên thấp (chỉ cao hơn phép gán và dấu phẩy), nên khi biểu thức phức tạp hãy dùng <b>dấu ngoặc ( )</b>. Dùng cho trường hợp đơn giản; nhiều nhánh lồng nhau sẽ khó đọc hơn <code>if else</code>.</div>
+</div>
+
+<!-- ========== P2B TOPIC 3 ========== -->
+<div class="topic k3" id="p2b-t3-switch">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>Câu lệnh switch</h3><div class="sub">Chọn 1 trong nhiều trường hợp theo giá trị của một biểu thức</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🎛️ Khi nào dùng switch?</h4>
+      <ul>
+        <li>Khi phải chọn <b>1 trong nhiều quyết định</b>, viết bằng <code>if else if ... else</code> thì tẻ nhạt và dễ sai.</li>
+        <li>Khi giá trị của <b>một biến</b> được so sánh liên tiếp với nhiều giá trị khác nhau thì <b>switch</b> thuận tiện và hiệu quả hơn.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">switch (biểu_thức) {
+    case value1:
+        câu_lệnh;
+        break;
+    case value2:
+        câu_lệnh;
+        break;
+    default:
+        câu_lệnh;
+        break;
+}</pre>
+    </div>
+    <div class="info-card">
+      <h4>📏 Quy tắc</h4>
+      <ul>
+        <li>Biểu thức trong <code>( )</code> được so sánh lần lượt với <code>value1, value2, ..., valuen</code>.</li>
+        <li>Các giá trị <code>value</code> phải là <b>hằng số</b> hoặc biểu thức hằng.</li>
+        <li>Tìm thấy giá trị bằng biểu thức thì <b>thực thi các lệnh của case đó</b>. Nhiều lệnh <b>không cần</b> đặt trong dấu ngoặc.</li>
+        <li><b>break</b> báo hiệu kết thúc một trường hợp và <b>thoát khỏi switch</b>. Nên <b>luôn có break</b> ở cuối mỗi case.</li>
+        <li>Quên <code>break</code> thì chương trình <b>chạy tiếp sang case kế tiếp</b>.</li>
+        <li><b>default</b> chạy khi <b>không có giá trị nào khớp</b> (không bắt buộc).</li>
+      </ul>
+    </div>
+  </div>
+
+<pre class="code">enum Weekday {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday};
+enum Weekday today = Monday;
+
+switch (today) {
+    case Sunday:
+        printf("Today is Sunday.");
+        break;
+    case Monday:
+        printf("Today is Monday.");    <span class="c-num">// in ra dòng này</span>
+        break;
+    case Tuesday:
+        printf("Today is Tuesday.");
+        break;
+    default:
+        printf("whatever");
+        break;
+}</pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>⚠️ Quên break (chạy tràn xuống case sau)</h4>
+<pre class="code" style="margin:6px 0 0;">int k = 1;
+switch (k) {
+    case 1: printf("one ");   <span class="c-num">// không có break</span>
+    case 2: printf("two ");
+            break;
+    case 3: printf("three ");
+}
+<span class="c-num">// in ra: one two</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>🆚 switch và if else if</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th></th><th>switch</th><th>if else if</th></tr>
+        <tr><td><b>So sánh</b></td><td>Một biểu thức với nhiều <b>hằng số</b></td><td>Điều kiện bất kỳ (<code>&gt;</code>, <code>&lt;</code>, <code>&amp;&amp;</code>...)</td></tr>
+        <tr><td><b>Khi dùng</b></td><td>Nhiều trường hợp cụ thể</td><td>Khoảng giá trị, điều kiện phức tạp</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>switch (biểu_thức)</b> + <b>case giá_trị:</b> + <b>break;</b> + <b>default:</b>. Quên <b>break</b> là lỗi kinh điển, chương trình sẽ chạy luôn các case phía dưới.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Biểu thức của <code>switch</code> phải có kiểu <b>số nguyên</b> (<code>int</code>, <code>char</code>, <code>enum</code>), không dùng số thực hay chuỗi. Hai <code>case</code> trong cùng một <code>switch</code> không được trùng giá trị. Khi cần so sánh khoảng (như điểm từ 80 đến 89) thì dùng <code>if else if</code>.</div>
+</div>
+
+<!-- ========== P2B TOPIC 4 ========== -->
+<div class="topic k4" id="p2b-t4-goto">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Câu lệnh goto</h3><div class="sub">Nhảy tới một vị trí có đặt nhãn (label)</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>↪️ goto và label</h4>
+      <ul>
+        <li>C có sẵn câu lệnh <b>goto</b>.</li>
+        <li>Câu lệnh gồm <b>2 phần</b>: từ khóa <code>goto</code> và <b>tên label</b>.</li>
+        <li>Label đặt tên theo <b>cùng quy ước đặt tên biến</b>.</li>
+        <li>Để <code>goto part2;</code> chạy được thì phải có một câu lệnh khác chứa label <code>part2</code> (viết <code>part2:</code>).</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">goto part2;
+...
+part2:
+    câu_lệnh;</pre>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Ví dụ (từ slide và ví dụ đếm)</h4>
+<pre class="code" style="margin:0;">top: ch = getchar();
+...
+if (ch != 'y')
+    goto top;      <span class="c-num">// quay lại label top</span>
+
+int cnt = 0;
+top2:
+    cnt++;
+    if (cnt &lt; 3) goto top2;
+<span class="c-num">// cnt = 3</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>goto tên_label;</code> nhảy đến chỗ có <code>tên_label:</code>. Label đặt tên giống tên biến.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Nên <b>hạn chế dùng goto</b> vì lệnh nhảy làm chương trình khó đọc, khó gỡ lỗi. Việc lặp lại thường viết bằng vòng lặp (như <code>for</code>) rõ ràng hơn. Ở ví dụ đếm trên mình dùng tên label <code>top2</code> chỉ để không trùng với <code>top</code> của ví dụ đầu.</div>
+</div>
+
+<!-- ========== P2B TOPIC 5 ========== -->
+<div class="topic k5" id="p2b-t5-for">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Cấu trúc vòng lặp for</h3><div class="sub">Lặp lại một khối lệnh theo số lần hoặc theo điều kiện</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔁 Vòng lặp là gì?</h4>
+      <ul>
+        <li>C có cấu trúc đặc biệt để xử lý khi cần <b>lặp đi lặp lại</b> cùng một đoạn mã.</li>
+        <li>Có thể lặp một khối câu lệnh <b>cho đến khi thỏa một điều kiện</b> hoặc <b>một số lần cụ thể</b>.</li>
+        <li>Lặp mà <b>không có điều kiện kết thúc</b> gọi là <b>vòng lặp vô hạn</b>.</li>
+        <li>Số lần lặp thường điều khiển bằng một <b>số đếm</b> hoặc đến khi thỏa một điều kiện.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔢 for dùng làm gì?</h4>
+      <p>Thực hiện một khối câu lệnh trong một số lần nhất định. Ví dụ hiển thị các số từ 1 đến 10: thay vì viết 10 lệnh <code>printf()</code>, dùng một vòng <code>for</code>:</p>
+<pre class="code" style="margin:6px 0 0;">for (int i = 1; i &lt;= 10; i++)
+    printf("%d ", i);
+<span class="c-num">// 1 2 3 4 5 6 7 8 9 10</span></pre>
+    </div>
+  </div>
+
+<pre class="code">for (starting_condition; continuation_condition; action_per_iteration)
+    loop_statement;</pre>
+
+  <table class="spec">
+    <tr><th>Thành phần</th><th>Vai trò</th></tr>
+    <tr><td><b>starting_condition</b> (khởi tạo)</td><td>Thường (không phải luôn luôn) <b>đặt giá trị ban đầu</b> cho biến điều khiển vòng lặp (bộ đếm). Có thể khai báo và khởi tạo <b>vài biến cùng kiểu</b>, ngăn cách bằng dấu phẩy. Các biến này là <b>cục bộ của vòng lặp</b></td></tr>
+    <tr><td><b>continuation_condition</b> (điều kiện tiếp tục)</td><td>Biểu thức logic đánh giá true / false <b>trước mỗi vòng</b>. <b>true</b> thì vòng lặp tiếp tục, false thì dừng</td></tr>
+    <tr><td><b>action_per_iteration</b> (hành động mỗi vòng)</td><td>Thực thi <b>ở cuối mỗi vòng</b>, thường là tăng hoặc giảm biến điều khiển. Có thể dùng vài biến, cách nhau bằng dấu phẩy</td></tr>
+    <tr><td><b>loop_statement</b> (thân vòng lặp)</td><td>Câu lệnh được lặp lại, hoặc một <b>khối trong <code>{ }</code></b>. Chỉ lặp <b>một câu lệnh</b> thì có thể bỏ <code>{ }</code></td></tr>
+  </table>
+  <p class="sub" style="margin:0 0 10px;">Ba biểu thức điều khiển trong dấu <code>( )</code> được ngăn cách bằng dấu chấm phẩy <code>;</code></p>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Ví dụ có hai biến điều khiển</h4>
+<pre class="code" style="margin:6px 0 0;">for (int i = 1, j = 2; i &lt;= 5; ++i, j = j + 2)
+    printf(" %5d", i * j);</pre>
+      <p style="margin-top:6px;">In lần lượt các giá trị <b>2, 8, 18, 32, 50</b> (mỗi giá trị rộng 5 ký tự). Theo dõi: i = 1, j = 2 → 2; i = 2, j = 4 → 8; i = 3, j = 6 → 18; i = 4, j = 8 → 32; i = 5, j = 10 → 50.</p>
+    </div>
+    <div class="info-card">
+      <h4>♾️ Vòng lặp vô hạn</h4>
+      <p>Cú pháp C <b>không bắt buộc</b> đặt tham số nào vào câu lệnh for:</p>
+<pre class="code" style="margin:6px 0 0;">for ( ; ; ) {
+    <span class="c-num">/* câu lệnh */</span>
+}</pre>
+      <p style="margin-top:6px;">Vì không có điều kiện tiếp tục nên vòng lặp chạy <b>vô hạn</b>. Đôi khi hữu ích để giám sát dữ liệu hoặc lắng nghe một số kết nối.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>for (khởi tạo; điều kiện; cập nhật)</b>. Thứ tự chạy: <b>khởi tạo (1 lần) → kiểm tra điều kiện → thân vòng lặp → cập nhật</b>, rồi quay lại kiểm tra điều kiện, cho đến khi điều kiện sai thì dừng.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Slide viết "continumation_condition", đúng chính tả là <b>continuation</b>. (2) Biến khai báo trong phần khởi tạo (như <code>int i</code>) <b>chỉ tồn tại bên trong vòng lặp</b> và mất khi vòng lặp kết thúc (cách khai báo này từ C99). (3) Để thoát khỏi vòng lặp vô hạn <code>for ( ; ; )</code> người ta thường dùng lệnh <code>break</code> khi một điều kiện xảy ra.</div>
+</div>
+
+<!-- ========== P2B TOPIC 6 ========== -->
+<div class="topic k1" id="p2b-t6-while">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Vòng lặp while và do-while</h3><div class="sub">Lặp khi chưa biết trước số lần · kiểm tra điều kiện trước hoặc sau</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔄 Vòng lặp while</h4>
+      <ul>
+        <li>Lặp lại một câu lệnh hoặc một khối lệnh <b>miễn là biểu thức logic là true</b>. Thường dùng khi <b>chưa biết trước số lần lặp</b>.</li>
+        <li>Điều kiện được kiểm tra <b>trước</b> khi thực hiện thân vòng lặp. Điều kiện <b>false ngay từ đầu</b> thì thân vòng lặp <b>không chạy lần nào</b>.</li>
+        <li>Điều kiện bắt đầu là true thì trong thân vòng lặp <b>phải có xử lý làm điều kiện thành false</b>, nếu không vòng lặp <b>không bao giờ kết thúc</b>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">while (biểu_thức)
+    câu_lệnh;             <span class="c-num">// một câu lệnh</span>
+
+while (biểu_thức_điều_kiện) {
+    câu_lệnh_1;
+    câu_lệnh_2;
+}</pre>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Ví dụ while</h4>
+<pre class="code" style="margin:0;">int count = 1;
+while (count &lt;= 5) {
+    printf("%i\n", count);
+    ++count;              <span class="c-num">// đổi điều kiện</span>
+}
+<span class="c-num">// in ra 1 2 3 4 5 (mỗi số một dòng)</span>
+
+int num = 0;
+scanf("%d", &amp;num);
+while (num != -1) {
+    <span class="c-num">/* xử lý */</span>
+    scanf("%d", &amp;num);
+}</pre>
+      <p style="margin-top:6px;">Ví dụ thứ hai lặp cho đến khi người dùng nhập <b>-1</b>.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔁 Vòng lặp do-while</h4>
+      <ul>
+        <li>Thân vòng lặp được thực hiện <b>lần đầu một cách vô điều kiện</b>, rồi <b>mới kiểm tra điều kiện</b>.</li>
+        <li>Điều kiện true thì lặp tiếp, false thì dừng. Vậy thân vòng lặp <b>chạy ít nhất 1 lần</b>.</li>
+        <li>Nhớ có dấu <b>;</b> sau <code>while (biểu_thức)</code>.</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">do {
+    câu_lệnh;
+} while (biểu_thức);
+
+do
+    câu_lệnh;    <span class="c-num">// thân chỉ có 1 câu lệnh</span>
+while (biểu_thức);</pre>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Ví dụ do-while</h4>
+<pre class="code" style="margin:0;">do {
+    prompt for password;
+    read user input;
+} while (input not equal to password);
+
+int number = 4;
+do {
+    printf("Number = %d\n", number);
+    number++;
+} while (number &lt; 4);
+<span class="c-num">// in "Number = 4" đúng 1 lần dù điều kiện sai</span></pre>
+    </div>
+  </div>
+
+  <div class="fc-grid">
+    <div class="fc-box">
+      <h4>Lưu đồ while (kiểm tra trước)</h4>
+      <svg viewBox="0 0 360 230" role="img" aria-label="Lưu đồ vòng lặp while">
+        <defs><marker id="arW" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22241d"/></marker></defs>
+        <line class="fc-line" x1="170" y1="4" x2="170" y2="34" marker-end="url(#arW)"/>
+        <polygon class="fc-shape fc-d" points="170,36 250,70 170,104 90,70"/>
+        <text class="fc-text" x="170" y="67">Điều kiện</text><text class="fc-text" x="170" y="82">đúng?</text>
+        <line class="fc-line" x1="250" y1="70" x2="294" y2="70" marker-end="url(#arW)"/><text class="fc-lbl" x="272" y="62" style="text-anchor:middle">Không</text>
+        <rect class="fc-shape fc-t" x="296" y="52" width="50" height="36" rx="18"/><text class="fc-text" x="321" y="75">Ra</text>
+        <line class="fc-line" x1="170" y1="104" x2="170" y2="148" marker-end="url(#arW)"/><text class="fc-lbl" x="182" y="130">Có</text>
+        <rect class="fc-shape" x="110" y="150" width="120" height="36"/><text class="fc-text" x="170" y="173">Câu lệnh</text>
+        <path class="fc-line" d="M110 168 H40 V70 H88" marker-end="url(#arW)"/>
+      </svg>
+    </div>
+    <div class="fc-box">
+      <h4>Lưu đồ do-while (kiểm tra sau)</h4>
+      <svg viewBox="0 0 360 290" role="img" aria-label="Lưu đồ vòng lặp do while">
+        <defs><marker id="arD" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#22241d"/></marker></defs>
+        <line class="fc-line" x1="170" y1="4" x2="170" y2="38" marker-end="url(#arD)"/>
+        <rect class="fc-shape" x="110" y="40" width="120" height="36"/><text class="fc-text" x="170" y="63">Câu lệnh</text>
+        <line class="fc-line" x1="170" y1="76" x2="170" y2="108" marker-end="url(#arD)"/>
+        <polygon class="fc-shape fc-d" points="170,110 250,146 170,182 90,146"/>
+        <text class="fc-text" x="170" y="143">Điều kiện</text><text class="fc-text" x="170" y="158">đúng?</text>
+        <path class="fc-line" d="M250 146 H310 V22 H172" marker-end="url(#arD)"/><text class="fc-lbl" x="282" y="138" style="text-anchor:middle">Có</text>
+        <line class="fc-line" x1="170" y1="182" x2="170" y2="226" marker-end="url(#arD)"/><text class="fc-lbl" x="182" y="208">Không</text>
+        <rect class="fc-shape fc-t" x="125" y="228" width="90" height="36" rx="18"/><text class="fc-text" x="170" y="251">Ra</text>
+      </svg>
+    </div>
+  </div>
+
+  <h4 style="margin:18px 0 8px;">🤔 Dùng vòng lặp nào?</h4>
+  <table class="spec">
+    <tr><th>Vòng lặp</th><th>Khi nào dùng</th><th>Ví dụ</th></tr>
+    <tr><td><b>for</b></td><td>Vòng lặp điều khiển bằng <b>bộ đếm</b> (có khởi tạo và cập nhật biến). Dùng được cả khi biết hoặc chưa biết trước số lần lặp</td><td><code>for (count = 1; count &lt;= 100; count++)</code></td></tr>
+    <tr><td><b>while</b></td><td>Vòng lặp điều khiển bằng <b>điều kiện logic</b>, <b>kiểm tra trước</b></td><td><code>while (scanf("%d", &amp;num) == 1)</code></td></tr>
+    <tr><td><b>do-while</b></td><td>Cần thân vòng lặp <b>chạy ít nhất 1 lần</b> (kiểm tra sau)</td><td>Hỏi mật khẩu rồi mới kiểm tra đúng sai</td></tr>
+  </table>
+  <p class="sub" style="margin:0 0 8px;">Thường nên chọn vòng lặp <b>kiểm tra trước</b> (for hoặc while): mã dễ đọc hơn khi điều kiện nằm ngay đầu vòng lặp, và vòng lặp được <b>bỏ qua hoàn toàn</b> nếu điều kiện sai ngay từ đầu.</p>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>↔️ for và while viết thay cho nhau</h4>
+<pre class="code" style="margin:6px 0 0;">for ( ; test; )         ≡   while (test)
+
+for (init; test; update)    init;
+    body;               ≡   while (test) {
+                                body;
+                                update;
+                            }</pre>
+    </div>
+    <div class="info-card">
+      <p>Chuyển <b>for sang while</b>: bỏ biểu thức đầu và biểu thức thứ 3 trong ngoặc của for. Muốn <b>while giống for</b> thì khởi tạo trước vòng lặp và đặt câu lệnh cập nhật trong thân vòng lặp.</p>
+      <p><b>for</b> hợp khi vòng lặp có khởi tạo và cập nhật biến, <b>while</b> hợp hơn trong trường hợp ngược lại.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>while</b> kiểm tra điều kiện <b>trước</b> (có thể không chạy lần nào). <b>do-while</b> chạy thân <b>trước</b> rồi mới kiểm tra (chạy ít nhất 1 lần, có <code>;</code> sau <code>while(...)</code>). <b>for</b> gọn nhất khi có bộ đếm. Thân vòng lặp phải làm điều kiện <b>dần thành sai</b>, không thì lặp vô hạn.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Ví dụ trong slide viết <code>scanf("%l", &amp;num)</code>, chuỗi định dạng <code>%l</code> không hợp lệ; đúng là <code>%d</code> (hoặc <code>%ld</code> nếu num là <code>long</code>). <code>scanf</code> trả về số mục đọc được, nên <code>== 1</code> nghĩa là đọc thành công. (2) Hai cách viết for và while ở trên chỉ tương đương khi thân vòng lặp <b>không dùng continue</b>: trong <code>for</code>, <code>continue</code> vẫn chạy phần cập nhật, còn ở <code>while</code> thì không (xem chủ đề 7).</div>
+</div>
+
+<!-- ========== P2B TOPIC 7 ========== -->
+<div class="topic k2" id="p2b-t7-lap-long">
+  <div class="topic-head">
+    <div class="topic-num">7</div>
+    <div><h3>Vòng lặp lồng nhau, continue và break</h3><div class="sub">Vòng lặp trong vòng lặp · bỏ qua một lần lặp · thoát khỏi vòng lặp</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🪆 Vòng lặp lồng nhau</h4>
+      <ul>
+        <li>Đặt <b>một vòng lặp bên trong một vòng lặp khác</b>.</li>
+        <li>Ví dụ đếm số người trong mỗi căn nhà trên một con đường: đi qua các ngôi nhà là <b>vòng lặp ngoài</b>; mỗi nhà lại có một <b>vòng lặp trong</b> để đếm người.</li>
+        <li>Mỗi lần vòng ngoài lặp một lần thì vòng trong chạy <b>hết một lượt</b>. Biến dùng cho vòng trong (như tổng) phải được <b>khởi tạo lại</b> ở mỗi vòng ngoài.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">for (int i = 1; i &lt;= count; ++i) {
+    sum = 0;       <span class="c-num">// khởi tạo lại</span>
+    for (int j = 1; j &lt;= i; ++j)
+        sum += j;  <span class="c-num">// tổng 1 đến i</span>
+    printf("\n%d\t%d", i, sum);
+}</pre>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>i</th><th>sum</th></tr>
+        <tr><td>1</td><td>1</td></tr><tr><td>2</td><td>3</td></tr><tr><td>3</td><td>6</td></tr><tr><td>4</td><td>10</td></tr><tr><td>5</td><td>15</td></tr>
+      </table>
+      <p>(Với <code>count = 5</code>.)</p>
+    </div>
+  </div>
+
+<pre class="code">for (int i = 1; i &lt;= count; ++i) {       <span class="c-num">// vòng ngoài; vòng trong dùng while</span>
+    sum = 1;  j = 1;
+    printf("\n1");
+    while (j &lt; i) {
+        sum += ++j;
+        printf(" + %d", j);                <span class="c-num">// in tiếp trên cùng dòng</span>
+    }
+    printf(" = %d", sum);
+}
+<span class="c-num">// count = 4 in ra: 1 = 1 / 1 + 2 = 3 / 1 + 2 + 3 = 6 / 1 + 2 + 3 + 4 = 10</span></pre>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>⏭️ Câu lệnh continue</h4>
+      <ul>
+        <li>Khi <b>không muốn kết thúc vòng lặp</b> nhưng muốn <b>bỏ qua phần còn lại của lần lặp hiện tại</b>, đặt <code>continue;</code> vào thân vòng lặp.</li>
+        <li>Giống break ở chỗ <b>nhảy khỏi</b> các lệnh phía sau, nhưng thay vì kết thúc vòng lặp, nó <b>quay về kiểm tra điều kiện</b> để làm vòng kế tiếp.</li>
+        <li><b>for</b>: chương trình <b>tăng / giảm biến đếm</b> rồi kiểm tra điều kiện.</li>
+        <li><b>while, do-while</b>: quay về đầu vòng lặp và kiểm tra điều kiện.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">enum Day {Monday, Tuesday, Wednesday,
+          Thursday, Friday, Saturday, Sunday};
+
+for (enum Day day = Monday;
+     day &lt;= Sunday; ++day) {
+    if (day == Wednesday)
+        continue;     <span class="c-num">// bỏ qua thứ Tư</span>
+    printf("It's not Wednesday!\n");
+}
+<span class="c-num">// in dòng này 6 lần (trừ thứ Tư)</span></pre>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>⏹️ Câu lệnh break</h4>
+      <ul>
+        <li>Bình thường, vào thân vòng lặp thì chương trình chạy <b>hết các câu lệnh</b> rồi mới kiểm tra vòng tiếp theo.</li>
+        <li><b>break</b> khiến chương trình <b>thoát ngay</b> khỏi vòng lặp đang chạy; các câu lệnh còn lại bị bỏ qua.</li>
+        <li>Trong vòng lặp <b>lồng nhau</b>, break chỉ ảnh hưởng đến <b>vòng lặp trong cùng</b> chứa nó.</li>
+        <li>break cũng dùng trong <b>switch</b>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">for (int i = 1; i &lt;= 5; i++) {
+    if (i == 3) break;      <span class="c-num">// 1 2</span>
+    printf("%d ", i);
+}
+for (int i = 1; i &lt;= 5; i++) {
+    if (i == 3) continue;   <span class="c-num">// 1 2 4 5</span>
+    printf("%d ", i);
+}
+for (int i = 1; i &lt;= 3; i++)
+    for (int j = 1; j &lt;= 3; j++) {
+        if (j == 2) break;  <span class="c-num">// thoát vòng j</span>
+        printf("(%d,%d) ", i, j);
+    }
+<span class="c-num">// (1,1) (2,1) (3,1)</span></pre>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th></th><th>continue</th><th>break</th></tr>
+    <tr><td><b>Tác dụng</b></td><td>Bỏ qua phần còn lại của <b>lần lặp này</b></td><td>Thoát <b>hẳn</b> khỏi vòng lặp</td></tr>
+    <tr><td><b>Sau đó</b></td><td>Quay về kiểm tra điều kiện (for: cập nhật rồi kiểm tra)</td><td>Chạy tiếp lệnh nằm sau vòng lặp</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>continue</b> = bỏ qua <b>lần lặp này</b>, <b>break</b> = thoát <b>cả vòng lặp</b>. Vòng lặp <b>lồng nhau</b>: vòng trong chạy trọn một lượt cho mỗi lần lặp của vòng ngoài, và <b>break chỉ thoát vòng trong cùng</b>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) Ví dụ trong slide có hai vòng <code>while (q &gt; 0)</code> lồng nhau: lệnh <code>break</code> ở vòng trong chỉ thoát vòng trong, nên phải kiểm tra <code>q &gt; 100</code> thêm một lần nữa ở vòng ngoài mới thoát được cả hai (muốn thoát nhiều lớp cùng lúc cũng có thể dùng <code>goto</code>, xem chủ đề 4). (2) Trong <code>while</code> / <code>do-while</code>, nếu đặt <code>continue</code> trước câu lệnh cập nhật biến điều kiện thì vòng lặp có thể <b>lặp vô hạn</b>, còn trong <code>for</code> phần cập nhật vẫn luôn chạy.</div>
+</div>
+
+</section>
+
 </div><!-- /part-page 2 -->
 
 <footer>
@@ -1750,8 +2471,8 @@ c = (int) a + b;   <span class="c-num">// c = 24</span></pre>
       <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf → Bộ nhớ RAM & biến → Khai báo & đặt tên → Kiểu số → bool & enum → char & ký tự thoát → Định dạng printf</p>
     </div>
     <div onclick="setPart('2')">
-      <h4>👉 Phần 2 · Bài 5: Toán tử</h4>
-      <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof, ? : → Độ ưu tiên → Gỡ lỗi</p>
+      <h4>👉 Phần 2 · Toán tử, điều kiện & vòng lặp</h4>
+      <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof → Độ ưu tiên → Gỡ lỗi → Cách tính nhanh → if / else if → ? : → switch → goto → for → while & do while → vòng lặp lồng, break, continue</p>
     </div>
     <div class="soon">
       <h4>⏳ Các Phần tiếp theo</h4>
