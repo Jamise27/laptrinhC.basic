@@ -67,6 +67,11 @@ section h2.sec-title{font-size:1.6rem;margin:6px 0 14px}
 .topic-head h3{font-size:1.4rem}
 .back-map{margin-left:auto;align-self:flex-start;font-size:.76rem;font-weight:600;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;white-space:nowrap;background:#fff}
 .back-map:hover{color:var(--c2);border-color:var(--c2)}
+.easy-box{background:#ecf8e8;border-left:5px solid #4fae5b;border-radius:10px;padding:12px 16px;margin:0 0 14px;font-size:.95rem}
+details.quiz{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
+details.quiz summary{cursor:pointer;font-weight:600}
+details.quiz[open] summary{margin-bottom:8px}
+details.quiz .ans{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:.92rem}
 .sub{color:var(--ink-soft);font-size:.9rem}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin:12px 0}
 .info-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
@@ -131,6 +136,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
   <div class="nav-links" data-part="2">
     <a href="#mindmap2">🗺️ Bài 5 · Toán tử</a>
     <a href="#mindmap2b">🗺️ Điều kiện & vòng lặp</a>
+    <a href="#mindmap2c">🗺️ Mảng & hàm</a>
   </div>
 </nav>
 
@@ -2462,6 +2468,727 @@ for (int i = 1; i &lt;= 3; i++)
 
 </section>
 
+<!-- ======================= PHẦN 2 (tiếp): MẢNG & HÀM ======================= -->
+<hr style="border:none;border-top:2px dashed var(--line);margin:44px 0 0;">
+
+<div class="hero" id="mh-top">
+  <div>
+    <span class="eyebrow">🧺 Phần 2 · Tiếp theo · Giải thích dễ hiểu</span>
+    <h1>Mảng <span class="accent">& hàm</span></h1>
+    <p>Mảng giúp cất <b>nhiều giá trị cùng kiểu</b> dưới một cái tên; hàm giúp <b>chia chương trình thành các phần nhỏ</b> dùng lại được. Mỗi chủ đề có hộp <b>🍼 Hiểu nhanh</b> giải thích bằng đời thường, cuối nhóm có <b>bài tập thường gặp</b> và <b>câu hỏi đọc code</b> kèm đáp án.</p>
+    <div class="hero-tags">
+      <span class="tag t1">arr[i]</span>
+      <span class="tag t2">arr[i][j]</span>
+      <span class="tag t3">Hàm</span>
+      <span class="tag t4">return</span>
+      <span class="tag t5">Cục bộ / toàn cục</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">int tong(int a[], int n) {
+    int s = 0;
+    for (int i = 0; i &lt; n; i++)
+        s += a[i];
+    return s;
+}</pre>
+  </div>
+</div>
+
+<section id="mindmap2c" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 2 · Mảng & hàm</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:760px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="712" y2="153" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="840" y2="329" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="528" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="599" y2="659" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="341" y2="659" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="528" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="100" y2="329" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="228" y2="153" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 2<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Mảng & hàm</span></div>
+
+      <a href="#p2c-t1-mang" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">Mảng một chiều</div>
+        <div class="desc">Khai báo, chỉ số, truy cập</div>
+      </a>
+      <a href="#p2c-t2-khoi-tao" class="mm-node" style="left:66.2%;top:15.9%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Khởi tạo mảng</div>
+        <div class="desc">Danh sách, chỉ định, vòng lặp</div>
+      </a>
+      <a href="#p2c-t3-2-chieu" class="mm-node" style="left:79.9%;top:39.0%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">Mảng 2 chiều, đa chiều</div>
+        <div class="desc">Bảng hàng × cột</div>
+      </a>
+      <a href="#p2c-t4-ham" class="mm-node" style="left:75.1%;top:65.2%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">Hàm là gì?</div>
+        <div class="desc">Máy nhỏ, ưu điểm, main</div>
+      </a>
+      <a href="#p2c-t5-khai-bao-ham" class="mm-node" style="left:54.2%;top:82.4%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">Khai báo hàm</div>
+        <div class="desc">Tiêu đề, thân, prototype</div>
+      </a>
+      <a href="#p2c-t6-tham-so" class="mm-node" style="left:26.8%;top:82.4%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">Tham số và return</div>
+        <div class="desc">Đối số, trả về, gọi hàm</div>
+      </a>
+      <a href="#p2c-t7-pham-vi" class="mm-node" style="left:5.9%;top:65.3%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">7</span>
+        <div class="title">Biến cục bộ, toàn cục</div>
+        <div class="desc">Phạm vi, che khuất</div>
+      </a>
+      <a href="#p2c-t8-bai-tap" class="mm-node" style="left:1.1%;top:39.0%;">
+        <span class="num" style="background:#a0e548;">8</span>
+        <div class="title">Bài tập thường gặp</div>
+        <div class="desc">Max, đếm, tổng, sắp xếp</div>
+      </a>
+      <a href="#p2c-t9-doc-code" class="mm-node" style="left:14.8%;top:15.9%;">
+        <span class="num" style="background:#72fa93;">9</span>
+        <div class="title">Câu hỏi đọc code</div>
+        <div class="desc">Đoán kết quả, bẫy hay gặp</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-2c" data-map="mindmap2c" style="padding-top:6px;">
+
+<!-- ========== P2C TOPIC 1 ========== -->
+<div class="topic k1" id="p2c-t1-mang">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Mảng một chiều: khai báo và truy cập</h3><div class="sub">Nhiều giá trị cùng kiểu, chung một tên, đánh số từ 0</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Mảng giống một <b>dãy tủ đồ có đánh số</b>. Cả dãy có chung một tên (ví dụ <code>numbers</code>), mỗi ngăn có <b>số thứ tự bắt đầu từ 0</b>. Muốn lấy đồ ở ngăn nào thì gọi tên dãy kèm số ngăn: <code>numbers[0]</code>, <code>numbers[1]</code>...</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🤔 Vì sao cần mảng?</h4>
+      <ul>
+        <li>Chương trình hay phải lưu <b>nhiều giá trị cùng kiểu</b>, ví dụ điểm số của tất cả người chơi trong một game.</li>
+        <li>Mỗi giá trị một biến riêng thì rất tẻ nhạt. Mảng <b>nhóm các giá trị dưới một tên duy nhất</b>.</li>
+        <li>Mảng lưu một <b>số lượng cố định</b> các phần tử <b>cùng một kiểu</b> (int, long, double...). Không trộn kiểu được, ví dụ không có mảng vừa int vừa double.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📝 Khai báo và truy cập</h4>
+<pre class="code" style="margin:6px 0;">long numbers[10];   <span class="c-num">// 10 phần tử kiểu long</span>
+numbers[0]          <span class="c-num">// phần tử đầu tiên</span>
+numbers[9]          <span class="c-num">// phần tử cuối (thứ 10)</span></pre>
+      <ul>
+        <li>Số trong <code>[ ]</code> lúc khai báo là <b>kích thước</b> (số phần tử).</li>
+        <li><b>Chỉ số (index)</b> bắt đầu từ <b>0</b>: mảng 10 phần tử có chỉ số <b>0 đến 9</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th>Viết</th><th>Là gì</th><th>Dùng khi</th></tr>
+    <tr><td><code>n</code></td><td><b>Số lượng</b> phần tử thực sự dùng</td><td>Điều kiện vòng lặp: <code>i &lt; n</code></td></tr>
+    <tr><td><code>i</code></td><td><b>Vị trí</b> (chỉ số) đang xét, từ 0 đến n - 1</td><td>Biến đếm của vòng lặp</td></tr>
+    <tr><td><code>arr[i]</code></td><td><b>Giá trị</b> nằm ở vị trí i</td><td>In ra, so sánh, cộng dồn</td></tr>
+    <tr><td><code>&amp;arr[i]</code></td><td><b>Địa chỉ</b> của ô i</td><td>Chỉ khi nhập: <code>scanf("%d", &amp;arr[i])</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔁 Duyệt mảng bằng vòng lặp</h4>
+<pre class="code" style="margin:6px 0 0;">for (int i = 0; i &lt; 10; ++i)
+    printf("Number is %ld\n", numbers[i]);</pre>
+      <p style="margin-top:6px;">Gán giá trị cho một phần tử: <code>grades[100] = 95;</code> hoặc dùng biến: <code>grades[i] = diem;</code></p>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Ví dụ nhập 10 điểm và cộng dồn</h4>
+<pre class="code" style="margin:0;">int grades[10];
+int count = 10;
+long sum = 0;
+for (int i = 0; i &lt; count; ++i) {
+    printf("%2d&gt; ", i + 1);
+    scanf("%d", &amp;grades[i]);
+    sum += grades[i];
+}</pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Mảng <code>n</code> phần tử có chỉ số <b>0 đến n - 1</b>; phần tử cuối là <code>arr[n - 1]</code>, <b>không có</b> <code>arr[n]</code>. Duyệt mảng viết <code>i &lt; n</code> (không viết <code>i &lt;= n</code>).</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) <b>Ra ngoài phạm vi mảng</b> (ví dụ đọc <code>arr[n]</code>) thì trình biên dịch <b>không báo lỗi</b>, chương trình vẫn chạy nhưng cho kết quả sai hoặc bị dừng đột ngột, nên phải tự giữ chỉ số trong phạm vi. (2) Slide viết <code>grades[100] = 95</code> là "phần tử 100": chính xác hơn là phần tử có <b>chỉ số 100</b>, tức phần tử <b>thứ 101</b>, nên mảng phải có ít nhất 101 phần tử. (3) Slide gõ nhầm <code>I &lt; 10</code> (chữ I hoa) trong vòng for, đúng là <code>i &lt; 10</code>. (4) Ví dụ slide in số thứ tự bằng <code>%2u</code>; với biến <code>int</code> nên dùng <code>%2d</code>.</div>
+
+  <details class="quiz"><summary>❓ Tự kiểm tra: mảng <code>int a[5]</code> có phần tử cuối là gì, và vòng lặp duyệt hết viết thế nào?</summary>
+    <div class="ans">Phần tử cuối là <code>a[4]</code> (5 phần tử có chỉ số 0, 1, 2, 3, 4). Vòng lặp: <code>for (int i = 0; i &lt; 5; i++)</code>.</div>
+  </details>
+</div>
+
+<!-- ========== P2C TOPIC 2 ========== -->
+<div class="topic k2" id="p2c-t2-khoi-tao">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Khởi tạo giá trị cho mảng</h3><div class="sub">Danh sách giá trị · khởi tạo chỉ định (C99) · dùng vòng lặp</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Khởi tạo là <b>bỏ sẵn đồ vào tủ ngay lúc mua tủ</b>. Bỏ thiếu ngăn nào thì ngăn đó tự để <b>số 0</b>.</div>
+
+  <table class="spec">
+    <tr><th>Cách</th><th>Ví dụ</th><th>Kết quả</th></tr>
+    <tr><td><b>Danh sách đầy đủ</b> trong <code>{ }</code>, cách nhau bằng dấu phẩy</td><td><code>int integers[5] = {0, 1, 2, 3, 4};</code></td><td>integers[0] = 0, ..., integers[4] = 4</td></tr>
+    <tr><td><b>Danh sách thiếu</b>: các ô còn lại = 0</td><td><code>float sample_data[500] = {100.0, 300.0, 500.5};</code></td><td>3 ô đầu như liệt kê, <b>497 ô còn lại = 0</b></td></tr>
+    <tr><td><b>Tất cả bằng 0</b></td><td><code>int counters[5] = {0, 0, 0, 0, 0};</code> (hoặc gọn <code>{0}</code>)</td><td>5 ô đều bằng 0</td></tr>
+    <tr><td><b>Chỉ định</b> (C99): ghi rõ chỉ số trong <code>[ ]</code>, theo thứ tự bất kỳ</td><td><code>int arr[6] = {[5] = 212};</code></td><td>0 0 0 0 0 212</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Trộn danh sách và chỉ định</h4>
+<pre class="code" style="margin:0;">#define MONTHS 12
+int days[MONTHS] = {31, 28, [4] = 31,
+                    30, 31, [1] = 29};</pre>
+      <p style="margin-top:6px;">Mình chạy thử ra: <code>31 29 0 0 31 30 31 0 0 0 0 0</code></p>
+      <ul>
+        <li><code>31, 28</code> vào ô 0 và 1.</li>
+        <li><code>[4] = 31</code> nhảy tới ô 4, rồi <code>30, 31</code> <b>điền tiếp</b> vào ô 5 và 6.</li>
+        <li><code>[1] = 29</code> <b>ghi đè</b> số 28 ở ô 1. Các ô còn lại bằng 0.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔁 Khởi tạo bằng vòng lặp</h4>
+      <p>C không có cách viết tắt để gán cả mảng cùng một giá trị (ví dụ 500 ô đều bằng 1). Khi đó dùng <b>vòng lặp</b>:</p>
+<pre class="code" style="margin:0;">int array_values[10] = {0, 1, 4, 9, 16};
+for (int i = 5; i &lt; 10; ++i)
+    array_values[i] = i * i;
+<span class="c-num">// 0 1 4 9 16 25 36 49 64 81</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>{ ... }</code> liệt kê giá trị theo thứ tự; <b>thiếu thì bằng 0</b>; <code>[k] = giá_trị</code> gán thẳng vào ô k (C99). Nên khởi tạo mảng ngay lúc khai báo, sẽ dễ phát hiện lỗi hơn. Dùng <code>#define</code> (như <code>MONTHS</code>) để đặt tên cho kích thước mảng.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Mảng khai báo <b>trong hàm mà không khởi tạo</b> (ví dụ <code>int a[5];</code>) sẽ chứa <b>giá trị rác</b>, không phải 0. Chỉ khi có dấu <code>= { ... }</code> thì các ô thiếu mới được tự đặt bằng 0.</div>
+
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>int a[5] = {7, 8};</code> thì mảng chứa gì?</summary>
+    <div class="ans"><code>7 8 0 0 0</code>: hai ô đầu là 7 và 8, ba ô còn lại tự động bằng 0.</div>
+  </details>
+</div>
+
+<!-- ========== P2C TOPIC 3 ========== -->
+<div class="topic k3" id="p2c-t3-2-chieu">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>Mảng hai chiều và mảng đa chiều</h3><div class="sub">Bảng gồm hàng và cột · khởi tạo theo hàng · vòng lặp lồng nhau</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Mảng một chiều là <b>một dòng</b> dữ liệu. Mảng hai chiều là <b>một bảng Excel</b> (hàng × cột), muốn chỉ một ô phải nói <b>hàng nào, cột nào</b>: <code>arr[hàng][cột]</code>. Mảng ba chiều là <b>nhiều tờ bảng tính chồng lên nhau</b>.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📝 Khai báo</h4>
+<pre class="code" style="margin:6px 0;">int matrix[4][5];     <span class="c-num">// 4 hàng × 5 cột</span>
+int box[10][20][30];  <span class="c-num">// 3 chiều</span></pre>
+      <ul>
+        <li>Mỗi chiều nằm trong <b>một cặp <code>[ ]</code> riêng</b>.</li>
+        <li>Hàng và cột đều đánh số <b>từ 0</b>.</li>
+        <li>Ứng dụng tự nhiên nhất: <b>ma trận</b>, bảng điểm, bàn cờ.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🧩 Khởi tạo theo từng hàng</h4>
+<pre class="code" style="margin:0;">int numbers[3][4] = {
+    {10, 20, 30, 40},    <span class="c-num">// hàng 0</span>
+    {15, 25, 35, 45},    <span class="c-num">// hàng 1</span>
+    {47, 48, 49, 50}     <span class="c-num">// hàng 2</span>
+};</pre>
+      <p style="margin-top:6px;">Mỗi hàng nằm trong một cặp <code>{ }</code>, các hàng cách nhau bằng <b>dấu phẩy</b> (hàng cuối không cần).</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>Khởi tạo thiếu: các ô còn lại = 0</h4>
+<pre class="code" style="margin:0;">int matrix[4][5] = {
+    {10, 5, -3}, {9, 0, 0},
+    {32, 20, 1}, {0, 0, 8}
+};</pre>
+      <p style="margin-top:6px;">Chỉ 3 ô đầu mỗi hàng được gán, 2 ô cuối mỗi hàng bằng 0 (mình chạy thử: hàng 0 là <code>10 5 -3 0 0</code>). Trường hợp này <b>bắt buộc</b> có cặp <code>{ }</code> cho từng hàng.</p>
+    </div>
+    <div class="info-card">
+      <h4>Khởi tạo chỉ định</h4>
+<pre class="code" style="margin:0;">int matrix[4][3] = {
+    [0][0] = 1, [1][1] = 5, [2][2] = 9
+};</pre>
+      <p style="margin-top:6px;">Chỉ ba ô được gán (đường chéo), các ô khác bằng 0.</p>
+    </div>
+  </div>
+
+  <h4 style="margin:16px 0 8px;">🔁 Duyệt mảng nhiều chiều: số vòng lặp = số chiều</h4>
+  <div class="grid2">
+    <div class="info-card">
+<pre class="code" style="margin:0;">for (int i = 0; i &lt; n; i++)        <span class="c-num">// từng hàng</span>
+    for (int j = 0; j &lt; m; j++)    <span class="c-num">// từng cột</span>
+        scanf("%d", &amp;arr[i][j]);</pre>
+      <p style="margin-top:6px;">Vòng trong (<code>j</code>) chạy <b>hết một lượt</b> rồi vòng ngoài (<code>i</code>) mới tăng 1, giống <b>kim phút quay hết vòng thì kim giờ mới nhích</b>.</p>
+    </div>
+    <div class="info-card">
+      <table class="spec" style="margin:0;">
+        <tr><th>Lần</th><th>i</th><th>j</th><th>Ô</th></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>arr[0][0]</td></tr>
+        <tr><td>2</td><td>0</td><td>1</td><td>arr[0][1]</td></tr>
+        <tr><td>3</td><td>0</td><td>2</td><td>arr[0][2]</td></tr>
+        <tr><td>4</td><td>1</td><td>0</td><td>arr[1][0]</td></tr>
+        <tr><td>5</td><td>1</td><td>1</td><td>arr[1][1]</td></tr>
+        <tr><td>6</td><td>1</td><td>2</td><td>arr[1][2]</td></tr>
+      </table>
+      <p style="margin-top:6px;">(Bảng 2 hàng × 3 cột: 6 ô, nhập lần lượt theo từng hàng.)</p>
+    </div>
+  </div>
+  <p class="sub" style="margin:0 0 10px;">Mảng 3 chiều dùng <b>3 vòng lặp lồng nhau</b> (<code>i</code>, <code>j</code>, <code>k</code>). Ví dụ trong slide cộng mảng <code>numbers[2][3][4]</code> (hai khối giống nhau), mình chạy thử ra tổng <b>828</b>.</p>
+
+  <h4 style="margin:16px 0 8px;">📏 Kích thước mảng hợp lệ (theo slide)</h4>
+  <table class="spec">
+    <tr><th>Khai báo</th><th>Được không?</th><th>Vì sao</th></tr>
+    <tr><td><code>float a1[5];</code> <code>float a2[5*2 + 1];</code> <code>float a3[sizeof(int) + 1];</code></td><td>Được</td><td>Kích thước là số nguyên dương tính được</td></tr>
+    <tr><td><code>float a4[-4];</code> <code>float a5[0];</code></td><td>Không</td><td>Kích thước phải <b>&gt; 0</b></td></tr>
+    <tr><td><code>float a6[2.5];</code></td><td>Không</td><td>Kích thước phải là <b>số nguyên</b></td></tr>
+    <tr><td><code>float a7[(int)2.5];</code></td><td>Được</td><td>Ép kiểu về 2</td></tr>
+    <tr><td><code>int n = 5; float a8[n];</code></td><td>Được từ <b>C99</b></td><td><b>Mảng độ dài thay đổi (VLA)</b>: kích thước lấy từ biến lúc tạo mảng</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>arr[i][j]</code> = ô ở <b>hàng i, cột j</b>. <b>i đi theo số hàng (n)</b>, <b>j đi theo số cột (m)</b>. Mảng k chiều cần k vòng lặp lồng nhau.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> (1) "Độ dài thay đổi" (VLA) <b>không</b> có nghĩa là đổi kích thước sau khi tạo: kích thước lấy từ biến lúc tạo, rồi <b>giữ nguyên</b>. (2) Lỗi hay gặp: viết <code>j &lt; n</code> thay vì <code>j &lt; m</code>, sai khi bảng không vuông.</div>
+
+  <details class="quiz"><summary>❓ Tự kiểm tra: với <code>n = 3</code> hàng, <code>m = 2</code> cột, lần nhập thứ 4 vào ô nào?</summary>
+    <div class="ans">Mỗi hàng có 2 lần nhập: lần 1, 2 là hàng 0; lần 3, 4 là hàng 1. Vậy lần 4 là <code>arr[1][1]</code> (i = 1, j = 1).</div>
+  </details>
+</div>
+
+<!-- ========== P2C TOPIC 4 ========== -->
+<div class="topic k4" id="p2c-t4-ham">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Hàm là gì và vì sao cần hàm?</h3><div class="sub">Đơn vị mã lệnh làm một việc cụ thể, dùng lại được</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Hàm giống một <b>cái máy xay sinh tố</b>: bỏ nguyên liệu vào (<b>tham số</b>), máy làm việc bên trong (<b>thân hàm</b>), rồi trả ra ly sinh tố (<b>giá trị trả về</b>). Mua máy một lần, dùng mỗi ngày, không phải tự xay bằng tay mỗi lần.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧩 Hàm là gì?</h4>
+      <ul>
+        <li>Một <b>đơn vị mã lệnh độc lập</b>, được tạo ra để làm <b>một công việc cụ thể</b>, và để <b>dùng lại</b>.</li>
+        <li>Giống <b>chương trình con</b> (subroutine) hoặc <b>thủ tục</b> (procedure) ở ngôn ngữ khác.</li>
+        <li>Có hàm <b>gây ra thao tác</b>: <code>printf()</code> in dữ liệu ra màn hình.</li>
+        <li>Có hàm <b>tìm giá trị</b> cho chương trình: <code>strlen()</code> cho biết độ dài một chuỗi.</li>
+        <li>Hàm <b>không tự chạy</b>: chỉ chạy khi được <b>gọi</b> từ chương trình.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>👍 Ưu điểm của hàm</h4>
+      <ul>
+        <li><b>Chia chương trình thành các phần nhỏ</b> (module): viết cả chương trình trong một <code>main</code> khổng lồ thì rất khó kiểm thử, gỡ lỗi, bảo trì.</li>
+        <li><b>Giảm trùng lặp mã</b>: việc phải làm nhiều lần chỉ cần viết một hàm, gọi khi cần.</li>
+        <li><b>Dễ đọc, dễ sửa</b>, và từng phần có thể <b>kiểm thử riêng</b>, giảm tổng thời gian phát triển.</li>
+        <li><b>Tái sử dụng</b> ở chương trình khác (như <code>printf()</code> dùng ở mọi chương trình).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🏁 Hàm main()</h4>
+      <ul>
+        <li>Tên đặc biệt cho biết chương trình <b>bắt đầu chạy ở đâu</b>.</li>
+        <li>Mọi chương trình C <b>bắt buộc</b> có <code>main()</code>.</li>
+        <li>Có thể nhận dữ liệu (đối số dòng lệnh) và trả về dữ liệu dạng <b>mã lỗi</b>: <code>return 0;</code> nghĩa là chạy tốt.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>📤 Hai cách nhận kết quả từ hàm</h4>
+      <ul>
+        <li>Qua <b>giá trị trả về</b>: <code>int kq = tinhTong(a, n);</code></li>
+        <li>Qua <b>một đối số là địa chỉ</b>: <code>scanf("%d", &amp;number);</code> lưu số nhập vào đúng địa chỉ của <code>number</code>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Hàm = <b>một việc, viết một lần, gọi nhiều lần</b>. Đặt tên hàm có ý nghĩa, mô tả việc nó làm. <code>main()</code> là nơi chương trình bắt đầu.</div>
+</div>
+
+<!-- ========== P2C TOPIC 5 ========== -->
+<div class="topic k5" id="p2c-t5-khai-bao-ham">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Khai báo hàm: tiêu đề, thân hàm, đặt tên, prototype</h3><div class="sub">Đọc dòng đầu tiên của hàm từ trái sang phải</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Dòng đầu của hàm giống <b>nhãn dán trên máy</b>: ghi máy cho ra cái gì, tên máy, và cần bỏ nguyên liệu gì vào. <b>Prototype</b> là <b>tờ quảng cáo dán trước cửa</b> báo "nhà có máy này" để <code>main</code> biết mà gọi, dù máy thật đặt ở cuối nhà (cuối file).</div>
+
+<pre class="code">Return_type Function_name(Parameters - separated by commas)
+{
+    <span class="c-num">// Statements... (thân hàm)</span>
+}</pre>
+
+  <table class="spec">
+    <tr><th>Thứ tự (trái sang phải)</th><th>Cho biết</th><th>Ví dụ: <code>int nhan(int x, int y)</code></th></tr>
+    <tr><td>1. Kiểu trả về</td><td>Hàm trả ra kiểu gì (<code>void</code> = không trả gì)</td><td><code>int</code></td></tr>
+    <tr><td>2. Tên hàm</td><td>Tên để gọi</td><td><code>nhan</code></td></tr>
+    <tr><td>3. Danh sách tham số</td><td>Số lượng và kiểu dữ liệu đưa vào (<code>void</code> = không nhận gì)</td><td><code>int x, int y</code></td></tr>
+    <tr><td>Thân hàm <code>{ }</code></td><td>Các câu lệnh chạy khi gọi hàm, dùng được các tham số</td><td><code>{ return x * y; }</code></td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Hàm không trả về, không tham số</h4>
+<pre class="code" style="margin:0;">void printMessage(void)
+{
+    printf("Programming is fun.\n");
+}</pre>
+      <p style="margin-top:6px;"><code>void</code> ở đầu: <b>không trả giá trị</b>. <code>void</code> trong ngoặc: <b>không có tham số</b>. Thân hàm có thể trống nhưng <b>bắt buộc có <code>{ }</code></b>; hàm rỗng hữu ích khi kiểm thử chương trình từng phần.</p>
+    </div>
+    <div class="info-card">
+      <h4>🏷️ Đặt tên hàm</h4>
+      <ul>
+        <li>Không trùng <b>từ khóa</b> C (<code>int</code>, <code>double</code>, <code>sizeof</code>...), không trùng hàm khác trong chương trình hay hàm thư viện chuẩn.</li>
+        <li>Quy tắc giống tên biến: chữ cái, chữ số, gạch dưới; ký tự đầu là chữ cái (gạch dưới tính như chữ cái).</li>
+        <li>Ba kiểu viết tên nhiều từ: <code>tinh_tong</code>, <code>TinhTong</code>, <code>tinhTong</code> (camelCase). Chọn một kiểu và <b>dùng thống nhất</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>📣 Nguyên mẫu hàm (prototype)</h4>
+      <ul>
+        <li>Viết <b>giống hệt tiêu đề hàm</b>, thêm dấu <b>;</b> ở cuối: <code>void printMessage(void);</code></li>
+        <li>Mô tả tên hàm, kiểu trả về, kiểu từng tham số, để trình biên dịch <b>kiểm tra mỗi lần gọi</b> có đúng không.</li>
+        <li>Thường đặt ở <b>đầu file .c</b> (trước mọi hàm) hoặc trong <b>file tiêu đề</b>: <code>stdio.h</code> chứa prototype của <code>printf()</code>.</li>
+        <li>Nên khai báo prototype cho <b>tất cả</b> các hàm, bất kể gọi ở đâu.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🗂️ Bố cục file thường gặp</h4>
+<pre class="code" style="margin:0;">#include &lt;stdio.h&gt;
+
+<span class="c-num">// 1. prototype</span>
+int nhan(int x, int y);
+
+<span class="c-num">// 2. main gọi hàm</span>
+int main(void) { ... }
+
+<span class="c-num">// 3. định nghĩa đầy đủ</span>
+int nhan(int x, int y) {
+    return x * y;
+}</pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Kiểu đứng trước tên hàm là kiểu trả về</b>; các kiểu trong ngoặc là kiểu của tham số. Prototype = tiêu đề + <code>;</code>. Tên tham số trong prototype có thể khác hoặc bỏ đi, nhưng <b>kiểu phải giống</b>.</div>
+
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>int func(char x, float v, double t);</code> có kiểu trả về là gì?</summary>
+    <div class="ans"><b>int</b> (đứng trước tên hàm). <code>char</code>, <code>float</code>, <code>double</code> chỉ là kiểu của 3 tham số đưa vào.</div>
+  </details>
+</div>
+
+<!-- ========== P2C TOPIC 6 ========== -->
+<div class="topic k1" id="p2c-t6-tham-so">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Tham số, đối số và giá trị trả về</h3><div class="sub">Đưa dữ liệu vào hàm · nhận kết quả ra · gọi hàm</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> <b>Tham số</b> là <b>cái phễu</b> có sẵn trên máy (chỗ chờ nguyên liệu). <b>Đối số</b> là <b>nguyên liệu thật</b> bạn đổ vào khi bấm máy. Máy nhận <b>bản sao</b> nguyên liệu: máy có xay nát thì quả táo trong tủ lạnh của bạn vẫn còn nguyên.</div>
+
+  <table class="spec">
+    <tr><th></th><th>Tham số (parameter)</th><th>Đối số (argument)</th></tr>
+    <tr><td><b>Nằm ở đâu</b></td><td>Trong <b>tiêu đề hàm</b>, có tên và kiểu</td><td>Trong <b>lời gọi hàm</b></td></tr>
+    <tr><td><b>Ví dụ</b></td><td><code>int multiplyTwoNumbers(int x, int y)</code></td><td><code>multiplyTwoNumbers(10, 20)</code></td></tr>
+    <tr><td><b>Vai trò</b></td><td>Giữ chỗ; là <b>biến cục bộ</b> của hàm</td><td>Giá trị thật được gán vào tham số khi gọi</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Ví dụ đầy đủ</h4>
+<pre class="code" style="margin:0;">int multiplyTwoNumbers(int x, int y)
+{
+    int result = x * y;
+    return result;
+}
+
+int main(void)
+{
+    int result = 0;
+    result = multiplyTwoNumbers(10, 20);
+    printf("result is %d\n", result);
+    return 0;
+}
+<span class="c-num">// in ra: result is 200</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>📞 Gọi hàm diễn ra thế nào</h4>
+      <ul>
+        <li><code>main</code> gặp <code>multiplyTwoNumbers(10, 20)</code> thì <b>tạm dừng</b>.</li>
+        <li>10 được chép vào <code>x</code>, 20 vào <code>y</code>.</li>
+        <li>Hàm chạy đến <code>return result;</code> thì <b>kết thúc</b>, trả về 200.</li>
+        <li>Lời gọi hàm được <b>thay bằng 200</b>, gán vào <code>result</code> của <code>main</code>.</li>
+      </ul>
+      <p>Đối số phải <b>khớp kiểu, số lượng và thứ tự</b> với tham số.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>↩️ Câu lệnh return</h4>
+      <ul>
+        <li><code>return &lt;biểu thức&gt;;</code> trả giá trị về, biểu thức phải <b>cùng kiểu</b> với kiểu trả về đã khai báo.</li>
+        <li>Gặp <code>return</code> ở đâu, hàm <b>kết thúc ngay</b> ở đó.</li>
+        <li>Một hàm có thể có <b>nhiều</b> lệnh <code>return</code> (mỗi lần chỉ chạy một).</li>
+        <li>Hàm khai báo kiểu trả về khác <code>void</code> thì <b>phải có</b> <code>return</code> giá trị.</li>
+        <li>Hàm <code>void</code> dùng <code>return;</code> (không kèm giá trị) nếu muốn thoát sớm.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔬 Bản sao: hàm không làm đổi biến của main</h4>
+<pre class="code" style="margin:0;">void tangMot(int x) {
+    x = x + 1;           <span class="c-num">// chỉ đổi bản sao</span>
+}
+int a = 7;
+tangMot(a);              <span class="c-num">// a vẫn = 7</span></pre>
+      <p style="margin-top:6px;">Mình chạy thử: trong hàm x = 8, nhưng trong main a vẫn là 7.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧺 Truyền mảng vào hàm</h4>
+      <ul>
+        <li>Hàm <b>không tự biết</b> mảng có bao nhiêu phần tử, nên phải truyền thêm <b>kích thước</b>: <code>int dem(int arr[], int n)</code>.</li>
+        <li><b>Khác với biến thường:</b> mảng <b>không bị sao chép</b>. Hàm sửa phần tử mảng thì mảng bên ngoài cũng đổi theo.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">void tang10(int arr[], int n) {
+    for (int i = 0; i &lt; n; i++)
+        arr[i] += 10;
+}
+int a[3] = {1, 2, 3};
+tang10(a, 3);            <span class="c-num">// a thành 11 12 13</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Tham số = <b>chỗ chờ</b> trong tiêu đề hàm; đối số = <b>giá trị thật</b> lúc gọi. Biến thường được truyền <b>bản sao</b>; mảng thì hàm sửa được trực tiếp. Gặp <code>return</code> là hàm kết thúc và trả kết quả về chỗ gọi.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> Slide định nghĩa "đối số là một biến khi khai báo hoặc khi viết mã lệnh cho hàm", dễ gây nhầm với tham số. Cách hiểu thông dụng: <b>tham số</b> nằm trong định nghĩa hàm, <b>đối số</b> là giá trị truyền vào khi gọi hàm (như slide giải thích ở câu tiếp theo). Nên viết <b>chú thích</b> trước mỗi hàm: hàm làm gì, các tham số dùng thế nào.</div>
+</div>
+
+<!-- ========== P2C TOPIC 7 ========== -->
+<div class="topic k2" id="p2c-t7-pham-vi">
+  <div class="topic-head">
+    <div class="topic-num">7</div>
+    <div><h3>Biến cục bộ và biến toàn cục</h3><div class="sub">Biến sống ở đâu, ai dùng được, sống bao lâu</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> <b>Biến cục bộ</b> như đồ dùng trong <b>phòng riêng</b>: chỉ người trong phòng dùng, ra khỏi phòng là dọn đi, lần sau vào lại bày ra từ đầu. <b>Biến toàn cục</b> như <b>cái tivi phòng khách</b>: ai trong nhà cũng xem và chỉnh được, bật suốt cả ngày.</div>
+
+  <table class="spec">
+    <tr><th></th><th>Biến cục bộ</th><th>Biến toàn cục</th></tr>
+    <tr><td><b>Khai báo ở đâu</b></td><td>Trong hàm (hoặc trong khối <code>{ }</code> như vòng lặp, if)</td><td>Bên ngoài mọi hàm</td></tr>
+    <tr><td><b>Ai dùng được</b></td><td>Chỉ hàm (khối) chứa nó</td><td>Mọi hàm trong chương trình, ai cũng thay đổi được</td></tr>
+    <tr><td><b>Sống bao lâu</b></td><td>Tạo ra mỗi lần hàm được gọi, mất khi hàm kết thúc; <b>khởi tạo lại</b> mỗi lần gọi</td><td>Suốt thời gian chương trình chạy</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Cục bộ: mỗi lần gọi bắt đầu lại</h4>
+<pre class="code" style="margin:0;">void dem(void) {
+    int lan = 0;     <span class="c-num">// tạo lại mỗi lần gọi</span>
+    lan++;
+    printf("lan = %d\n", lan);
+}
+dem(); dem(); dem();
+<span class="c-num">// in: lan = 1 ba lần (không lên 2, 3)</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>🧪 Toàn cục và bị "che"</h4>
+<pre class="code" style="margin:0;">int a, b = 10;     <span class="c-num">// toàn cục</span>
+void func_1() {
+    printf("%d %d\n", a, b);
+}
+void func_2() {
+    int a = 5;     <span class="c-num">// che a toàn cục</span>
+    printf("%d\n", a);
+}</pre>
+      <p style="margin-top:6px;">Mình chạy ví dụ của slide: <code>func_1</code> in <b>0 10</b> (toàn cục <code>a</code> chưa gán nên bằng 0), <code>func_2</code> in <b>5</b>, vì trong hàm đó biến cục bộ cùng tên được ưu tiên.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Biến trong hàm là <b>cục bộ</b> (chỉ hàm đó dùng, tạo lại mỗi lần gọi). Biến ngoài mọi hàm là <b>toàn cục</b> (ai cũng dùng, sống suốt chương trình). Trùng tên thì <b>biến cục bộ che biến toàn cục</b>.</div>
+  <div class="example-box blue"><b>🔎 Nên tránh lạm dụng biến toàn cục:</b> nó tạo sự <b>phụ thuộc giữa các hàm</b>, khi có lỗi thì <b>khó tìm và khó sửa</b> vì hàm nào cũng có thể đã đổi nó. Hãy truyền dữ liệu qua <b>tham số</b>; nhiều dữ liệu thì dùng <b>struct</b> (học sau). Biến toàn cục không khởi tạo tự bằng 0, còn biến cục bộ không khởi tạo thì chứa giá trị rác.</div>
+
+  <details class="quiz"><summary>❓ Tự kiểm tra: vòng <code>while (i--)</code> với <code>i = 3</code> ngoài, bên trong khai báo lại <code>int i = 100; i--; printf("%d ", i);</code> thì in gì?</summary>
+    <div class="ans"><code>99 99 99</code>. Biến <code>i</code> bên trong là biến cục bộ của khối vòng lặp, <b>tạo lại bằng 100 mỗi vòng</b> nên luôn in 99; biến <code>i</code> bên ngoài chỉ đếm số vòng (3 vòng).</div>
+  </details>
+</div>
+
+<!-- ========== P2C TOPIC 8 ========== -->
+<div class="topic k3" id="p2c-t8-bai-tap">
+  <div class="topic-head">
+    <div class="topic-num">8</div>
+    <div><h3>Bài tập thường gặp (mảng và hàm)</h3><div class="sub">Một khung chung · các dạng bài · lỗi hay mắc khi nộp bài</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Bí quyết:</b> gần như mọi bài mảng đều theo <b>3 bước</b>: <b>(1) nhập mảng</b> → <b>(2) duyệt từng phần tử bằng vòng lặp</b> → <b>(3) dùng một biến "trí nhớ"</b> (max, đếm, tổng...) khai báo <b>bên ngoài vòng lặp</b> để giữ kết quả qua các vòng. Chỉ có phần "làm gì với biến trí nhớ" là thay đổi theo đề.</div>
+
+<pre class="code">int n, arr[1000];
+scanf("%d", &amp;n);                       <span class="c-num">// (1) nhập n trước</span>
+for (int i = 0; i &lt; n; i++)
+    scanf("%d", &amp;arr[i]);              <span class="c-num">//     rồi nhập n phần tử</span>
+
+int nho = ...;                          <span class="c-num">// (3) biến trí nhớ, ngoài vòng lặp</span>
+for (int i = 0; i &lt; n; i++) {           <span class="c-num">// (2) duyệt</span>
+    ...                                 <span class="c-num">//     cập nhật biến trí nhớ</span>
+}
+printf("%d", nho);                      <span class="c-num">// in SAU vòng lặp</span></pre>
+
+  <table class="spec">
+    <tr><th>Dạng bài</th><th>Biến trí nhớ bắt đầu</th><th>Trong vòng lặp</th></tr>
+    <tr><td><b>Phần tử lớn nhất</b></td><td><code>max = arr[0]</code> (không dùng 0, vì mảng toàn số âm sẽ sai)</td><td><code>if (arr[i] &gt; max) max = arr[i];</code></td></tr>
+    <tr><td><b>Phần tử nhỏ nhất</b></td><td><code>min = arr[0]</code></td><td><code>if (arr[i] &lt; min) min = arr[i];</code></td></tr>
+    <tr><td><b>Đếm số phần tử bằng k</b></td><td><code>dem = 0</code></td><td><code>if (arr[i] == k) dem++;</code></td></tr>
+    <tr><td><b>Tổng các phần tử</b></td><td><code>tong = 0</code></td><td><code>tong += arr[i];</code> (cộng <b>giá trị</b> arr[i], không cộng i)</td></tr>
+    <tr><td><b>Tổng số chẵn</b></td><td><code>tongChan = 0</code></td><td><code>if (arr[i] % 2 == 0) tongChan += arr[i];</code></td></tr>
+    <tr><td><b>Đếm số lẻ</b></td><td><code>dem = 0</code></td><td><code>if (arr[i] % 2 != 0) dem++;</code> (dùng <code>!= 0</code>, không dùng <code>== 1</code>)</td></tr>
+    <tr><td><b>In các số chẵn</b></td><td>(không cần)</td><td><code>if (arr[i] % 2 == 0) printf("%d ", arr[i]);</code></td></tr>
+    <tr><td><b>Vị trí của k</b></td><td>(không cần)</td><td><code>if (arr[i] == k) printf("%d ", i);</code> (in <b>i</b>, là vị trí)</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧪 Thử với đầu vào của bài FUNiX "đếm số bằng k"</h4>
+      <p>Đầu vào: <code>7</code>, mảng <code>2 5 8 7 6 6 9</code>, rồi <code>k = 6</code> (mảng nhập <b>trước</b> k). Mình chạy thử các dạng trên:</p>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Dạng</th><th>Kết quả</th></tr>
+        <tr><td>Lớn nhất</td><td>9</td></tr>
+        <tr><td>Đếm số bằng 6</td><td>2</td></tr>
+        <tr><td>Tổng</td><td>43</td></tr>
+        <tr><td>Tổng số chẵn</td><td>22 (2 + 8 + 6 + 6)</td></tr>
+        <tr><td>Đếm số lẻ</td><td>3 (5, 7, 9)</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>🔀 Sắp xếp tăng dần / giảm dần</h4>
+<pre class="code" style="margin:0;">for (int i = 0; i &lt; n - 1; i++)
+    for (int j = i + 1; j &lt; n; j++)
+        if (arr[i] &gt; arr[j]) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+<span class="c-num">// giảm dần: đổi &gt; thành &lt;</span></pre>
+      <p style="margin-top:6px;">Ý tưởng: <b>i</b> là ghế đang chọn người, <b>j</b> là những người đứng sau; sai thứ tự thì đổi chỗ (cần <code>temp</code> như cốc thứ ba để đổi nước). Ghế cuối tự có người nên <code>i &lt; n - 1</code>, còn <code>j</code> vẫn đi tới cuối (<code>j &lt; n</code>). Mảng trên sắp tăng ra <code>2 5 6 6 7 8 9</code>.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧮 Tổng mảng hai chiều</h4>
+<pre class="code" style="margin:0;">int arr[100][100], n, m, sum = 0;
+scanf("%d %d", &amp;n, &amp;m);
+for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; m; j++)
+        scanf("%d", &amp;arr[i][j]);
+for (int i = 0; i &lt; n; i++)
+    for (int j = 0; j &lt; m; j++)
+        sum += arr[i][j];
+printf("%d", sum);</pre>
+      <p style="margin-top:6px;">Nhập <code>2 3</code> và <code>1 2 3 4 5 6</code> thì ra <b>21</b>.</p>
+    </div>
+    <div class="info-card">
+      <h4>🧩 Viết thành hàm (dạng bài "viết hàm")</h4>
+<pre class="code" style="margin:0;">int demSoLe(int arr[], int n) {
+    int dem = 0;
+    for (int i = 0; i &lt; n; i++)
+        if (arr[i] % 2 != 0) dem++;
+    return dem;
+}
+<span class="c-num">// trong main:</span>
+printf("%d", demSoLe(arr, n));</pre>
+      <p style="margin-top:6px;">Các bài viết hàm hay gặp: <b>USCLN</b> (lặp chia lấy dư đến khi số chia bằng 0), <b>giá trị tuyệt đối</b> (âm thì đổi dấu), <b>n!</b> (nhân từ 1 đến n, dùng <code>long long</code>, <code>0! = 1</code>), <b>khoảng cách hai điểm</b> √((Ax − Bx)² + (Ay − By)²) dùng <code>sqrt</code> trong <code>math.h</code>.</p>
+    </div>
+  </div>
+
+  <div class="info-card" style="margin:12px 0;">
+    <h4>🎮 Bài lớn: Tic Tac Toe (mảng + hàm)</h4>
+    <ul>
+      <li>Mảng <code>char square[10] = {'0','1',...,'9'}</code>: ô 1 đến 9 là bàn cờ, ban đầu mỗi ô chứa chữ số của chính nó. Ô còn trống khi <code>square[i] == '0' + i</code>.</li>
+      <li>Hàm <code>checkForWin()</code> kiểm tra <b>8 đường thắng</b> (3 hàng, 3 cột, 2 chéo) bằng <code>if</code>: ba ô bằng nhau thì trả về <b>1</b> (thắng); 9 ô đều đã đánh mà chưa ai thắng thì <b>0</b> (hòa); còn lại <b>-1</b> (chơi tiếp).</li>
+      <li><code>main</code> dùng <code>do-while</code>: in bàn cờ, nhập ô, kiểm tra hợp lệ, đánh dấu X/O, gọi <code>checkForWin()</code>, đổi lượt khi kết quả là -1. Nhớ gán <code>result = -1</code> trước vòng lặp.</li>
+    </ul>
+  </div>
+
+  <table class="spec">
+    <tr><th>Lỗi hay mắc khi nộp bài</th><th>Cách tránh</th></tr>
+    <tr><td><b>Thứ tự <code>scanf</code> khác đề</b> (đọc k trước mảng trong khi đề nhập mảng trước)</td><td>Xem code mẫu hoặc ví dụ đầu vào của đề, đọc đúng thứ tự</td></tr>
+    <tr><td>Viết <code>i &lt;= n</code></td><td>Luôn viết <code>i &lt; n</code></td></tr>
+    <tr><td>Quên khởi tạo biến trí nhớ, hoặc khai báo nó <b>trong</b> vòng lặp</td><td>Khai báo và gán (0 hoặc arr[0]) <b>trước</b> vòng lặp</td></tr>
+    <tr><td>Nhầm <code>i</code> (vị trí) với <code>arr[i]</code> (giá trị)</td><td>Hỏi: "mình cần vị trí hay giá trị?"</td></tr>
+    <tr><td>Quên <code>&amp;</code> trong <code>scanf("%d", &amp;arr[i])</code></td><td>Số nguyên, số thực, ký tự đều cần <code>&amp;</code></td></tr>
+    <tr><td>Kiểm tra số lẻ bằng <code>% 2 == 1</code></td><td>Số âm lẻ dư -1, nên dùng <code>% 2 != 0</code></td></tr>
+    <tr><td>Đặt <code>printf</code> trong vòng lặp nên in ra nhiều số</td><td>In kết quả <b>sau</b> vòng lặp</td></tr>
+    <tr><td>Truyền mảng vào hàm mà quên truyền <code>n</code></td><td>Tham số luôn có <code>int arr[], int n</code></td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>Nhập → Duyệt → Biến trí nhớ ngoài vòng lặp → In sau vòng lặp</b>. Khi bí, hãy lấy một mảng nhỏ (3 đến 4 số) và <b>ghi ra giấy từng vòng lặp</b>: i bằng mấy, arr[i] bằng mấy, biến trí nhớ thành bao nhiêu.</div>
+</div>
+
+<!-- ========== P2C TOPIC 9 ========== -->
+<div class="topic k4" id="p2c-t9-doc-code">
+  <div class="topic-head">
+    <div class="topic-num">9</div>
+    <div><h3>Câu hỏi đọc code hay gặp (bấm để xem đáp án)</h3><div class="sub">Tự đoán trước, rồi mở đáp án; mọi đáp án đã được chạy thử</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Cách làm câu đọc code:</b> đừng đoán trong đầu. Kẻ một bảng nhỏ, mỗi dòng là <b>một vòng lặp</b>, ghi <b>giá trị từng biến</b> sau mỗi bước. Với <code>x++</code> / <code>x--</code>: biểu thức dùng giá trị <b>cũ</b> rồi mới đổi. Với <code>switch</code>: thiếu <code>break</code> là chạy tràn xuống case dưới.</div>
+
+  <details class="quiz"><summary>1. <code>int c = 5, no = 10; do { no /= c; } while (c--); printf("%d", no);</code> in gì?</summary>
+    <div class="ans"><b>Không in gì, chương trình lỗi chia cho 0.</b> <code>c--</code> kiểm tra giá trị cũ: các vòng chia cho 5, 4, 3, 2, 1, và khi kiểm tra 1 (khác 0) thì c đã thành 0, vòng sau thực hiện <code>no /= 0</code>.</div>
+  </details>
+
+  <details class="quiz"><summary>2. <code>for (i = 0; i &lt; 20; i++) { switch (i) { case 0: i += 5; case 1: i += 2; case 5: i += 5; default: i += 4; break; } printf("%d ", i); }</code></summary>
+    <div class="ans"><b>16 21</b>. Vòng đầu i = 0 vào <code>case 0</code> rồi chạy tràn qua mọi case (không có break): 0 + 5 + 2 + 5 + 4 = 16. Sau <code>i++</code> là 17, vào <code>default</code>: 21. Rồi i = 22 nên dừng.</div>
+  </details>
+
+  <details class="quiz"><summary>3. <code>int i = -5; while (i &lt;= 5) { if (i &gt;= 0) break; else { i++; continue; } printf("FunixQuiz"); }</code></summary>
+    <div class="ans"><b>Không in gì.</b> Mỗi vòng đều gặp <code>break</code> hoặc <code>continue</code> trước khi tới <code>printf</code>. i tăng từ -5 đến 0 thì <code>break</code>.</div>
+  </details>
+
+  <details class="quiz"><summary>4. <code>int i = 10; for (; i; i &gt;&gt;= 1) printf("CProgram\r\n");</code> in mấy dòng?</summary>
+    <div class="ans"><b>4 dòng</b>. i đi qua 10, 5, 2, 1 (dịch phải 1 bit = chia 2 lấy nguyên), đến 0 thì điều kiện <code>i</code> sai nên dừng.</div>
+  </details>
+
+  <details class="quiz"><summary>5. <code>for (n = 9; n != 0; n--) printf("n = %d", n--);</code></summary>
+    <div class="ans"><b>Lặp vô hạn.</b> Mỗi vòng n giảm 2 lần (trong printf và ở phần cập nhật): 9, 7, 5, 3, 1, -1... toàn số lẻ nên không bao giờ bằng 0.</div>
+  </details>
+
+  <details class="quiz"><summary>6. <code>char buf[10] = {1, 2, 3, 4, 5, 6, 9, 8}; p = (buf + 1)[5];</code> thì p bằng bao nhiêu?</summary>
+    <div class="ans"><b>9</b>. <code>(buf + a)[b]</code> giống <code>buf[a + b]</code>, nên là <code>buf[6]</code> = 9. Các ô không được gán (buf[8], buf[9]) bằng 0.</div>
+  </details>
+
+  <details class="quiz"><summary>7. Khai báo nào cho biết địa chỉ phần tử đầu của mảng <code>arr</code> 100 phần tử: <code>arr[0]</code>, <code>arr</code>, <code>&amp;arr</code>, <code>arr[1]</code>? (chọn 2)</summary>
+    <div class="ans"><b><code>arr</code> và <code>&amp;arr</code></b>. Tên mảng là địa chỉ ô đầu; <code>&amp;arr</code> là địa chỉ cả mảng, bắt đầu cùng chỗ. <code>arr[0]</code>, <code>arr[1]</code> là <b>giá trị</b>, không phải địa chỉ (địa chỉ ô đầu viết đầy đủ là <code>&amp;arr[0]</code>).</div>
+  </details>
+
+  <details class="quiz"><summary>8. <code>int (*ptr)(int) = fun; (*ptr)(3);</code> với <code>fun(n)</code> in "HelloWorld" khi <code>n &gt; 0</code> rồi giảm n. In mấy lần?</summary>
+    <div class="ans"><b>3 lần</b>. <code>ptr</code> là con trỏ hàm trỏ tới <code>fun</code>, nên <code>(*ptr)(3)</code> chính là <code>fun(3)</code>; vòng lặp chạy với n = 3, 2, 1.</div>
+  </details>
+</div>
+
+</section>
+
 </div><!-- /part-page 2 -->
 
 <footer>
@@ -2471,8 +3198,8 @@ for (int i = 1; i &lt;= 3; i++)
       <p>Khái niệm & thuật ngữ → Fetch–Execute & ngôn ngữ → 7 bước viết chương trình → Tổng quan ngôn ngữ C → Lịch sử & tiêu chuẩn → Ưu & nhược điểm → 4 bước tạo chương trình → Lưu đồ thuật toán → Công cụ: GCC, gdb & IDE → Chú thích & tiền xử lý → printf & scanf → Bộ nhớ RAM & biến → Khai báo & đặt tên → Kiểu số → bool & enum → char & ký tự thoát → Định dạng printf</p>
     </div>
     <div onclick="setPart('2')">
-      <h4>👉 Phần 2 · Toán tử, điều kiện & vòng lặp</h4>
-      <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof → Độ ưu tiên → Gỡ lỗi → Cách tính nhanh → if / else if → ? : → switch → goto → for → while & do while → vòng lặp lồng, break, continue</p>
+      <h4>👉 Phần 2 · Toán tử, điều khiển, mảng & hàm</h4>
+      <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof → Độ ưu tiên → Gỡ lỗi → Cách tính nhanh → if / else if → ? : → switch → goto → for → while & do while → vòng lặp lồng, break, continue → mảng một chiều, hai chiều → hàm, tham số, return → biến cục bộ, toàn cục → bài tập thường gặp</p>
     </div>
     <div class="soon">
       <h4>⏳ Các Phần tiếp theo</h4>
