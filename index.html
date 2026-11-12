@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lập trình C cơ bản · Tóm tắt & ôn thi (Phần 1–2)</title>
+<title>Lập trình C cơ bản · Tóm tắt & ôn thi (Phần 1–3)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -67,6 +67,7 @@ section h2.sec-title{font-size:1.6rem;margin:6px 0 14px}
 .topic-head h3{font-size:1.4rem}
 .back-map{margin-left:auto;align-self:flex-start;font-size:.76rem;font-weight:600;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:3px 11px;white-space:nowrap;background:#fff}
 .back-map:hover{color:var(--c2);border-color:var(--c2)}
+.ascii-tbl th,.ascii-tbl td{padding:6px 5px;text-align:center}
 .easy-box{background:#ecf8e8;border-left:5px solid #4fae5b;border-radius:10px;padding:12px 16px;margin:0 0 14px;font-size:.95rem}
 details.quiz{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:10px 0}
 details.quiz summary{cursor:pointer;font-weight:600}
@@ -127,6 +128,7 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
     <div id="partSwitch">
       <button type="button" data-part="1" class="active">Phần 1</button>
       <button type="button" data-part="2">Phần 2</button>
+      <button type="button" data-part="3">Phần 3</button>
     </div>
   </div>
   <div class="nav-links active" data-part="1">
@@ -137,6 +139,9 @@ footer{background:var(--ink);color:#e9e6d9;padding:30px 20px;margin-top:20px}
     <a href="#mindmap2">🗺️ Bài 5 · Toán tử</a>
     <a href="#mindmap2b">🗺️ Điều kiện & vòng lặp</a>
     <a href="#mindmap2c">🗺️ Mảng & hàm</a>
+  </div>
+  <div class="nav-links" data-part="3">
+    <a href="#mindmap3">🗺️ Chuỗi ký tự</a>
   </div>
 </nav>
 
@@ -3191,6 +3196,653 @@ printf("%d", demSoLe(arr, n));</pre>
 
 </div><!-- /part-page 2 -->
 
+<!-- ======================= PHẦN 3 ======================= -->
+<div class="part-page" data-part="3">
+
+<div class="hero" id="phan3-top">
+  <div>
+    <span class="eyebrow">🔡 Phần 3 · Tóm tắt & ghi nhớ · Giải thích dễ hiểu</span>
+    <h1>Chuỗi <span class="accent">ký tự</span> (String)</h1>
+    <p>Chuỗi là một <b>mảng ký tự</b> kết thúc bằng <code>'\0'</code>. Bài này gồm: khai báo, khởi tạo, nhập xuất, so sánh, hằng chuỗi, các hàm trong <code>string.h</code>, khái niệm con trỏ, tìm kiếm, phân tách và chuyển đổi chuỗi. Mỗi chủ đề có hộp <b>🍼 Hiểu nhanh</b>, ví dụ đã chạy thử và câu <b>❓ tự kiểm tra</b> có đáp án.</p>
+    <div class="hero-tags">
+      <span class="tag t1">'\0'</span>
+      <span class="tag t2">strcpy · strcat</span>
+      <span class="tag t3">strcmp</span>
+      <span class="tag t4">strtok</span>
+      <span class="tag t5">atoi · toupper</span>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <pre style="margin:0;white-space:pre-wrap;">char ten[20] = "Hello";
+strcat(ten, " C");        // Hello C
+if (strcmp(ten, "Hello C") == 0)
+    printf("%s", ten);</pre>
+  </div>
+</div>
+
+<section id="mindmap3" style="padding-top:10px;">
+  <h2 class="sec-title">🗺️ Bản đồ Phần 3 · Chuỗi ký tự</h2>
+  <div class="mindmap-wrap">
+    <div class="mindmap" style="min-height:760px;">
+      <svg viewBox="0 0 940 760" preserveAspectRatio="none">
+        <line x1="470" y1="380" x2="470" y2="84" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="712" y2="153" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="840" y2="329" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="796" y2="528" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="599" y2="659" stroke="#9ac1f0" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="341" y2="659" stroke="#f6c445" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="144" y2="528" stroke="#e45f2b" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="100" y2="329" stroke="#a0e548" stroke-width="2.5" stroke-dasharray="5 5"/>
+        <line x1="470" y1="380" x2="228" y2="153" stroke="#72fa93" stroke-width="2.5" stroke-dasharray="5 5"/>
+      </svg>
+
+      <div class="mm-center">PHẦN 3<br><span style="font-weight:400;font-size:.7rem;opacity:.9;">Chuỗi ký tự</span></div>
+
+      <a href="#p3-t1-chuoi" class="mm-node" style="left:40.5%;top:6.8%;">
+        <span class="num" style="background:#f6c445;">1</span>
+        <div class="title">Chuỗi & ký tự null</div>
+        <div class="desc">char, "", \0, bộ nhớ</div>
+      </a>
+      <a href="#p3-t2-khai-bao" class="mm-node" style="left:66.2%;top:15.9%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">2</span>
+        <div class="title">Khai báo & khởi tạo</div>
+        <div class="desc">char s[20], gán bằng strcpy</div>
+      </a>
+      <a href="#p3-t3-nhap-xuat" class="mm-node" style="left:79.9%;top:39.0%;">
+        <span class="num" style="background:#a0e548;">3</span>
+        <div class="title">Hiển thị, nhập, so sánh</div>
+        <div class="desc">%s, scanf, fgets, strcmp</div>
+      </a>
+      <a href="#p3-t4-hang" class="mm-node" style="left:75.1%;top:65.2%;">
+        <span class="num" style="background:#72fa93;">4</span>
+        <div class="title">Hằng: const & #define</div>
+        <div class="desc">Hằng chuỗi, TAXRATE</div>
+      </a>
+      <a href="#p3-t5-ham" class="mm-node" style="left:54.2%;top:82.4%;">
+        <span class="num" style="background:#9ac1f0;">5</span>
+        <div class="title">Hàm string.h</div>
+        <div class="desc">strlen, strcpy, strcat, strcmp</div>
+      </a>
+      <a href="#p3-t6-con-tro" class="mm-node" style="left:26.8%;top:82.4%;">
+        <span class="num" style="background:#f6c445;">6</span>
+        <div class="title">Khái niệm con trỏ</div>
+        <div class="desc">&, *, NULL, char*</div>
+      </a>
+      <a href="#p3-t7-tim-kiem" class="mm-node" style="left:5.9%;top:65.3%;">
+        <span class="num" style="background:#e45f2b;color:#fff;">7</span>
+        <div class="title">Tìm kiếm & phân tách</div>
+        <div class="desc">strchr, strstr, strtok, isdigit</div>
+      </a>
+      <a href="#p3-t8-chuyen-doi" class="mm-node" style="left:1.1%;top:39.0%;">
+        <span class="num" style="background:#a0e548;">8</span>
+        <div class="title">Chuyển đổi chuỗi</div>
+        <div class="desc">toupper, atoi, strtod</div>
+      </a>
+      <a href="#p3-t9-bai-tap" class="mm-node" style="left:14.8%;top:15.9%;">
+        <span class="num" style="background:#72fa93;">9</span>
+        <div class="title">Bài tập thường gặp</div>
+        <div class="desc">Đếm từ, đảo chuỗi, đối xứng</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="chi-tiet-3" data-map="mindmap3" style="padding-top:6px;">
+
+<!-- ========== P3 TOPIC 1 ========== -->
+<div class="topic k1" id="p3-t1-chuoi">
+  <div class="topic-head">
+    <div class="topic-num">1</div>
+    <div><h3>Tổng quan về chuỗi và ký tự null</h3><div class="sub">Ký tự đơn, chuỗi ký tự, cách lưu trong bộ nhớ, '\0' và NULL</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Một <b>ký tự</b> (<code>char</code>) là một chữ cái, giống <b>một viên gạch</b>. Một <b>chuỗi</b> là <b>dãy gạch xếp liền nhau</b>, và luôn có một viên đặc biệt ở cuối ghi <code>'\0'</code> (ký tự null) để báo "hết hàng". C không có kiểu dữ liệu riêng cho chuỗi, chuỗi chính là <b>mảng của <code>char</code></b>.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔤 Ký tự đơn và chuỗi</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th></th><th>Ký tự đơn</th><th>Chuỗi</th></tr>
+        <tr><td><b>Dấu</b></td><td>Nháy đơn <code>'+'</code></td><td>Nháy kép <code>"+"</code></td></tr>
+        <tr><td><b>Kiểu</b></td><td><code>char</code>, 1 ô nhớ</td><td>Mảng <code>char</code>: <code>"+"</code> chiếm <b>2 ô</b> (<code>'+'</code> và <code>'\0'</code>)</td></tr>
+        <tr><td><b>Ví dụ</b></td><td><code>char plusSign = '+';</code></td><td><code>char plusSign = "+";</code> là <b>lỗi</b> (gán chuỗi cho biến char)</td></tr>
+      </table>
+      <p>Mọi thứ trong dấu nháy kép đều là chuỗi, kể cả <b>khoảng trắng</b> và ký tự đặc biệt.</p>
+    </div>
+    <div class="info-card">
+      <h4>🧩 Ký tự đặc biệt trong chuỗi</h4>
+      <ul>
+        <li>Muốn có dấu nháy kép <b>bên trong</b> chuỗi: viết <code>\"</code>. Ví dụ <code>"For \" you write \\\"."</code></li>
+        <li>Muốn có dấu <code>\</code>: viết <code>\\</code> (vì một dấu <code>\</code> luôn báo hiệu ký tự thoát).</li>
+        <li><code>\n</code> xuống dòng: <code>"This is on\ntwo lines"</code> in ra 2 dòng.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4 style="margin:14px 0 8px;">🧠 Chuỗi trong bộ nhớ: <code>"This is a string."</code></h4>
+  <div style="overflow-x:auto;margin-bottom:6px;">
+  <table class="spec ascii-tbl" style="margin:0;font-size:.82rem;">
+    <tr><th>Ký tự</th><td>T</td><td>h</td><td>i</td><td>s</td><td>␣</td><td>i</td><td>s</td><td>␣</td><td>a</td><td>␣</td><td>s</td><td>t</td><td>r</td><td>i</td><td>n</td><td>g</td><td>.</td><td><b>\0</b></td></tr>
+    <tr><th>Mã ASCII</th><td>84</td><td>104</td><td>105</td><td>115</td><td>32</td><td>105</td><td>115</td><td>32</td><td>97</td><td>32</td><td>115</td><td>116</td><td>114</td><td>105</td><td>110</td><td>103</td><td>46</td><td><b>0</b></td></tr>
+  </table>
+  </div>
+  <p class="sub" style="margin:0 0 10px;">Mỗi ký tự một ô liền kề; ô cuối là <code>'\0'</code> (giá trị số 0). Ký hiệu ␣ là dấu cách (mã 32). Chuỗi có 17 ký tự nhưng <b>chiếm 18 ô</b>.</p>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🛑 Ký tự null '\0'</h4>
+      <ul>
+        <li>Ký tự đặc biệt có giá trị <b>0</b>, tự động được thêm vào <b>cuối mỗi hằng chuỗi</b> để đánh dấu kết thúc.</li>
+        <li>Các hàm như <code>printf("%s")</code> <b>dừng ở <code>'\0'</code> đầu tiên</b> gặp được. Ví dụ <code>printf("The character \0 is used...")</code> chỉ in ra <b>"The character "</b>.</li>
+        <li>Vì có <code>'\0'</code> nên mảng chứa chuỗi luôn <b>dài hơn số ký tự ít nhất 1 ô</b>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>⚠️ Đừng nhầm '\0' với NULL</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th><code>'\0'</code></th><th><code>NULL</code></th></tr>
+        <tr><td>Một <b>ký tự</b>, dùng để <b>kết thúc chuỗi</b></td><td>Một <b>địa chỉ</b> đặc biệt nghĩa là "<b>con trỏ không trỏ vào đâu cả</b>" (xem chủ đề 6)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>'x'</code> là <b>1 ký tự</b>, <code>"x"</code> là <b>chuỗi 2 ô</b> (x và \0). Chuỗi = mảng char + <code>'\0'</code> ở cuối. Mọi hàm xử lý chuỗi đều đọc tới <code>'\0'</code> thì dừng.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>"Hi!"</code> chiếm bao nhiêu ô nhớ? <code>printf("%s", "ab\0cd")</code> in ra gì?</summary>
+    <div class="ans">4 ô (H, i, !, \0). Lệnh in chỉ cho ra <b>ab</b>, vì gặp <code>\0</code> là dừng, phần <code>cd</code> không bao giờ được in.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 2 ========== -->
+<div class="topic k2" id="p3-t2-khai-bao">
+  <div class="topic-head">
+    <div class="topic-num">2</div>
+    <div><h3>Khai báo, khởi tạo và gán giá trị cho chuỗi</h3><div class="sub">char s[N] · các cách khởi tạo · không gán bằng dấu =</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Khai báo chuỗi là <b>mua một dãy tủ</b>: <code>char myString[20];</code> mua 20 ngăn, nhưng chỉ cất được tối đa <b>19 chữ</b> vì ngăn cuối dành cho <code>'\0'</code>. Khởi tạo là bỏ chữ vào tủ ngay lúc mua. Muốn đổi nội dung sau đó thì <b>không dùng dấu <code>=</code></b>, phải gọi "nhân viên" <code>strcpy</code> chép từng chữ vào.</div>
+
+  <table class="spec">
+    <tr><th>Cách viết</th><th>Kết quả trong bộ nhớ</th><th>Ghi chú</th></tr>
+    <tr><td><code>char myString[20];</code></td><td>20 ô, chưa có giá trị (rác)</td><td>Chứa tối đa 19 ký tự + '\0'</td></tr>
+    <tr><td><code>char word[] = "Hello!";</code></td><td><code>H e l l o ! \0</code> (7 ô)</td><td>Không ghi kích thước, trình biên dịch <b>tự đếm</b> và tự thêm '\0'. <b>Cách an toàn nhất</b></td></tr>
+    <tr><td><code>char word[7] = "Hello!";</code></td><td>7 ô, giống trên</td><td>Ghi kích thước thì phải <b>đủ chỗ cho '\0'</b></td></tr>
+    <tr><td><code>char word[6] = "Hello!";</code></td><td>6 ô, <b>không có '\0'</b></td><td>Trình biên dịch <b>không báo lỗi</b>, nhưng không còn là chuỗi hợp lệ</td></tr>
+    <tr><td><code>char word[] = {'H','e','l','l','o','!','\0'};</code></td><td>7 ô</td><td>Khởi tạo từng ký tự thì <b>phải tự viết '\0'</b></td></tr>
+    <tr><td><code>char str[40] = "To be";</code></td><td><code>T o   b e \0</code> + 34 ô <b>'\0'</b></td><td>Khởi tạo một phần: các ô còn lại tự bằng '\0' (giá trị 0)</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🚫 Không gán chuỗi bằng dấu =</h4>
+<pre class="code" style="margin:0;">char s[100];
+s = "hello";        <span class="c-num">// LỖI: 'lvalue required'</span></pre>
+      <p style="margin-top:6px;">Vì <b>không gán được mảng</b> trong C, nên cũng không gán được chuỗi. Dấu <code>=</code> chỉ dùng được <b>ngay lúc khai báo</b>.</p>
+    </div>
+    <div class="info-card">
+      <h4>✅ Hai cách gán sau khi khai báo</h4>
+<pre class="code" style="margin:0;">strcpy(s, "hello");  <span class="c-num">// cách thường dùng</span>
+
+s[0] = 'h'; s[1] = 'e'; s[2] = 'l';
+<span class="c-num">// hoặc gán từng ô:</span>
+s[3] = 'l'; s[4] = 'o'; s[5] = '\0';</pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Mảng chứa chuỗi phải có <b>số ký tự + 1</b> ô. Khởi tạo bằng <code>char s[] = "..."</code> để máy tự tính kích thước. Gán sau khai báo dùng <b><code>strcpy</code></b>, không dùng <code>=</code>.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> (1) Với <code>char str[40] = "To be"</code>, slide nói các ô còn lại "được gán bằng ký tự khoảng trắng". Thực tế chúng được gán <b>'\0'</b> (giá trị 0), mình đã kiểm tra <code>str[6]</code> = 0. (2) Slide nói khởi tạo <code>{'H','e','l','l','o','!'}</code> thì trình biên dịch "tự thêm ký tự null": <b>không đúng</b> với cách khởi tạo từng ký tự, mảng này chỉ có 6 ô và không có '\0'; phải tự viết <code>'\0'</code> hoặc dùng <code>"Hello!"</code>. (3) Slide nói "phải dùng <code>strncpy</code> để gán": dùng <code>strcpy</code> cũng được, <code>strncpy</code> chỉ an toàn hơn khi giới hạn số ký tự.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: muốn lưu chuỗi "FUNiX" (5 chữ) thì khai báo <code>char s[?]</code> ít nhất là bao nhiêu?</summary>
+    <div class="ans"><code>char s[6]</code>: 5 chữ + 1 ô cho <code>'\0'</code>. Viết <code>char s[] = "FUNiX";</code> thì máy tự tính là 6.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 3 ========== -->
+<div class="topic k3" id="p3-t3-nhap-xuat">
+  <div class="topic-head">
+    <div class="topic-num">3</div>
+    <div><h3>Hiển thị, nhập chuỗi và kiểm tra hai chuỗi bằng nhau</h3><div class="sub">printf %s · scanf %s · fgets · vì sao không dùng ==</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> In chuỗi: đưa <b>tên mảng</b> cho <code>printf("%s")</code>. Nhập chuỗi: <code>scanf("%s", ten)</code> <b>không có dấu &amp;</b> (tên mảng đã là địa chỉ) nhưng <b>dừng ở dấu cách</b>. So sánh hai chuỗi: <b>không được dùng <code>==</code></b>, vì <code>==</code> chỉ so hai <b>địa chỉ</b>, không so nội dung.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🖨️ Hiển thị chuỗi</h4>
+<pre class="code" style="margin:0;">char message[] = "Hello";
+printf("\nThe message is: %s", message);
+puts(message);        <span class="c-num">// in rồi tự xuống dòng</span></pre>
+      <p style="margin-top:6px;"><code>%s</code> in các ký tự cho đến khi gặp <code>'\0'</code>. Chỉ cần đưa <b>tên mảng</b>, không có <code>[ ]</code>.</p>
+    </div>
+    <div class="info-card">
+      <h4>⌨️ Nhập chuỗi</h4>
+<pre class="code" style="margin:0;">char input[10];
+printf("Please input your name: ");
+scanf("%s", input);   <span class="c-num">// không có &amp;</span>
+
+char ten[30];
+<span class="c-num">// đọc cả dòng, rồi xóa ký tự xuống dòng:</span>
+fgets(ten, sizeof(ten), stdin);
+ten[strcspn(ten, "\n")] = '\0';</pre>
+      <p style="margin-top:6px;">Nhập <code>Nguyen Van A</code>: <code>scanf("%s")</code> chỉ đọc <b>Nguyen</b>; <code>fgets</code> đọc được cả câu.</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>❌ Vì sao <code>if (string1 == string2)</code> sai?</h4>
+      <ul>
+        <li><code>==</code> chỉ dùng cho kiểu đơn giản (<code>int</code>, <code>float</code>, <code>char</code>), không dùng cho <b>mảng</b> hay cấu trúc.</li>
+        <li>Với hai mảng, <code>==</code> so sánh <b>địa chỉ</b> của chúng, luôn khác nhau nên kết quả luôn sai.</li>
+        <li>Muốn biết hai chuỗi giống nhau thì phải so <b>từng ký tự</b>: hàm <code>strcmp()</code> làm việc này (chủ đề 5).</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>✅ Cách đúng</h4>
+<pre class="code" style="margin:0;">char mk[20];
+scanf("%s", mk);
+<span class="c-num">// bằng 0 là giống nhau</span>
+if (strcmp(mk, "funix123") == 0) {
+    printf("Dang nhap thanh cong");
+} else {
+    printf("Sai mat khau");
+}</pre>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🧮 Tự đếm độ dài chuỗi bằng vòng lặp (ví dụ slide)</h4>
+<pre class="code" style="margin:0;">char str1[] = "To be or not to be";
+unsigned int count = 0;
+<span class="c-num">// chưa gặp '\0' thì đếm tiếp</span>
+while (str1[count] != '\0')
+    ++count;
+printf("%d characters", count);   <span class="c-num">// 18</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>Cách chạy</h4>
+      <p>Vòng lặp xem từng ô <code>str1[0]</code>, <code>str1[1]</code>... Mỗi ô không phải <code>'\0'</code> thì <code>count</code> tăng 1. Gặp <code>'\0'</code> thì dừng, lúc đó <code>count</code> chính là số ký tự. Đây đúng là cách hàm <code>strlen()</code> làm bên trong.</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> In: <code>printf("%s", s)</code>. Nhập: <code>scanf("%s", s)</code> không có <code>&amp;</code>, dừng ở dấu cách; cả câu thì <code>fgets</code>. So sánh: <code>strcmp(a, b) == 0</code>, không bao giờ viết <code>a == b</code>.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> <code>scanf("%s")</code> không kiểm tra kích thước mảng: nhập quá dài sẽ <b>tràn mảng</b>. An toàn hơn: <code>scanf("%9s", input)</code> với mảng 10 ô, hoặc dùng <code>fgets</code>.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>scanf("%s", &amp;ten)</code> và <code>scanf("%d", &amp;tuoi)</code>, câu nào viết thừa dấu &amp;?</summary>
+    <div class="ans">Câu đầu. Với chuỗi, tên mảng <code>ten</code> đã là địa chỉ nên viết <code>scanf("%s", ten)</code>. Với số nguyên vẫn phải có <code>&amp;tuoi</code>.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 4 ========== -->
+<div class="topic k4" id="p3-t4-hang">
+  <div class="topic-head">
+    <div class="topic-num">4</div>
+    <div><h3>Hằng chuỗi, câu lệnh #define và khai báo với const</h3><div class="sub">Ba cách tạo hằng số trong C</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Hằng số là giá trị <b>không đổi</b> suốt chương trình (như số pi). Đặt <b>tên</b> cho nó (<code>TAXRATE</code>) thì code dễ đọc hơn con số <code>0.015</code>, và khi cần đổi giá trị chỉ sửa <b>một chỗ</b>. C có ba cách: <code>#define</code>, <code>const</code> và <code>enum</code> (đã học ở Phần 1).</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>Vì sao dùng hằng số?</h4>
+<pre class="code" style="margin:0;">circumference = 3.14159 * diameter;
+owed = 0.015 * housevalue;   <span class="c-num">// 0.015 là gì?</span>
+owed = taxrate * housevalue; <span class="c-num">// rõ hơn</span></pre>
+      <p style="margin-top:6px;">Đọc một chương trình dài, tên <code>taxrate</code> cho biết nhiều ý nghĩa hơn con số. Cần đổi thuế suất thì chỉ sửa ở chỗ định nghĩa.</p>
+    </div>
+    <div class="info-card">
+      <h4>1️⃣ Câu lệnh #define (tiền xử lý)</h4>
+<pre class="code" style="margin:0;">#define TAXRATE 0.015
+#define BEEP '\a'
+#define TEE 'T'
+#define OOPS "Now you have done it!"</pre>
+      <ul style="margin-top:6px;">
+        <li>Khi biên dịch, mọi chỗ viết <code>TAXRATE</code> được <b>thay bằng 0.015</b> (thay thế văn bản, lúc biên dịch).</li>
+        <li>Dùng được cho số, <b>ký tự</b> và <b>hằng chuỗi</b>. <b>Không có dấu ;</b>, không có kiểu.</li>
+        <li>Tên định nghĩa <b>không phải biến</b>: không gán giá trị cho nó được.</li>
+        <li>Đặt ở đâu cũng được, có tác dụng <b>toàn cục</b>; thường gom ở <b>đầu file</b> (hoặc file .h) để dễ tra cứu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>2️⃣ Khai báo biến với const (từ C90)</h4>
+<pre class="code" style="margin:0;">const int MONTHS = 12;   <span class="c-num">// MONTHS chỉ đọc</span>
+MONTHS = 13;             <span class="c-num">// LỖI biên dịch</span></pre>
+      <ul style="margin-top:6px;">
+        <li>Biến <b>chỉ đọc</b>: hiển thị, tính toán được nhưng <b>không đổi giá trị</b>.</li>
+        <li>Linh hoạt hơn <code>#define</code>: có <b>kiểu dữ liệu</b>, kiểm soát được phần nào của chương trình dùng hằng.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>Hằng chuỗi với const</h4>
+<pre class="code" style="margin:0;">const char message[] =
+    "The end of the world is nigh.";</pre>
+      <p style="margin-top:6px;">Mảng <code>message</code> được <b>bảo vệ</b>: mọi cố gắng sửa nội dung đều bị trình biên dịch báo lỗi. Rất hợp cho các <b>thông báo chuẩn</b> dùng ở nhiều chỗ trong chương trình.</p>
+    </div>
+  </div>
+
+  <table class="spec">
+    <tr><th></th><th><code>#define</code></th><th><code>const</code></th></tr>
+    <tr><td><b>Bản chất</b></td><td>Thay thế văn bản trước khi biên dịch</td><td>Biến có kiểu, cấm thay đổi</td></tr>
+    <tr><td><b>Kiểu dữ liệu</b></td><td>Không có</td><td>Có, trình biên dịch kiểm tra được</td></tr>
+    <tr><td><b>Cú pháp</b></td><td><code>#define TEN gia_tri</code> (không <code>;</code>, không <code>=</code>)</td><td><code>const int TEN = gia_tri;</code></td></tr>
+    <tr><td><b>Nên dùng</b></td><td>Hằng chuỗi, hằng dùng ở nhiều file</td><td>Hằng số, mảng không được sửa (khuyến khích)</td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <code>#define TEN gia_tri</code> thay chữ trước khi biên dịch; <code>const kieu TEN = gia_tri;</code> là biến chỉ đọc. Tên hằng thường viết <b>CHỮ HOA</b>. Đổi giá trị chỉ sửa <b>một chỗ</b>.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: dòng <code>#define SO_BAI = 10;</code> sai ở đâu?</summary>
+    <div class="ans">Thừa dấu <code>=</code> và dấu <code>;</code>. Đúng là <code>#define SO_BAI 10</code>. Nếu để nguyên, mọi chỗ dùng <code>SO_BAI</code> sẽ bị thay bằng <code>= 10;</code> và gây lỗi.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 5 ========== -->
+<div class="topic k5" id="p3-t5-ham">
+  <div class="topic-head">
+    <div class="topic-num">5</div>
+    <div><h3>Các hàm xử lý chuỗi thông dụng (string.h)</h3><div class="sub">Độ dài · sao chép · nối · so sánh</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> C không có toán tử riêng cho chuỗi (không cộng, không gán, không so sánh bằng dấu), nên thư viện <code>string.h</code> cung cấp sẵn các "nhân viên" làm việc đó. Chữ <b>n</b> trong tên hàm (<code>strncpy</code>, <code>strncat</code>, <code>strncmp</code>) nghĩa là "<b>chỉ làm tối đa n ký tự</b>", an toàn hơn.</div>
+
+  <table class="spec">
+    <tr><th>Việc</th><th>Hàm</th><th>Ví dụ (đã chạy thử)</th><th>Lưu ý</th></tr>
+    <tr><td><b>Độ dài</b></td><td><code>strlen(s)</code></td><td><code>strlen("my string")</code> = 9</td><td>Không tính <code>'\0'</code>; không thay đổi chuỗi</td></tr>
+    <tr><td><b>Sao chép</b></td><td><code>strcpy(dich, nguon)</code></td><td><code>strcpy(src, "This is source");</code></td><td>Tương đương "phép gán chuỗi". <b>Không kiểm tra</b> đích có đủ chỗ không</td></tr>
+    <tr><td><b>Sao chép n ký tự</b></td><td><code>strncpy(dich, nguon, n)</code></td><td><code>strncpy(dest, src, 10)</code> với src = "Hello how are you doing" → dest = "Hello how "</td><td>An toàn hơn, nhưng <b>không tự thêm '\0'</b> nếu nguồn dài hơn n; hãy <code>memset(dest, '\0', sizeof(dest))</code> trước</td></tr>
+    <tr><td><b>Nối</b></td><td><code>strcat(s1, s2)</code></td><td><code>strcat(input, myString)</code> nối myString vào cuối input</td><td>s2 không đổi; trả về s1. Không kiểm tra chỗ trống, tràn thì ghi đè bộ nhớ bên cạnh</td></tr>
+    <tr><td><b>Nối tối đa n</b></td><td><code>strncat(s1, s2, n)</code></td><td><code>strncat(dest, src, 15)</code>: "This is destination" + "This is source" (14 ký tự, nhỏ hơn 15 nên nối hết)</td><td>Dừng khi đủ n ký tự hoặc gặp <code>'\0'</code>, tùy cái nào đến trước</td></tr>
+    <tr><td><b>So sánh</b></td><td><code>strcmp(a, b)</code></td><td>Xem bảng dưới</td><td>So <b>nội dung</b>, không so địa chỉ; dùng được cho mảng kích thước khác nhau</td></tr>
+    <tr><td><b>So sánh n ký tự đầu</b></td><td><code>strncmp(a, b, n)</code></td><td><code>strncmp("astronomy", "astro", 5) == 0</code> → tìm được chuỗi bắt đầu bằng "astro"</td><td>Chỉ so n ký tự đầu</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🆚 strcmp trả về gì?</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Lệnh</th><th>Kết quả</th><th>Nghĩa</th></tr>
+        <tr><td><code>strcmp("A", "A")</code></td><td>0</td><td>Giống nhau</td></tr>
+        <tr><td><code>strcmp("A", "B")</code></td><td>âm</td><td>"A" đứng trước "B"</td></tr>
+        <tr><td><code>strcmp("B", "A")</code></td><td>dương</td><td>"B" đứng sau</td></tr>
+        <tr><td><code>strcmp("Z", "a")</code></td><td>âm</td><td>Chữ hoa (mã 90) nhỏ hơn chữ thường (mã 97)</td></tr>
+        <tr><td><code>strcmp("apples", "apple")</code></td><td>dương</td><td>Dài hơn nên "lớn hơn"</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>Cách strcmp so sánh</h4>
+      <ul>
+        <li>So <b>từng ký tự</b> theo mã ASCII, từ trái sang, <b>đến khi gặp ký tự khác nhau</b> (hoặc hết một chuỗi).</li>
+        <li>Trả về <b>0</b> nếu giống hệt; <b>âm</b> nếu chuỗi 1 "nhỏ hơn" (đứng trước theo bảng mã); <b>dương</b> nếu "lớn hơn".</li>
+        <li>Giá trị cụ thể (−1, 1 hay hiệu hai mã) tùy trình biên dịch, nên chỉ xét <b>dấu</b>, đừng so với −1 hay 1.</li>
+        <li>Đối số phải là <b>chuỗi</b> (<code>"A"</code>), không phải ký tự (<code>'A'</code>).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>strlen</b> đếm, <b>strcpy</b> chép, <b>strcat</b> nối, <b>strcmp</b> so (bằng nhau khi <b>== 0</b>). Các hàm này <b>không kiểm tra kích thước</b> mảng đích: phải tự đảm bảo đủ chỗ, hoặc dùng phiên bản có <b>n</b>.</div>
+  <div class="example-box blue"><b>🔎 Hiệu chỉnh nội dung slide:</b> Bảng tổng kết của slide nói <code>strncpy</code> "điền thêm các ký tự trắng" khi nguồn ngắn hơn n: thực tế nó điền <b>ký tự '\0'</b> (giá trị 0), không phải khoảng trắng. Khai báo trong bảng ghi <code>int strlen(...)</code>: kiểu trả về đúng là <code>size_t</code>, in bằng <code>%zu</code> (dùng <code>%d</code> cũng thường chạy được với chuỗi ngắn).</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>char s[6] = "Hello"; strcat(s, " World");</code> có vấn đề gì?</summary>
+    <div class="ans">Mảng chỉ có 6 ô, đã đầy ("Hello" + '\0'). Nối thêm sẽ <b>tràn mảng</b>, ghi đè vùng nhớ bên cạnh, chương trình có thể chạy sai hoặc bị dừng. Phải khai báo mảng đủ lớn, ví dụ <code>char s[20]</code>.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 6 ========== -->
+<div class="topic k1" id="p3-t6-con-tro">
+  <div class="topic-head">
+    <div class="topic-num">6</div>
+    <div><h3>Khái niệm con trỏ</h3><div class="sub">Biến lưu địa chỉ · dấu & và * · NULL · con trỏ đến char</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> Mỗi ô nhớ có một <b>địa chỉ</b> (như số nhà). Một biến thường cất <b>giá trị</b> (đồ trong nhà). <b>Con trỏ</b> là biến cất <b>số nhà</b> của một biến khác. Có số nhà thì tìm tới được đồ bên trong: đó là việc dấu <code>*</code> làm.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+<pre class="code" style="margin:0;">int Number = 25;         <span class="c-num">// biến thường</span>
+int *pNumber = &amp;Number;  <span class="c-num">// chứa ĐỊA CHỈ</span>
+
+<span class="c-num">// giá trị tại địa chỉ pNumber trỏ tới:</span>
+printf("%d", *pNumber);  <span class="c-num">// 25</span></pre>
+      <table class="spec" style="margin:8px 0 0;">
+        <tr><th>Biến</th><th>Chứa</th></tr>
+        <tr><td><code>Number</code></td><td>25</td></tr>
+        <tr><td><code>pNumber</code></td><td>địa chỉ của <code>Number</code> (ví dụ 0x7ffd...84)</td></tr>
+      </table>
+    </div>
+    <div class="info-card">
+      <h4>Hai ký hiệu cần nhớ</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Ký hiệu</th><th>Tên</th><th>Nghĩa</th></tr>
+        <tr><td><code>&amp;Number</code></td><td>Toán tử lấy địa chỉ</td><td>"Số nhà" của Number (đã dùng trong <code>scanf</code>)</td></tr>
+        <tr><td><code>int *pNumber</code></td><td>Khai báo con trỏ</td><td>Dấu <code>*</code> ở khai báo: "đây là con trỏ đến int"</td></tr>
+        <tr><td><code>*pNumber</code></td><td>Toán tử tham chiếu</td><td>"Đồ trong nhà": truy cập giá trị tại địa chỉ con trỏ chỉ</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>Con trỏ đến char và chuỗi</h4>
+      <ul>
+        <li>Địa chỉ của một ký tự có kiểu <b><code>char *</code></b> ("con trỏ đến char").</li>
+        <li>Tên mảng là địa chỉ ô đầu, nên <code>char *p = s;</code> làm <code>p</code> trỏ tới ký tự đầu của chuỗi <code>s</code>.</li>
+        <li><code>printf("%s", p)</code> in từ chỗ <code>p</code> trỏ đến <code>'\0'</code>. <code>p + 2</code> là địa chỉ ô cách đó 2 ô.</li>
+        <li><b>Nhiều hàm chuỗi trả về con trỏ</b> (<code>strchr</code>, <code>strstr</code>, <code>strtok</code>...), nên cần biết khái niệm này để dùng chúng.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>NULL</h4>
+      <ul>
+        <li><code>NULL</code> = con trỏ <b>không trỏ vào đâu cả</b> (tương đương 0 của con trỏ).</li>
+        <li>Hàm tìm kiếm <b>không tìm thấy</b> thì trả về <code>NULL</code>. Luôn kiểm tra <code>if (p != NULL)</code> trước khi dùng kết quả.</li>
+        <li>Khác với <code>'\0'</code> (ký tự kết thúc chuỗi).</li>
+      </ul>
+<pre class="code" style="margin:6px 0 0;">char s[] = "Hello";
+char *p = s;
+printf("%c %s %s", *p, p, p + 2);
+<span class="c-num">// in ra: H Hello llo</span></pre>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Con trỏ = biến chứa <b>địa chỉ</b>. <code>&amp;x</code> lấy địa chỉ, <code>*p</code> lấy giá trị tại địa chỉ. <code>NULL</code> = không trỏ đâu cả. Bài này chỉ cần hiểu ý cơ bản, con trỏ sẽ học sâu ở bài sau.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>int a = 7; int *p = &amp;a; *p = 9;</code> thì <code>a</code> bằng bao nhiêu?</summary>
+    <div class="ans"><b>9</b>. <code>*p = 9</code> ghi số 9 vào ô nhớ mà <code>p</code> trỏ tới, chính là ô của <code>a</code>.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 7 ========== -->
+<div class="topic k2" id="p3-t7-tim-kiem">
+  <div class="topic-head">
+    <div class="topic-num">7</div>
+    <div><h3>Tìm kiếm, phân tách và phân tích chuỗi</h3><div class="sub">strchr · strstr · strtok · islower, isupper, isalpha, isdigit</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> <code>strchr</code> tìm <b>một chữ cái</b> trong câu, <code>strstr</code> tìm <b>một từ</b> trong câu; cả hai trả về <b>con trỏ tới chỗ tìm thấy</b> (hoặc <code>NULL</code>). <code>strtok</code> là cái <b>kéo</b> cắt câu thành từng từ (token) theo dấu phân cách. Nhóm hàm <code>is...</code> trả lời câu hỏi "ký tự này có phải chữ số / chữ cái / chữ hoa không?".</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔍 strchr: tìm theo một ký tự</h4>
+<pre class="code" style="margin:0;">char str[] = "The quick brown fox";
+char ch = 'q';
+char *pGot_char = strchr(str, ch);
+<span class="c-num">// pGot_char trỏ tới "quick brown fox"</span>
+<span class="c-num">// không thấy → NULL</span></pre>
+      <ul style="margin-top:6px;">
+        <li>Đối số 1: chuỗi cần tìm (địa chỉ mảng). Đối số 2: ký tự cần tìm (kiểu <code>int</code>, viết <code>char</code> cũng được).</li>
+        <li>Tìm từ đầu, trả về con trỏ tới <b>vị trí đầu tiên</b> gặp ký tự. Kết quả lưu vào biến kiểu <code>char *</code>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔎 strstr: tìm chuỗi con (hữu ích nhất)</h4>
+<pre class="code" style="margin:0;">char text[] = "Every dog has his day";
+char word[] = "dog";
+char *pFound = strstr(text, word);
+<span class="c-num">// "dog" ở ký tự thứ 7: pFound = text + 6</span>
+<span class="c-num">// pFound trỏ tới "dog has his day"</span></pre>
+      <ul style="margin-top:6px;">
+        <li>Trả về con trỏ tới <b>lần xuất hiện đầu tiên</b> của chuỗi con; không có thì <code>NULL</code>.</li>
+        <li><b>Phân biệt hoa thường</b>: tìm "Dog" trong câu trên không thấy.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>✂️ strtok: phân tách chuỗi thành token</h4>
+      <ul>
+        <li><b>Token</b> là đoạn ký tự nằm giữa các <b>dấu phân cách</b> (khoảng trắng, dấu phẩy, dấu chấm...). Chia câu thành từ gọi là <b>tokenizing</b>.</li>
+        <li>Đối số 1: chuỗi cần tách (<b>lần đầu</b>), các lần sau truyền <b><code>NULL</code></b> để tách tiếp. Đối số 2: chuỗi chứa <b>mọi dấu phân cách</b> có thể có, ví dụ <code>" ,."</code>.</li>
+        <li>Hết token thì trả về <code>NULL</code>.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+<pre class="code" style="margin:0;">char cau[] = "toi hoc lap trinh C";
+char *tu = strtok(cau, " ");
+while (tu != NULL) {
+    printf("[%s] ", tu);
+    tu = strtok(NULL, " ");  <span class="c-num">// token sau</span>
+}
+<span class="c-num">// [toi] [hoc] [lap] [trinh] [C]</span></pre>
+    </div>
+  </div>
+
+  <h4 style="margin:14px 0 8px;">🧪 Phân tích ký tự (ctype.h)</h4>
+  <table class="spec">
+    <tr><th>Hàm</th><th>Hỏi gì?</th><th>Ví dụ</th></tr>
+    <tr><td><code>isdigit(c)</code></td><td>Là chữ số 0-9?</td><td><code>isdigit('7')</code> → khác 0 (đúng)</td></tr>
+    <tr><td><code>isalpha(c)</code></td><td>Là chữ cái?</td><td><code>isalpha('7')</code> → 0 (sai)</td></tr>
+    <tr><td><code>isupper(c)</code></td><td>Là chữ hoa?</td><td><code>isupper('A')</code> → khác 0</td></tr>
+    <tr><td><code>islower(c)</code></td><td>Là chữ thường?</td><td><code>islower('A')</code> → 0</td></tr>
+  </table>
+  <p class="sub" style="margin:0 0 10px;">Các hàm này trả về <b>số khác 0</b> nếu đúng, <b>0</b> nếu sai, nên dùng thẳng trong <code>if</code> như giá trị đúng/sai. Đối số là <b>một ký tự</b>.</p>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>strchr</b> tìm ký tự, <b>strstr</b> tìm chuỗi con, cả hai trả con trỏ hoặc <b>NULL</b>. <b>strtok</b>: lần đầu truyền chuỗi, các lần sau truyền <b>NULL</b>, lặp đến khi nhận <b>NULL</b>. <b>is...</b> kiểm tra loại ký tự.</div>
+  <div class="example-box blue"><b>🔎 Lưu ý:</b> <code>strtok</code> <b>sửa trực tiếp</b> chuỗi gốc (thay dấu phân cách bằng <code>'\0'</code>), nên không dùng với hằng chuỗi; muốn giữ bản gốc thì <code>strcpy</code> ra một mảng khác trước. Vị trí trong chuỗi tính bằng hiệu hai con trỏ: <code>pFound - text</code> = 6.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>strtok("a,b;c", ",;")</code> gọi lặp sẽ cho ra những token nào?</summary>
+    <div class="ans"><code>a</code>, <code>b</code>, <code>c</code>. Chuỗi phân cách <code>",;"</code> nghĩa là cả dấu phẩy và chấm phẩy đều là chỗ cắt. (Trong thực tế phải tách trên một mảng <code>char cau[] = "a,b;c"</code>, không tách thẳng trên hằng chuỗi.)</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 8 ========== -->
+<div class="topic k3" id="p3-t8-chuyen-doi">
+  <div class="topic-head">
+    <div class="topic-num">8</div>
+    <div><h3>Chuyển đổi chuỗi: hoa thường và chuỗi thành số</h3><div class="sub">toupper, tolower · atoi, atof, strtod...</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Hiểu nhanh:</b> <code>toupper</code> / <code>tolower</code> đổi <b>một ký tự</b> sang hoa / thường, nên muốn đổi cả chuỗi phải <b>lặp qua từng ký tự</b>. Chuỗi <code>"123"</code> và số <code>123</code> là hai thứ khác nhau (chuỗi là ba chữ cái '1' '2' '3'); các hàm <code>atoi</code>, <code>atof</code>... <b>đọc chữ thành số</b> để tính toán được.</div>
+
+  <div class="grid2">
+    <div class="info-card">
+      <h4>🔠 Chuyển cả chuỗi sang chữ hoa</h4>
+<pre class="code" style="margin:0;">char buf[] = "hello World 7";
+for (int i = 0;
+     (buf[i] = (char)toupper(buf[i])) != '\0';
+     ++i);
+<span class="c-num">// HELLO WORLD 7</span>
+
+<span class="c-num">// cách viết dễ đọc hơn, cùng kết quả:</span>
+for (int i = 0; buf[i] != '\0'; i++)
+    buf[i] = toupper(buf[i]);</pre>
+      <ul style="margin-top:6px;">
+        <li>Vòng lặp duyệt từng ký tự, dừng khi gặp <code>'\0'</code>.</li>
+        <li>Ép kiểu <code>(char)</code> vì <code>toupper()</code> trả về <code>int</code>.</li>
+        <li>Ký tự không có chữ hoa (số, dấu) giữ nguyên.</li>
+        <li>Kết hợp <code>toupper</code> với <code>strstr</code> để tìm chuỗi <b>không phân biệt hoa thường</b>: đổi cả hai chuỗi sang hoa rồi mới tìm.</li>
+      </ul>
+    </div>
+    <div class="info-card">
+      <h4>🔢 Chuỗi thành số (stdlib.h)</h4>
+      <table class="spec" style="margin:6px 0;">
+        <tr><th>Hàm</th><th>Chuyển chuỗi s thành</th></tr>
+        <tr><td><code>atoi(s)</code></td><td><code>int</code></td></tr>
+        <tr><td><code>atol(s)</code></td><td><code>long</code></td></tr>
+        <tr><td><code>atoll(s)</code></td><td><code>long long</code></td></tr>
+        <tr><td><code>atof(s)</code></td><td><code>double</code> (số thực)</td></tr>
+        <tr><td><code>strtod(s, &amp;endptr)</code></td><td><code>double</code>; <code>endptr</code> trỏ tới phần chữ còn lại sau số</td></tr>
+        <tr><td><code>strtof</code>, <code>strtold</code></td><td>Như <code>strtod</code> nhưng ra <code>float</code>, <code>long double</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="info-card">
+<pre class="code" style="margin:0;">printf("%d", atoi("250") + 1);   <span class="c-num">// 251</span>
+printf("%.1f", atof("2.5") * 2); <span class="c-num">// 5.0</span>
+printf("%d", atoi("12ab"));      <span class="c-num">// 12</span>
+printf("%d", atoi("abc"));       <span class="c-num">// 0</span>
+
+char *cuoi;
+double d = strtod("3.5kg", &amp;cuoi);
+<span class="c-num">// d = 3.5, cuoi trỏ tới "kg"</span></pre>
+    </div>
+    <div class="info-card">
+      <h4>📥 Đọc dữ liệu từ chuỗi: sscanf</h4>
+<pre class="code" style="margin:0;">char dong[] = "Lan 30 1.65";
+char ten[20]; int tuoi; float cao;
+sscanf(dong, "%s %d %f", ten, &amp;tuoi, &amp;cao);
+<span class="c-num">// ten = Lan, tuoi = 30, cao = 1.65</span></pre>
+      <p style="margin-top:6px;">Giống <code>scanf</code> nhưng đọc <b>từ một chuỗi</b> thay vì từ bàn phím. Tiện khi xử lý một dòng dữ liệu (ví dụ một bản tin log của hệ thống nhà thông minh trong slide).</p>
+    </div>
+  </div>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> <b>toupper/tolower</b> làm việc trên <b>một ký tự</b>, cả chuỗi thì dùng vòng lặp. <b>atoi</b> (int), <b>atof</b> (số thực), <b>strtod</b> (biết chỗ dừng). Không đọc được thì <code>atoi</code> trả về <b>0</b>, nên khi cần kiểm tra lỗi hãy dùng <code>strtol</code>/<code>strtod</code>.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: <code>"7" + 1</code> và <code>atoi("7") + 1</code> khác nhau thế nào?</summary>
+    <div class="ans"><code>atoi("7") + 1</code> = 8 (số). Còn <code>"7" + 1</code> là phép cộng trên <b>địa chỉ</b> của chuỗi (dịch con trỏ sang ô kế tiếp, tức chuỗi rỗng), không phải cộng số. Muốn tính toán phải chuyển chuỗi thành số trước.</div>
+  </details>
+</div>
+
+<!-- ========== P3 TOPIC 9 ========== -->
+<div class="topic k4" id="p3-t9-bai-tap">
+  <div class="topic-head">
+    <div class="topic-num">9</div>
+    <div><h3>Bài tập thường gặp với chuỗi</h3><div class="sub">Một khung chung · các dạng bài · lỗi hay mắc</div></div>
+  </div>
+
+  <div class="easy-box"><b>🍼 Bí quyết:</b> bài chuỗi gần giống bài mảng ở Phần 2: <b>duyệt từng ký tự bằng vòng lặp</b>, nhưng điều kiện dừng là <b><code>s[i] != '\0'</code></b> thay vì <code>i &lt; n</code>. Phần còn lại vẫn là "biến trí nhớ" (đếm, cờ đúng/sai) khai báo ngoài vòng lặp.</div>
+
+<pre class="code">char s[100];
+fgets(s, sizeof(s), stdin);            <span class="c-num">// nhập cả câu</span>
+s[strcspn(s, "\n")] = '\0';            <span class="c-num">// bỏ ký tự xuống dòng</span>
+
+int dem = 0;                           <span class="c-num">// biến trí nhớ</span>
+for (int i = 0; s[i] != '\0'; i++) {   <span class="c-num">// duyệt tới '\0'</span>
+    ...                                <span class="c-num">// xét s[i]</span>
+}</pre>
+
+  <table class="spec">
+    <tr><th>Dạng bài</th><th>Ý tưởng</th><th>Đoạn chính (đã chạy thử)</th></tr>
+    <tr><td><b>Đếm ký tự 'a'</b></td><td>Duyệt, gặp 'a' thì đếm</td><td><code>if (s[i] == 'a') dem++;</code></td></tr>
+    <tr><td><b>Đếm nguyên âm</b></td><td>Đổi về chữ thường rồi so với a e i o u</td><td><code>char c = tolower(s[i]); if (c=='a'||c=='e'||c=='i'||c=='o'||c=='u') dem++;</code></td></tr>
+    <tr><td><b>Đếm số từ</b></td><td>Tách bằng <code>strtok</code>, mỗi token đếm 1</td><td><code>char *tu = strtok(s, " "); while (tu != NULL) { dem++; tu = strtok(NULL, " "); }</code> → "toi dang hoc lap trinh C" ra 6</td></tr>
+    <tr><td><b>Đổi hoa / thường</b></td><td>Duyệt, <code>toupper</code>/<code>tolower</code> từng ký tự</td><td><code>s[i] = toupper(s[i]);</code></td></tr>
+    <tr><td><b>Viết hoa chữ đầu mỗi từ</b></td><td>Ký tự đầu, hoặc ký tự đứng sau dấu cách</td><td><code>if (i == 0 || s[i-1] == ' ') s[i] = toupper(s[i]);</code> → "nguyen thi thanh" thành "Nguyen Thi Thanh"</td></tr>
+    <tr><td><b>Đảo ngược chuỗi</b></td><td>Đổi chỗ ký tự đầu với cuối, tiến dần vào giữa</td><td><code>int n = strlen(s); for (int i = 0; i &lt; n/2; i++) { char t = s[i]; s[i] = s[n-1-i]; s[n-1-i] = t; }</code> → "FUNiX" thành "XiNUF"</td></tr>
+    <tr><td><b>Kiểm tra đối xứng</b> (palindrome)</td><td>So ký tự thứ i với ký tự thứ n-1-i</td><td><code>ok = 1; for (i = 0; i &lt; n/2; i++) if (s[i] != s[n-1-i]) { ok = 0; break; }</code> → "level" đối xứng</td></tr>
+    <tr><td><b>Kiểm tra mật khẩu / so sánh</b></td><td><code>strcmp</code> bằng 0</td><td><code>if (strcmp(nhap, "funix123") == 0)</code></td></tr>
+    <tr><td><b>Chuỗi có chứa từ X?</b></td><td><code>strstr</code> khác NULL</td><td><code>if (strstr(s, "funix") != NULL)</code></td></tr>
+  </table>
+
+  <table class="spec">
+    <tr><th>Lỗi hay mắc với chuỗi</th><th>Cách tránh</th></tr>
+    <tr><td>Khai báo mảng <b>thiếu 1 ô</b> cho '\0'</td><td>Kích thước = số ký tự + 1, hoặc dùng <code>char s[] = "..."</code></td></tr>
+    <tr><td>Gán <code>s = "abc";</code></td><td><code>strcpy(s, "abc");</code></td></tr>
+    <tr><td>So sánh <code>if (a == b)</code></td><td><code>if (strcmp(a, b) == 0)</code></td></tr>
+    <tr><td><code>scanf("%s", &amp;s)</code> thừa &amp;; <code>scanf("%s")</code> mất phần sau dấu cách</td><td>Bỏ <code>&amp;</code>; nhập cả câu dùng <code>fgets</code></td></tr>
+    <tr><td><code>strncpy</code> rồi quên '\0'</td><td><code>memset</code> trước, hoặc tự gán <code>dest[n] = '\0'</code></td></tr>
+    <tr><td>Dùng hàm mà quên <code>#include</code></td><td><code>string.h</code> (str...), <code>ctype.h</code> (toupper, isdigit), <code>stdlib.h</code> (atoi, atof)</td></tr>
+    <tr><td>Nhầm <code>'\0'</code> với <code>NULL</code>, <code>'x'</code> với <code>"x"</code></td><td>Nháy đơn = ký tự; nháy kép = chuỗi; NULL = con trỏ rỗng</td></tr>
+    <tr><td>Gõ dấu nháy cong <code>“ ”</code> (copy từ slide, Word)</td><td>Dùng nháy thẳng <code>" "</code>, nếu không gcc báo <code>stray ... in program</code></td></tr>
+  </table>
+
+  <div class="example-box"><b>⭐ Ghi nhớ:</b> Khung: <b>fgets → for (s[i] != '\0') → xét s[i] → in sau vòng lặp</b>. Việc với <b>cả chuỗi</b> dùng hàm <code>str...</code>; việc với <b>từng ký tự</b> dùng vòng lặp và các hàm <code>ctype.h</code>.</div>
+  <details class="quiz"><summary>❓ Tự kiểm tra: đếm số chữ số (0-9) trong chuỗi thì điều kiện trong vòng lặp viết thế nào?</summary>
+    <div class="ans"><code>if (isdigit(s[i])) dem++;</code> (nhớ <code>#include &lt;ctype.h&gt;</code>). Hoặc không dùng thư viện: <code>if (s[i] &gt;= '0' &amp;&amp; s[i] &lt;= '9') dem++;</code></div>
+  </details>
+</div>
+
+</section>
+</div><!-- /part-page 3 -->
+
 <footer>
   <div class="foot-grid">
     <div onclick="setPart('1')">
@@ -3200,6 +3852,10 @@ printf("%d", demSoLe(arr, n));</pre>
     <div onclick="setPart('2')">
       <h4>👉 Phần 2 · Toán tử, điều khiển, mảng & hàm</h4>
       <p>Toán tử & câu lệnh → Toán tử cơ bản → Nhị phân & bitwise → Ép kiểu, sizeof → Độ ưu tiên → Gỡ lỗi → Cách tính nhanh → if / else if → ? : → switch → goto → for → while & do while → vòng lặp lồng, break, continue → mảng một chiều, hai chiều → hàm, tham số, return → biến cục bộ, toàn cục → bài tập thường gặp</p>
+    </div>
+    <div onclick="setPart('3')">
+      <h4>👉 Phần 3 · Chuỗi ký tự</h4>
+      <p>Chuỗi & ký tự null → Khai báo & khởi tạo → Hiển thị, nhập, so sánh → Hằng: const & #define → Hàm string.h → Khái niệm con trỏ → Tìm kiếm & phân tách → Chuyển đổi chuỗi → Bài tập thường gặp</p>
     </div>
     <div class="soon">
       <h4>⏳ Các Phần tiếp theo</h4>
